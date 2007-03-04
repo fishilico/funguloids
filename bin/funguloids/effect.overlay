@@ -1,0 +1,32 @@
+// Special level transition overlay
+SpecialLevelTransition
+{
+	zorder 600
+
+	container Panel(Effect)
+	{
+		metrics_mode relative
+		left 0.0
+		top 0.0
+		width 1.0
+		height 1.0
+		material SpecialLevelTransition
+	}
+}
+
+
+// Ball worm glow overlay
+BallWormGlow
+{
+	zorder 601
+
+	container Panel(GlowEffect)
+	{
+		metrics_mode relative
+		left 0.0
+		top 0.0
+		width 1.0
+		height 1.0
+		material BallWormGlow
+	}
+}

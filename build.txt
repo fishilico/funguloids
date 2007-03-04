@@ -1,0 +1,2 @@
+See bin/readme.html for all the documentation, including
+how to build "Those Funny Funguloids!".

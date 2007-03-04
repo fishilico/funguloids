@@ -1,0 +1,9 @@
+sampler RT : register(s0);
+
+float4 GrayScale_ps(float2 iTexCoord : TEXCOORD0) : COLOR
+{
+	float3 original = tex2D(RT, iTexCoord).rgb;
+    float3 greyscale = dot(original, float3(0.3, 0.59, 0.11));
+	return float4(original * 0.15 + greyscale * 0.85, 1.0);
+}
+

@@ -1,0 +1,49 @@
+// Black hole particles
+BlackHoleParts
+{
+	material ParticleStar
+	particle_width 1.5
+	particle_height 1.5
+	cull_each false
+	local_space true
+	quota 21
+	//billboard_type perpendicular_common
+
+
+	emitter Ellipsoid
+	{
+		width 8
+		height 8
+		depth 0.1
+		angle 0
+		emission_rate 20
+		time_to_live 0.4
+		direction 0 0 1
+		velocity 0
+		colour 0 0 0
+		position 0 0 0
+	}
+
+
+	affector ColourInterpolator
+	{
+		colour0 0 0 0
+		time0 0
+		colour1 0.6 0.4 1.0
+		time1 0.3
+		colour2 0.2 0 0.5
+		time2 0.8
+		colour3 0 0 0
+		time3 1.0
+	}
+
+
+	affector Rotator
+	{
+		rotation_speed_range_start -50
+		rotation_speed_range_end 50
+		rotation_range_start 0
+		rotation_range_end 360
+	}
+}
+

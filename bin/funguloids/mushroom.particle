@@ -1,0 +1,360 @@
+// Red mushroom pick up
+MushroomPickup1
+{
+	material ParticleGlow
+	particle_width 9
+	particle_height 9
+	cull_each false
+	local_space true
+	quota 30
+	billboard_type point
+
+	emitter Point
+	{
+		angle 180
+		emission_rate 20
+		time_to_live_min 0.4
+		time_to_live_max 1.2
+		duration_min 0.25
+		duration_max 0.8
+		direction 0 0 1
+		velocity_min -20
+		velocity_max 20
+		colour_range_start 0.25 0.025 0
+		colour_range_end 0.25 0.05 0.05
+		position 0 0 0
+	}
+
+	affector LinearForce
+	{
+		force_vector 0 0 -10
+		force_application add
+	}
+
+
+	affector ColourInterpolator
+	{
+		colour0 0.25 0.075 0.05
+		time0 0
+		colour1 0.25 0 0
+		time1 0.2
+		colour2 0 0 0
+		time2 1
+	}
+
+}
+
+
+// Reddish White sparks
+MushroomSparks1
+{
+	material ParticleSpark
+	particle_width 5
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 20
+	billboard_type oriented_self
+
+	emitter Point
+	{
+		angle 180
+		emission_rate 100
+		time_to_live_min 0.2
+		time_to_live_max 0.55
+		duration 0.4
+		direction 0 0 1
+		velocity_min -50
+		velocity_max 50
+		colour 1 1 1
+		position 0 0 0
+	}
+
+	affector ColourInterpolator
+	{
+		colour0 1 1 1
+		time0 0
+		colour1 0.5 0 0
+		time1 0.6
+		colour2 0 0 0
+		time2 1
+	}
+
+
+	affector Scaler
+	{
+		rate -7
+	}
+}
+
+
+// Green mushroom pick up
+MushroomPickup2
+{
+	material ParticleGlow
+	particle_width 9
+	particle_height 9
+	cull_each false
+	local_space true
+	quota 30
+	billboard_type point
+
+	emitter Point
+	{
+		angle 180
+		emission_rate 20
+		time_to_live_min 0.4
+		time_to_live_max 1.2
+		duration_min 0.25
+		duration_max 0.8
+		direction 0 0 1
+		velocity_min -20
+		velocity_max 20
+		colour_range_start 0.025 0.25 0
+		colour_range_end 0.05 0.25 0.05
+		position 0 0 0
+	}
+
+	affector LinearForce
+	{
+		force_vector 0 0 -10
+		force_application add
+	}
+
+
+	affector ColourInterpolator
+	{
+		colour0 0.075 0.25 0.05
+		time0 0
+		colour1 0 0.25 0
+		time1 0.2
+		colour2 0 0 0
+		time2 1
+	}
+
+}
+
+
+// Greenish White sparks
+MushroomSparks2
+{
+	material ParticleSpark
+	particle_width 5
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 20
+	billboard_type oriented_self
+
+	emitter Point
+	{
+		angle 180
+		emission_rate 100
+		time_to_live_min 0.2
+		time_to_live_max 0.55
+		duration 0.4
+		direction 0 0 1
+		velocity_min -50
+		velocity_max 50
+		colour 1 1 1
+		position 0 0 0
+	}
+
+	affector ColourInterpolator
+	{
+		colour0 1 1 1
+		time0 0
+		colour1 0 0.5 0
+		time1 0.6
+		colour2 0 0 0
+		time2 1
+	}
+
+
+	affector Scaler
+	{
+		rate -7
+	}
+}
+
+
+// Blue mushroom pick up
+MushroomPickup3
+{
+	material ParticleGlow
+	particle_width 9
+	particle_height 9
+	cull_each false
+	local_space true
+	quota 30
+	billboard_type point
+
+	emitter Point
+	{
+		angle 180
+		emission_rate 20
+		time_to_live_min 0.4
+		time_to_live_max 1.2
+		duration_min 0.25
+		duration_max 0.8
+		direction 0 0 1
+		velocity_min -20
+		velocity_max 20
+		colour_range_start 0 0.025 0.25
+		colour_range_end 0.025 0.05 0.25
+		position 0 0 0
+	}
+
+	affector LinearForce
+	{
+		force_vector 0 0 -10
+		force_application add
+	}
+
+
+	affector ColourInterpolator
+	{
+		colour0 0.05 0.025 0.25
+		time0 0
+		colour1 0 0 0.25
+		time1 0.2
+		colour2 0 0 0
+		time2 1
+	}
+
+}
+
+
+// Blueish White sparks
+MushroomSparks3
+{
+	material ParticleSpark
+	particle_width 5
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 20
+	billboard_type oriented_self
+
+	emitter Point
+	{
+		angle 180
+		emission_rate 100
+		time_to_live_min 0.2
+		time_to_live_max 0.55
+		duration 0.4
+		direction 0 0 1
+		velocity_min -50
+		velocity_max 50
+		colour 1 1 1
+		position 0 0 0
+	}
+
+	affector ColourInterpolator
+	{
+		colour0 1 1 1
+		time0 0
+		colour1 0 0 0.5
+		time1 0.6
+		colour2 0 0 0
+		time2 1
+	}
+
+
+	affector Scaler
+	{
+		rate -7
+	}
+}
+
+
+
+// Yellow mushroom pick up
+MushroomPickup4
+{
+	material ParticleGlow
+	particle_width 9
+	particle_height 9
+	cull_each false
+	local_space true
+	quota 30
+	billboard_type point
+
+	emitter Point
+	{
+		angle 180
+		emission_rate 20
+		time_to_live_min 0.4
+		time_to_live_max 1.2
+		duration_min 0.25
+		duration_max 0.8
+		direction 0 0 1
+		velocity_min -20
+		velocity_max 20
+		colour_range_start 0.25 0.25 0.025
+		colour_range_end 0.25 0.25 0.05
+		position 0 0 0
+	}
+
+	affector LinearForce
+	{
+		force_vector 0 0 -10
+		force_application add
+	}
+
+
+	affector ColourInterpolator
+	{
+		colour0 0.25 0.25 0.05
+		time0 0
+		colour1 0.25 0.25 0
+		time1 0.2
+		colour2 0 0 0
+		time2 1
+	}
+
+}
+
+
+// Yellowish White sparks
+MushroomSparks4
+{
+	material ParticleSpark
+	particle_width 5
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 20
+	billboard_type oriented_self
+
+	emitter Point
+	{
+		angle 180
+		emission_rate 100
+		time_to_live_min 0.2
+		time_to_live_max 0.55
+		duration 0.4
+		direction 0 0 1
+		velocity_min -50
+		velocity_max 50
+		colour 1 1 1
+		position 0 0 0
+	}
+
+	affector ColourInterpolator
+	{
+		colour0 1 1 1
+		time0 0
+		colour1 0.5 0.5 0
+		time1 0.6
+		colour2 0 0 0
+		time2 1
+	}
+
+
+	affector Scaler
+	{
+		rate -7
+	}
+}
+

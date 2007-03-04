@@ -1,0 +1,205 @@
+// Open base particles (red)
+BaseOpen1
+{
+	material ParticleRing
+	particle_width 10
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 11
+	billboard_type perpendicular_common
+
+
+	emitter Point
+	{
+		angle 0
+		emission_rate 10
+		time_to_live 0.5
+		direction 0 0 1
+		velocity 20
+		colour 0.75 0.1 0.0
+		position 0 0 -5
+	}
+
+
+	affector ColourFader
+	{
+		red -1.5
+		green -0.5
+	}
+
+
+	affector Rotator
+	{
+		rotation_speed_range_start 10
+		rotation_speed_range_end 20
+		rotation_range_start 0
+		rotation_range_end 360
+	}
+}
+
+
+// Open base particles (green)
+BaseOpen2
+{
+	material ParticleRing
+	particle_width 10
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 11
+	billboard_type perpendicular_common
+
+
+	emitter Point
+	{
+		angle 0
+		emission_rate 10
+		time_to_live 0.5
+		direction 0 0 1
+		velocity 20
+		colour 0.1 0.75 0
+		position 0 0 -5
+	}
+
+
+	affector ColourFader
+	{
+		red -0.5
+		green -1.5
+	}
+
+
+	affector Rotator
+	{
+		rotation_speed_range_start 10
+		rotation_speed_range_end 20
+		rotation_range_start 0
+		rotation_range_end 360
+	}
+}
+
+
+// Open base particles (blue)
+BaseOpen3
+{
+	material ParticleRing
+	particle_width 10
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 11
+	billboard_type perpendicular_common
+
+
+	emitter Point
+	{
+		angle 0
+		emission_rate 10
+		time_to_live 0.5
+		direction 0 0 1
+		velocity 20
+		colour 0.0 0.1 0.75
+		position 0 0 -5
+	}
+
+
+	affector ColourFader
+	{
+		green -0.5
+		blue -1.5
+	}
+
+
+	affector Rotator
+	{
+		rotation_speed_range_start 10
+		rotation_speed_range_end 20
+		rotation_range_start 0
+		rotation_range_end 360
+	}
+}
+
+
+// Open base particles (yellow)
+BaseOpen4
+{
+	material ParticleRing
+	particle_width 10
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 11
+	billboard_type perpendicular_common
+
+
+	emitter Point
+	{
+		angle 0
+		emission_rate 10
+		time_to_live 0.5
+		direction 0 0 1
+		velocity 20
+		colour 0.75 0.75 0.1
+		position 0 0 -5
+	}
+
+
+	affector ColourFader
+	{
+		red -1.5
+		green -1.5
+		blue -0.5
+	}
+
+
+	affector Rotator
+	{
+		rotation_speed_range_start 10
+		rotation_speed_range_end 20
+		rotation_range_start 0
+		rotation_range_end 360
+	}
+}
+
+
+// Open base particles (core base / yellow)
+CoreBaseOpen
+{
+	material ParticleRing
+	particle_width 10
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 11
+	billboard_type perpendicular_common
+
+
+	emitter Point
+	{
+		angle 0
+		emission_rate 10
+		time_to_live 0.5
+		direction 0 0 1
+		velocity 20
+		colour 0.75 0.75 0.1
+		position 0 0 -5
+	}
+
+	affector ColourFader
+	{
+		red -1.5
+		green -1.5
+		blue -0.5
+	}
+
+
+	affector Rotator
+	{
+		rotation_speed_range_start 10
+		rotation_speed_range_end 20
+		rotation_range_start 0
+		rotation_range_end 360
+	}
+}
+

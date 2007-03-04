@@ -1,0 +1,713 @@
+// Quit confirmation message
+ConfirmQuit
+{
+	zorder 510
+	container Panel(ConfirmPanel)
+	{
+		left 0
+		top 0
+		width 1
+		height 1
+		material ConfirmQuitBlack
+
+		element TextArea(ConfirmText)
+		{
+			metrics_mode relative
+			left 0.5
+			top 0.25
+			alignment center
+			font_name MenuFont
+			char_height 0.070
+			caption Are you sure you want to exit the game?
+			colour 1 1 1 1
+		}
+		element TextArea(ConfirmText2)
+		{
+			metrics_mode relative
+			left 0.5
+			top 0.35
+			alignment center
+			font_name MenuFont
+			char_height 0.050
+			caption Press ESC to exit, or press RETURN to resume game.
+			colour 1 1 1 0.75
+		}
+	}
+}
+
+
+// Main menu logo
+Logo
+{
+	zorder 520
+
+	// Logo
+	container Panel(LogoPanel)
+	{
+		left 0.05
+		top 0.0
+		width 0.9
+		height 0.4
+		material Logo
+	}
+}
+
+
+// Menu scroller
+MenuScroller
+{
+	zorder 530
+
+	container Panel(ScrollerPanel)
+	{
+		left 0
+		top 0.935
+		width 1
+		height 0.1
+		transparent true
+
+		element TextArea(ScrollerText)
+		{
+			metrics_mode relative
+			left 1.2
+			top 0
+			font_name MenuFont
+			char_height 0.060
+			caption "Those Funny Funguloids!"   * ^ *   CREDITS   * ^ *   Code: Mika Halttunen   * ^ *   Game Design: Teemu Ruokolainen   * ^ *   Artwork: Mika Halttunen   * ^ *   Sound Design: Teemu Ruokolainen   * ^ *   http://funguloids.sourceforge.net   * ^ *   Copyright (c) 2006-2007, Mika Halttunen & Teemu Ruokolainen   * ^ *   THANKS FOR THE INTEREST - ENJOY THE GAME!
+			colour_bottom 1 0.75 0.7 0.4
+			colour_top 1 0.0 0 0.4
+		}
+	}
+}
+
+
+// Main menu overlay
+MainMenu
+{
+	zorder 510
+
+	// Main panel
+	container BorderPanel(MainPanel)
+	{
+		metrics_mode relative
+		left 0.2
+		top 0.2
+		width 0.6
+		height 0.6
+		material BlockCenter
+			border_size 0.01 0.01 0.01 0.01
+			border_material BlockBorder
+			border_topleft_uv     0.0000 0.0000 0.1172 0.1172
+			border_top_uv         0.1172 0.0000 0.8828 0.1172
+			border_topright_uv    0.8828 0.0000 1.0000 0.1172
+			border_left_uv        0.0000 0.1172 0.1172 0.8828
+			border_right_uv       0.8828 0.1172 1.0000 0.8828
+			border_bottomleft_uv  0.0000 0.8828 0.1172 1.0000
+			border_bottom_uv      0.1172 0.8828 0.8828 1.0000
+			border_bottomright_uv 0.8828 0.8828 1.0000 1.0000
+
+		element TextArea(MainMenu1)
+		{
+			metrics_mode relative
+			left 0.1
+			top 0.1
+			font_name MenuFont
+			char_height 0.1
+			caption Start Game
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+
+		element TextArea(MainMenu2)
+		{
+			metrics_mode relative
+			left 0.1
+			top 0.2
+			font_name MenuFont
+			char_height 0.1
+			caption Game Options
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+
+		element TextArea(MainMenu3)
+		{
+			metrics_mode relative
+			left 0.1
+			top 0.3
+			font_name MenuFont
+			char_height 0.1
+			caption High Scores
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.7
+		}
+
+		element TextArea(MainMenu4)
+		{
+			metrics_mode relative
+			left 0.1
+			top 0.4
+			font_name MenuFont
+			char_height 0.1
+			caption Exit
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+	}
+}
+
+
+
+// Options menu overlay
+GameOptions
+{
+	zorder 510
+
+	// Main panel
+	container BorderPanel(MainPanelOptions)
+	{
+		metrics_mode relative
+		left 0.15
+		top 0.1
+		width 0.7
+		height 0.8
+		material BlockCenter
+        	border_size 0.01 0.01 0.01 0.01
+        	border_material BlockBorder
+        	border_topleft_uv     0.0000 0.0000 0.1172 0.1172
+	    	border_top_uv         0.1172 0.0000 0.8828 0.1172
+	    	border_topright_uv    0.8828 0.0000 1.0000 0.1172
+	    	border_left_uv        0.0000 0.1172 0.1172 0.8828
+	    	border_right_uv       0.8828 0.1172 1.0000 0.8828
+	    	border_bottomleft_uv  0.0000 0.8828 0.1172 1.0000
+        	border_bottom_uv      0.1172 0.8828 0.8828 1.0000
+	    	border_bottomright_uv 0.8828 0.8828 1.0000 1.0000
+
+		element TextArea(GameOptionsGraphics)
+		{
+			metrics_mode relative
+			left 0.025
+			top 0.01
+			font_name MenuFont
+			char_height 0.09
+			caption Visuals:.
+			colour  0.7 0.3 0.3
+		}
+
+		element TextArea(GameOptions1)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.1
+			font_name MenuFont
+			char_height 0.07
+			caption Bloom Effect: ON
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+
+		element TextArea(GameOptions2)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.17
+			font_name MenuFont
+			char_height 0.07
+			caption Shadows: ON
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+
+		element TextArea(GameOptions3)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.24
+			font_name MenuFont
+			char_height 0.07
+			caption Dynamic Lights: ON
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.7
+		}
+
+		element TextArea(GameOptions4)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.31
+			font_name MenuFont
+			char_height 0.07
+			caption Dynamic Light Shadows: ON
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+
+		element TextArea(GameOptionsAudio)
+		{
+			metrics_mode relative
+			left 0.025
+			top 0.4
+			font_name MenuFont
+			char_height 0.09
+			caption Audio:.
+			colour  0.7 0.3 0.3
+		}
+
+		element TextArea(GameOptions5)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.49
+			font_name MenuFont
+			char_height 0.07
+			caption Sound Volume: 100%
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+
+		element TextArea(GameOptions6)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.56
+			font_name MenuFont
+			char_height 0.07
+			caption Music Volume: 100%
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+
+		element TextArea(GameOptions7)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.69
+			font_name MenuFont
+			char_height 0.08
+			caption Accept changes
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+
+		element TextArea(GameOptions8)
+		{
+			metrics_mode relative
+			left 0.5
+			top 0.69
+			font_name MenuFont
+			char_height 0.08
+			caption Cancel
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+	}
+}
+
+
+// High scores overlay
+HighScores
+{
+	zorder 510
+
+	// Main panel
+	container BorderPanel(MainPanelHiscores)
+	{
+		metrics_mode relative
+		left 0.2
+		top 0.2
+		width 0.6
+		height 0.74
+		material BlockCenter
+        	border_size 0.01 0.01 0.01 0.01
+        	border_material BlockBorder
+        	border_topleft_uv     0.0000 0.0000 0.1172 0.1172
+	    	border_top_uv         0.1172 0.0000 0.8828 0.1172
+	    	border_topright_uv    0.8828 0.0000 1.0000 0.1172
+	    	border_left_uv        0.0000 0.1172 0.1172 0.8828
+	    	border_right_uv       0.8828 0.1172 1.0000 0.8828
+	    	border_bottomleft_uv  0.0000 0.8828 0.1172 1.0000
+        	border_bottom_uv      0.1172 0.8828 0.8828 1.0000
+	    	border_bottomright_uv 0.8828 0.8828 1.0000 1.0000
+
+		element TextArea(HiscoresTitle)
+		{
+			metrics_mode relative
+			left 0.025
+			top 0.06
+			font_name MenuFont
+			char_height 0.09
+			caption High Scores:.
+			colour  0.7 0.3 0.3
+		}
+
+		element TextArea(Number1)
+		{
+			metrics_mode relative
+			left 0.0175
+			top 0.165
+			font_name Vera
+			char_height 0.03
+			caption 01.
+			colour 0.5 0.5 0.5 0.5
+		}
+		element TextArea(Name1)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.15
+			font_name MenuFont
+			char_height 0.05
+			caption ---
+			colour_bottom 1 0.8 0.7
+			colour_top 0.8 0.4 0.3
+		}
+		element TextArea(Score1)
+		{
+			metrics_mode relative
+			alignment right
+			left 0.585
+			top 0.15
+			font_name MenuFont
+			char_height 0.05
+			caption 000000
+			colour_bottom 1 1 1
+			colour_top 0.8 0.6 0.4
+		}
+
+		element TextArea(Number2)
+		{
+			metrics_mode relative
+			left 0.0175
+			top 0.215
+			font_name Vera
+			char_height 0.03
+			caption 02.
+			colour 0.5 0.5 0.5 0.5
+		}
+		element TextArea(Name2)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.20
+			font_name MenuFont
+			char_height 0.05
+			caption ---
+			colour_bottom 1 0.8 0.7
+			colour_top 0.8 0.4 0.3
+		}
+		element TextArea(Score2)
+		{
+			metrics_mode relative
+			alignment right
+			left 0.585
+			top 0.20
+			font_name MenuFont
+			char_height 0.05
+			caption 000000
+			colour_bottom 1 1 1
+			colour_top 0.8 0.6 0.4
+		}
+
+		element TextArea(Number3)
+		{
+			metrics_mode relative
+			left 0.0175
+			top 0.265
+			font_name Vera
+			char_height 0.03
+			caption 03.
+			colour 0.5 0.5 0.5 0.5
+		}
+		element TextArea(Name3)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.25
+			font_name MenuFont
+			char_height 0.05
+			caption ---
+			colour_bottom 1 0.8 0.7
+			colour_top 0.8 0.4 0.3
+		}
+		element TextArea(Score3)
+		{
+			metrics_mode relative
+			alignment right
+			left 0.585
+			top 0.25
+			font_name MenuFont
+			char_height 0.05
+			caption 000000
+			colour_bottom 1 1 1
+			colour_top 0.8 0.6 0.4
+		}
+
+		element TextArea(Number4)
+		{
+			metrics_mode relative
+			left 0.0175
+			top 0.315
+			font_name Vera
+			char_height 0.03
+			caption 04.
+			colour 0.5 0.5 0.5 0.5
+		}
+		element TextArea(Name4)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.30
+			font_name MenuFont
+			char_height 0.05
+			caption ---
+			colour_bottom 1 0.8 0.7
+			colour_top 0.8 0.4 0.3
+		}
+		element TextArea(Score4)
+		{
+			metrics_mode relative
+			alignment right
+			left 0.585
+			top 0.30
+			font_name MenuFont
+			char_height 0.05
+			caption 000000
+			colour_bottom 1 1 1
+			colour_top 0.8 0.6 0.4
+		}
+
+		element TextArea(Number5)
+		{
+			metrics_mode relative
+			left 0.0175
+			top 0.365
+			font_name Vera
+			char_height 0.03
+			caption 05.
+			colour 0.5 0.5 0.5 0.5
+		}
+		element TextArea(Name5)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.35
+			font_name MenuFont
+			char_height 0.05
+			caption ---
+			colour_bottom 1 0.8 0.7
+			colour_top 0.8 0.4 0.3
+		}
+		element TextArea(Score5)
+		{
+			metrics_mode relative
+			alignment right
+			left 0.585
+			top 0.35
+			font_name MenuFont
+			char_height 0.05
+			caption 000000
+			colour_bottom 1 1 1
+			colour_top 0.8 0.6 0.4
+		}
+
+		element TextArea(Number6)
+		{
+			metrics_mode relative
+			left 0.0175
+			top 0.415
+			font_name Vera
+			char_height 0.03
+			caption 06.
+			colour 0.5 0.5 0.5 0.5
+		}
+		element TextArea(Name6)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.40
+			font_name MenuFont
+			char_height 0.05
+			caption ---
+			colour_bottom 1 0.8 0.7
+			colour_top 0.8 0.4 0.3
+		}
+		element TextArea(Score6)
+		{
+			metrics_mode relative
+			alignment right
+			left 0.585
+			top 0.40
+			font_name MenuFont
+			char_height 0.05
+			caption 000000
+			colour_bottom 1 1 1
+			colour_top 0.8 0.6 0.4
+		}
+
+		element TextArea(Number7)
+		{
+			metrics_mode relative
+			left 0.0175
+			top 0.465
+			font_name Vera
+			char_height 0.03
+			caption 07.
+			colour 0.5 0.5 0.5 0.5
+		}
+		element TextArea(Name7)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.45
+			font_name MenuFont
+			char_height 0.05
+			caption ---
+			colour_bottom 1 0.8 0.7
+			colour_top 0.8 0.4 0.3
+		}
+		element TextArea(Score7)
+		{
+			metrics_mode relative
+			alignment right
+			left 0.585
+			top 0.45
+			font_name MenuFont
+			char_height 0.05
+			caption 000000
+			colour_bottom 1 1 1
+			colour_top 0.8 0.6 0.4
+		}
+
+		element TextArea(Number8)
+		{
+			metrics_mode relative
+			left 0.0175
+			top 0.515
+			font_name Vera
+			char_height 0.03
+			caption 08.
+			colour 0.5 0.5 0.5 0.5
+		}
+		element TextArea(Name8)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.50
+			font_name MenuFont
+			char_height 0.05
+			caption ---
+			colour_bottom 1 0.8 0.7
+			colour_top 0.8 0.4 0.3
+		}
+		element TextArea(Score8)
+		{
+			metrics_mode relative
+			alignment right
+			left 0.585
+			top 0.50
+			font_name MenuFont
+			char_height 0.05
+			caption 000000
+			colour_bottom 1 1 1
+			colour_top 0.8 0.6 0.4
+		}
+
+		element TextArea(Number9)
+		{
+			metrics_mode relative
+			left 0.0175
+			top 0.565
+			font_name Vera
+			char_height 0.03
+			caption 09.
+			colour 0.5 0.5 0.5 0.5
+		}
+		element TextArea(Name9)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.55
+			font_name MenuFont
+			char_height 0.05
+			caption ---
+			colour_bottom 1 0.8 0.7
+			colour_top 0.8 0.4 0.3
+		}
+		element TextArea(Score9)
+		{
+			metrics_mode relative
+			alignment right
+			left 0.585
+			top 0.55
+			font_name MenuFont
+			char_height 0.05
+			caption 000000
+			colour_bottom 1 1 1
+			colour_top 0.8 0.6 0.4
+		}
+
+		element TextArea(Number10)
+		{
+			metrics_mode relative
+			left 0.0175
+			top 0.615
+			font_name Vera
+			char_height 0.03
+			caption 10.
+			colour 0.5 0.5 0.5 0.5
+		}
+		element TextArea(Name10)
+		{
+			metrics_mode relative
+			left 0.05
+			top 0.60
+			font_name MenuFont
+			char_height 0.05
+			caption ---
+			colour_bottom 1 0.8 0.7
+			colour_top 0.8 0.4 0.3
+		}
+		element TextArea(Score10)
+		{
+			metrics_mode relative
+			alignment right
+			left 0.585
+			top 0.60
+			font_name MenuFont
+			char_height 0.05
+			caption 000000
+			colour_bottom 1 1 1
+			colour_top 0.8 0.6 0.4
+		}
+
+
+		element TextArea(HighScores1)
+		{
+			metrics_mode relative
+			alignment center
+			left 0.3
+			top 0.65
+			font_name MenuFont
+			char_height 0.08
+			caption Back to main
+			colour_bottom 1 1 1
+			colour_top 0.5 0.6 0.8
+		}
+	}
+}
+
+
+// Title screen
+TitleScreen
+{
+	zorder 525
+	container Panel(TitlePanel)
+	{
+		left 0
+		top 0
+		width 1
+		height 1
+		material TitleScreen
+	}
+}
+

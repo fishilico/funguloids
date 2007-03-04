@@ -1,0 +1,106 @@
+// Material for the special level transition effect
+material SpecialLevelTransition
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			depth_check off
+			cull_hardware none
+			cull_software none
+			scene_blend add
+
+			texture_unit
+			{
+				texture fieryglow.dds
+				tex_address_mode wrap
+				filtering none
+				scroll_anim -0.1 0.05
+				rotate_anim -0.001
+			}
+			texture_unit
+			{
+				colour_op_ex modulate src_current src_manual 0.5 0.5 0.5
+			}
+		}
+
+		pass
+		{
+			lighting off
+			depth_write off
+			depth_check off
+			cull_hardware none
+			cull_software none
+			scene_blend add
+
+			texture_unit
+			{
+				texture fieryglow2.jpg
+				tex_address_mode wrap
+				filtering none
+				scroll_anim 0.01 -0.1
+				rotate_anim 0.005
+			}
+			texture_unit
+			{
+				colour_op_ex modulate src_current src_manual 0.5 0.5 0.5
+			}
+		}
+	}
+}
+
+
+// Material for the ball worm glow effect
+material BallWormGlow
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			depth_check off
+			cull_hardware none
+			cull_software none
+			scene_blend add
+
+			texture_unit
+			{
+				texture whiteglow.dds
+				tex_address_mode wrap
+				filtering none
+				scroll_anim 0.01 0.08
+				wave_xform scale_x sine 0.5 0.2 0.0 1.5
+				wave_xform scale_y sine 0.5 0.4 90.0 1.25
+			}
+			texture_unit
+			{
+				colour_op_ex modulate src_current src_manual 0.5 0.5 0.5
+			}
+		}
+
+		pass
+		{
+			lighting off
+			depth_write off
+			depth_check off
+			cull_hardware none
+			cull_software none
+			scene_blend add
+
+			texture_unit
+			{
+				texture whiteglow2.png
+				tex_address_mode wrap
+				filtering none
+				rotate_anim 0.05
+			}
+			texture_unit
+			{
+				colour_op_ex modulate src_current src_manual 0.5 0.5 0.5
+			}
+		}
+	}
+}

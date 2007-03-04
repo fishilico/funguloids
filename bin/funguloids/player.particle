@@ -1,0 +1,85 @@
+// Player death
+PlayerDeath
+{
+	material ParticleGlow
+	particle_width 15
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 100
+	billboard_type oriented_self
+
+	emitter Point
+	{
+		angle 180
+		emission_rate 100
+		time_to_live_min 0.5
+		time_to_live_max 2
+		duration 1.5
+		direction 0 0 1
+		velocity_min -25
+		velocity_max 25
+		colour 0.05 0.1 0.25
+		position 0 0 0
+	}
+
+	affector LinearForce
+	{
+		force_vector 0 10 -20
+		force_application add
+	}
+
+
+	affector ColourInterpolator
+	{
+		colour0 0.05 0.15 0.25
+		time0 0
+		colour1 0 0.05 0.25
+		time1 0.2
+		colour2 0 0 0
+		time2 1
+	}
+}
+
+
+// Player death sparks
+PlayerDeathSparks
+{
+	material ParticleSpark
+	particle_width 2.5
+	particle_height 10
+	cull_each false
+	local_space true
+	quota 50
+	billboard_type oriented_self
+
+	emitter Point
+	{
+		angle 180
+		emission_rate 100
+		time_to_live_min 0.2
+		time_to_live_max 0.55
+		duration 1.5
+		direction 0 0 1
+		velocity_min -100
+		velocity_max 100
+		colour 1 1 1
+		position 0 0 0
+	}
+
+	affector ColourInterpolator
+	{
+		colour0 1 1 1
+		time0 0
+		colour1 0 0 0.5
+		time1 0.6
+		colour2 0 0 0
+		time2 1
+	}
+
+
+	affector Scaler
+	{
+		rate -7
+	}
+}
