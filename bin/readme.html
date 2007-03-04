@@ -50,7 +50,7 @@
 	<div class="content">
 		<h2>Version history</h2>
 		<ul>
-			<li><span class="version1">Version 1.0</span> <span class="version2">(released on XX.03.2007)</span>
+			<li><span class="version1">Version 1.0</span> <span class="version2">(released on 04.03.2007)</span>
 				<ul>
 					<li>The first public version.</li>
 				</ul>
@@ -101,7 +101,7 @@
 		Then adjust the individual settings if you want to. You're most likely interested in <i>Video Mode</i> and <i>Full Screen</i>
 		options. The default is 800x600 in fullscreen, which is fine, but if your PC has the horsepower, feel free to crank up the
 		resolution - it'll look nicer! :)</p>
-		<p>Then you should find yourself in the main menu. It's quite self-explanatory, so I'm just going to cover the <i>Game Options</i> - menu
+		<p>After the weird looking title screen you should find yourself in the main menu. It's quite self-explanatory, so I'm just going to cover the <i>Game Options</i> - menu
 		briefly. The defaults are the highest quality settings, feel free to tone them down if you notice choppiness.</p>
 		<center><img src="docs/options.jpg" alt="Game Options - menu" title="Game Options - menu" /></center>
 		<ul>
@@ -112,14 +112,15 @@
 			<li><span class="version1">"Dynamic Light Shadows"</span> controls whether the dynamic ligts cast shadows or not. If you're running slow, this is
 			a good first choice to disable as it doesn't decrease the visual quality too much.</li>
 		</ul>
-		<p>The volume settings should be self-explanatory. You may be wondering, why there's "Music volume" when there's no music? Read on.</p>
+		<p>The volume settings should be self-explanatory. Now, you may be wondering, why there's "Music volume" when there's no music? Read on.</p>
 		<p>Funguloids supports playing music (mp3, ogg, mod/xm/it/s3m + more!) from your music collection on the background when you're playing.
 		You can copy your music files to the <span class="file">music</span> folder of the game, or open the <span class="file">music/playlist.lua</span> script (in Notepad, for example)
 		and edit it to play your files from different locations. Pressing <span class="version1">F1</span> key in the game skips to the next track in the playlist. I recommend some
 		nice and calm piano music, works really well! :) As of now, there is no music included with the game. Maybe in later versions, or in a
 		separate "music pack", but no promises.. If you think you have what it takes, feel free to <a href="#credits">contact us</a> on the subject.</p>
 
-		<p>When you finally get to the actual playing -part, you might be interested to know that this game uses only three buttons (either from the keyboard or the mouse) for its controls. Left and right arrow keys (or mouse buttons)
+		<p>When you finally get to the actual playing -part, you might be interested to know that this game uses only three buttons (either from the keyboard or the mouse) for its controls.
+		<span class="version1">LEFT</span> and <span class="version1">RIGHT arrow keys</span> (or mouse buttons)
 		turn the player around. To launch from the base, press either <span class="version1">SPACE</span>, <span class="version1">CONTROL</span>, <span class="version1">SHIFT</span> or <span class="version1">RETURN</span> (or click the middle mouse button).
 		Your objective is to collect colored mushrooms and bring them back to your base. When you get back to the base, the mushrooms of the base color
 		will be unloaded (this increases your score - the more mushrooms you bring the more you profit!) and the level changes. Avoid the asteroids - no
@@ -194,8 +195,8 @@
 		<p>When you have all the things set up correctly, the build should work alright. Well, then, what about other platforms? Read on.</p>
 		<p>It should be possible, with some effort, get Funguloids built and running on Linux / MacOS X / etc.. I can only manage the Windows
 		build myself, so I'm hoping that somebody using different platform could help me out with a working build.
-		I think the possible problems lie in the file handling (configs, highscores, ...). Also the non-Windows code in <span class="file">playlist.cpp : addToPlaylist()</span>
-		is not tested, but should work.</p>
+		I think the possible problems lie in the file handling (configs, highscores, ...). All kinds of contributions are welcome! Btw, should you need to access the data in <span class="file">funguloids.mpk</span>,
+		I can supply a simple tool for handling .MPK files, or you can roll your own using the sources (<span class="file">mpak.cpp/.h</span>).</p>
 		<p style="font-size: smaller;"><a href="#contents">^ To the contents</a></p>
 	</div>
 	<b class="rbottom">
@@ -219,7 +220,8 @@
 		<p>We're using <a href="http://www.ogre3d.org/">Ogre</a> graphics engine for visuals, <a href="http://www.lua.org">Lua</a>
 		for scripting and <a href="http://www.fmod.org">FMOD Ex</a> for audio output.<br/>
 		<a href="http://code.jellycan.com/simpleini/">SimpleIni</a> is used for the configuration reading/writing.
-		Installer made with <a href="http://nsis.sourceforge.net">NSIS</a>. Hosted by <a href="http://sourceforge.net">SourceForge</a>.
+		Installer made with <a href="http://nsis.sourceforge.net">NSIS</a>. EXE and DLLs compressed with
+		<a href="http://upx.sourceforge.net">UPX</a>. Hosted by <a href="http://sourceforge.net">SourceForge</a>.
 		</p>
 		<p>Comments, ideas, patches, bug reports, etc. are always welcome and appreciated! :) Use the e-mail address above.
 		And be sure to check out Funguloids website at <a href="http://funguloids.sourceforge.net">http://funguloids.sourceforge.net</a>

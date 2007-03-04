@@ -63,6 +63,10 @@ div.menu li {
 	font-size: 122%;
 }
 
+div.menu h2 {
+	color: rgb(209, 101, 96);
+}
+
 div.menu a {
 	margin-top: 0px;
 	padding: 2px;
