@@ -5,8 +5,8 @@ compositor Bloom
     technique
     {
         // Temporary textures
-        texture rt0 256 256 PF_A8R8G8B8
-        texture rt1 256 256 PF_A8R8G8B8
+        texture rt0 128 128 PF_A8R8G8B8
+        texture rt1 128 128 PF_A8R8G8B8
 
         target rt1
         {

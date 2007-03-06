@@ -14,7 +14,7 @@
 	</div>
 
 	<div class="menu">
-	<h2>.: Version 1.0 -- README :.</h2>
+	<h2>.: Version 1.01 -- README :.</h2>
 	</div>
 
 	<div class="maincontent">
@@ -50,6 +50,13 @@
 	<div class="content">
 		<h2>Version history</h2>
 		<ul>
+			<li><span class="version1">Version 1.01</span> <span class="version2">(released on 06.03.2007)</span>
+				<ul>
+					<li>Maintenance release with much improved OpenGL port (the bloom looks virtually the same as in D3D now)</li>
+					<li>Bugfix for the options volume settings (a rounding error)</li>
+					<li>Fixed the high score name input (names starting with blank now allowed, as one would expect)</li>
+				</ul>
+			</li>
 			<li><span class="version1">Version 1.0</span> <span class="version2">(released on 04.03.2007)</span>
 				<ul>
 					<li>The first public version.</li>
@@ -122,16 +129,17 @@
 		<p>When you finally get to the actual playing -part, you might be interested to know that this game uses only three buttons (either from the keyboard or the mouse) for its controls.
 		<span class="version1">LEFT</span> and <span class="version1">RIGHT arrow keys</span> (or mouse buttons)
 		turn the player around. To launch from the base, press either <span class="version1">SPACE</span>, <span class="version1">CONTROL</span>, <span class="version1">SHIFT</span> or <span class="version1">RETURN</span> (or click the middle mouse button).
+		You can take screenshots with the <span class="version1">PRINTSCRN</span> key, it saves .PNGs to the game folder.
 		Your objective is to collect colored mushrooms and bring them back to your base. When you get back to the base, the mushrooms of the base color
 		will be unloaded (this increases your score - the more mushrooms you bring the more you profit!) and the level changes. Avoid the asteroids - no
 		extra lifes in this game. There are other things floating around the space as well, but you'll find out about them yourself..</p>
 		<p>And that's it. Enjoy the game!</p>
 		<center><img src="docs/game.jpg" alt="Game picture" title="Game picture" /></center>
 		<a name="opengl"></a>
-		<p><span class="note"><span class="version1">*)</span> I'm only supporting D3D in this case, because OpenGL works really bad (at least) on my computer (Radeon 9600 Pro);
-		it's slow, there's graphical artifacts (on the normal mapping) and the bloom doesn't look as nice.. Maybe it's just my PC, though.
-		D3D is better supported on most cards (in Windows, obviously). OpenGL might work just fine for a lot of you, but I still consider it unsupported
-		from my point of view. If anyone wants to help me improve the OpenGL port (for example the bloom shader might need some love), I appreciate it!</span></p>
+		<p><span class="note"><span class="version1">*)</span> In the first version the OpenGL port was inferior, looked uglier (the bloom shader was not too great, my fault).
+		Now the situation has improved greatly, it looks virtually the same as in D3D. So use whatever you want, or what works better for you. :) In my case, the
+		OpenGL is still much slower (especially with shadows on), so I continue with D3D. I still recommend D3D for most Windows users, as it tends to
+		be better supported. Your mileage may vary, of course.</span></p>
 		<p style="font-size: smaller;"><a href="#contents">^ To the contents</a></p>
 	</div>
 	<b class="rbottom">

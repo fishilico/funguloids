@@ -53,6 +53,34 @@ Logo
 }
 
 
+// Version string
+Version
+{
+	zorder 510
+
+	// Logo
+	container Panel(VersionPanel)
+	{
+		left 0
+		top 0
+		width 1
+		height 1
+		transparent true
+
+		element TextArea(VersionText)
+		{
+			metrics_mode relative
+			left 0.96
+			top 0.005
+			font_name VeraBold
+			char_height 0.02
+			colour 1 1 1 0.4
+			caption v1.01
+		}
+	}
+}
+
+
 // Menu scroller
 MenuScroller
 {

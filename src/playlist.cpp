@@ -23,17 +23,6 @@
 //
 //***************************************************************************/
 
-/*
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#else
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <dirent.h>
-#endif
-*/
 
 #include "ogreapp.h"
 #include "playlist.h"

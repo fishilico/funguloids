@@ -23,18 +23,19 @@
 //
 //***************************************************************************/
 
-#if(OGRE_PLATFORM == OGRE_PLATFORM_WIN32)
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-extern HINSTANCE hInstance;	// from main.cpp
-#endif
-
 #include "ogreapp.h"
 #include "objectsystem.h"
 #include "effects.h"
 #include "scriptsystem.h"
 #include "soundsystem.h"
 #include "mpakogre.h"
+
+#if(OGRE_PLATFORM == OGRE_PLATFORM_WIN32)
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+extern HINSTANCE hInstance;	// from main.cpp
+#endif
+
 
 
 OgreApplication::~OgreApplication() {

@@ -8,9 +8,9 @@
 ;General
 
   ;Name and file
-  !define APPNAME "Those Funny Funguloids! v1.0"
+  !define APPNAME "Those Funny Funguloids! v1.01"
   Name "${APPNAME}"
-  OutFile "funguloids-win32-1.0.exe"
+  OutFile "funguloids-win32-1.01.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\Those Funny Funguloids"

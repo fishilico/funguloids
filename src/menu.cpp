@@ -92,6 +92,7 @@ void OgreAppFrameListener::doMenu(Real delta, const bool keyDown[]) {
 		// Scroller off
 		OverlayManager::getSingleton().getByName("MenuScroller")->hide();
 		OverlayManager::getSingleton().getByName("TitleScreen")->hide();
+		OverlayManager::getSingleton().getByName("Version")->hide();
 
 		// Start a new game
 		gameApp->startNewGame();
@@ -194,6 +195,8 @@ void Menu::setMenu(const String &menu, int selection) {
 		hiscoreList.updateOverlay();
 	else if(menu == "TitleScreen")
 		titleAlpha = 0.0f;
+	else if(menu == "MainMenu")
+		OverlayManager::getSingleton().getByName("Version")->show();
 }
 
 
@@ -239,7 +242,7 @@ void Menu::doEnterName(KeyEvent *e) {
 		mNewItem->setCaption(String(str) + "^");
 	}
 	else if(e->getKey() == KC_RETURN) {
-		if(mTextPos > 0 && str[0] != ' ') {
+		if(mTextPos > 0) {
 			// Done, save
 			hiscoreList.save(HISCORE_FILE);
 			mEnteringName = false;
@@ -339,7 +342,7 @@ void Menu::updateOptionsItem(int i, bool change) {
 			vol = StringConverter::parseReal(str);
 			if(change) {
 				vol += 0.1f;
-				if(vol > 1.0f) vol = 0.0f;
+				if((int)(vol*100.0f) > 100) vol = 0.0f;
 				str = StringConverter::toString(vol);
 				gameApp->mGameConfig->SetValue("audio", "volume", str.c_str());
 
@@ -348,8 +351,8 @@ void Menu::updateOptionsItem(int i, bool change) {
 				SoundSystem::getSingleton().playSound("mushroom1");
 			}
 
-			ivol = (int)(100 * vol);
-			sprintf(volstr, "%d%%", ivol);
+			//ivol = (int)(100 * vol);
+			sprintf(volstr, "%.0f%%", vol*100.0f);
 			item->setCaption(itemText + String(volstr));
 			break;
 
@@ -359,15 +362,15 @@ void Menu::updateOptionsItem(int i, bool change) {
 			vol = StringConverter::parseReal(str);
 			if(change) {
 				vol += 0.1f;
-				if(vol > 1.0f) vol = 0.0f;
+				if((int)(vol*100.0f) > 100) vol = 0.0f;
 				str = StringConverter::toString(vol);
 				gameApp->mGameConfig->SetValue("audio", "music_volume", str.c_str());
 
 				SoundSystem::getSingleton().setMusicVolume(vol);
 			}
 
-			ivol = (int)(100 * vol);
-			sprintf(volstr, "%d%%", ivol);
+			//ivol = (int)(100 * vol);
+			sprintf(volstr, "%.0f%%", vol*100.0f);
 			item->setCaption(itemText + String(volstr));
 			break;
 	}
