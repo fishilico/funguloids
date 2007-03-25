@@ -14,7 +14,7 @@
 	</div>
 
 	<div class="menu">
-	<h2>.: Version 1.01 -- README :.</h2>
+	<h2>.: Version 1.05 -- README :.</h2>
 	</div>
 
 	<div class="maincontent">
@@ -50,6 +50,13 @@
 	<div class="content">
 		<h2>Version history</h2>
 		<ul>
+			<li><span class="version1">Version 1.05</span> <span class="version2">(released on 25.03.2007)</span>
+				<ul>
+					<li>Upgraded to the latest Ogre (v1.4 Eihort) for better performance and stability</li>
+					<li>Documentation improvements, made the docs available to the website as well</li>
+				</ul>
+			</li>
+			<br/>
 			<li><span class="version1">Version 1.01</span> <span class="version2">(released on 06.03.2007)</span>
 				<ul>
 					<li>Maintenance release with much improved OpenGL port (the bloom looks virtually the same as in D3D now)</li>
@@ -57,6 +64,7 @@
 					<li>Fixed the high score name input (names starting with blank now allowed, as one would expect)</li>
 				</ul>
 			</li>
+			<br/>
 			<li><span class="version1">Version 1.0</span> <span class="version2">(released on 04.03.2007)</span>
 				<ul>
 					<li>The first public version.</li>
@@ -128,9 +136,10 @@
 
 		<p>When you finally get to the actual playing -part, you might be interested to know that this game uses only three buttons (either from the keyboard or the mouse) for its controls.
 		<span class="version1">LEFT</span> and <span class="version1">RIGHT arrow keys</span> (or mouse buttons)
-		turn the player around. To launch from the base, press either <span class="version1">SPACE</span>, <span class="version1">CONTROL</span>, <span class="version1">SHIFT</span> or <span class="version1">RETURN</span> (or click the middle mouse button).
-		You can take screenshots with the <span class="version1">PRINTSCRN</span> key, it saves .PNGs to the game folder.
-		Your objective is to collect colored mushrooms and bring them back to your base. When you get back to the base, the mushrooms of the base color
+		turn the player around. To launch from the base, press either <span class="version1">SPACE</span>, <span class="version1">CTRL</span>, <span class="version1">SHIFT</span> or <span class="version1">RETURN</span> (or click the middle mouse button).
+		You can take screenshots with the <span class="version1">PRINTSCRN</span> key, it saves .PNGs to the game folder. Press <span class="version1">CTRL+F</span>
+		to toggle the debug stats display (FPS, etc.). It can be enabled from the config file as well.</p>
+		<p>Your objective is to collect colored mushrooms and bring them back to your base. When you get back to the base, the mushrooms of the base color
 		will be unloaded (this increases your score - the more mushrooms you bring the more you profit!) and the level changes. Avoid the asteroids - no
 		extra lifes in this game. There are other things floating around the space as well, but you'll find out about them yourself..</p>
 		<p>And that's it. Enjoy the game!</p>
@@ -194,16 +203,16 @@
 		As of now, the source package only contains project files (<span class="file">Funguloids.vcproj</span>) for <b>MSVC++ 2003</b> (7.1). However, you should be able to open that with
 		<b>MSVC++ 2005</b> (8.0) and maybe with <b>Code::Blocks</b> too. Contributions such as project files for these and other compilers are welcome!</p>
 		<p>To build Funguloids, you need to have <a href="http://www.ogre3d.org">Ogre</a> (SDK will do) and <a href="http://www.fmod.org">FMOD Ex</a>
-		installed. <a href="http://www.lua.org">Lua 5.1</a> is included for <b>MSVC++ 2003</b> (might work with other compilers, too). Note that Funguloids was developed with Ogre <b>Dagon</b> (v1.2.5), and will most probably not compile on <b>Eihort</b> (v1.4.x) without
-		code changes. I guess the input system needs the most work, since <b>Eihort</b> is using <b>OIS</b>. So get <b>Dagon</b>, unless you want
-		to spend some time with the code. But if you do get it working on <b>Eihort</b>, I *really* appreciated if you'd mail me modified sources. :)
-		I might do the port myself some day, though.</p>
+		installed. <a href="http://www.lua.org">Lua 5.1</a> is included for <b>MSVC++ 2003</b> (might work with other compilers, too).
+		Note that starting from v1.05 Funguloids builds with Ogre <b>Eihort</b> (v1.4.x) only. <b>Dagon</b> (v1.2.x) users should
+		upgrade. On the other hand, versions 1.0 and 1.01 only work with <b>Dagon</b>.</p>
 		<p>Note that the project file assumes you have Ogre installed to a directory specified by the environment variable <span class="file">OGRE_HOME</span>.
 		For FMOD, you have to add its directories to your compiler search path.</p>
 		<p>When you have all the things set up correctly, the build should work alright. Well, then, what about other platforms? Read on.</p>
 		<p>It should be possible, with some effort, get Funguloids built and running on Linux / MacOS X / etc.. I can only manage the Windows
 		build myself, so I'm hoping that somebody using different platform could help me out with a working build.
-		I think the possible problems lie in the file handling (configs, highscores, ...). All kinds of contributions are welcome! Btw, should you need to access the data in <span class="file">funguloids.mpk</span>,
+		I think the possible problems lie in the file handling (configs, highscores, ...), that is if you'd want to support the usual Linux way
+		of having configuration settings in one place, data files in another, etc. All kinds of contributions are welcome! Btw, should you need to access the data in <span class="file">funguloids.mpk</span>,
 		I can supply a simple tool for handling .MPK files, or you can roll your own using the sources (<span class="file">mpak.cpp/.h</span>).</p>
 		<p style="font-size: smaller;"><a href="#contents">^ To the contents</a></p>
 	</div>
@@ -220,7 +229,7 @@
 	</b>
 	<div class="content">
 		<h2>Credits</h2>
-		<p><span class="date">Code:</span> Mika Halttunen &lt;<a href="mailto:lsoft@mbnet.fi">lsoft@mbnet.fi</a>&gt;<br/>
+		<p><span class="date">Code:</span> Mika Halttunen &lt;<a href="mailto:lsoftNOSPAM@mbnet.fi">lsoftNOSPAM@mbnet.fi</a>&gt;<br/>
 		<span class="date">Game Design:</span> Teemu Ruokolainen<br/>
 		<span class="date">Artwork:</span> Mika Halttunen<br/>
 		<span class="date">Sound Effects:</span> Teemu Ruokolainen<br/>
@@ -231,7 +240,8 @@
 		Installer made with <a href="http://nsis.sourceforge.net">NSIS</a>. EXE and DLLs compressed with
 		<a href="http://upx.sourceforge.net">UPX</a>. Hosted by <a href="http://sourceforge.net">SourceForge</a>.
 		</p>
-		<p>Comments, ideas, patches, bug reports, etc. are always welcome and appreciated! :) Use the e-mail address above.
+		<p>Comments, ideas, patches, bug reports, etc. are always welcome and appreciated! :) Use the SourceForge <a href="http://sourceforge.net/tracker/?group_id=190227">trackers</a>,
+		or just mail me at the e-mail address above.
 		And be sure to check out Funguloids website at <a href="http://funguloids.sourceforge.net">http://funguloids.sourceforge.net</a>
 		for the latest stuff!</p>
 		<p><a class="logo" href="http://www.ogre3d.org/"><img class="logo" src="docs/ogrebtn.png" alt="Ogre 3d" title="Ogre 3d" /></a></p>

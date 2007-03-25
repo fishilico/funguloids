@@ -75,9 +75,8 @@ void createBackground(SceneManager *sceneMgr) {
 
 	// Render the background before everything else
 	bgRect->setRenderQueueGroup(RENDER_QUEUE_SKIES_EARLY);
-
-	// Hacky, but we need to set the bounding box to something big
-	bgRect->setBoundingBox(AxisAlignedBox(-100000.0*Vector3::UNIT_SCALE, 100000.0*Vector3::UNIT_SCALE));
+	AxisAlignedBox box; box.setInfinite();
+	bgRect->setBoundingBox(box);
 
 	// Attach background to the scene
 	SceneNode* node = sceneMgr->getRootSceneNode()->createChildSceneNode("Background");

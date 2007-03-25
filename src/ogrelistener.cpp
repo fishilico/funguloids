@@ -25,10 +25,7 @@
 
 #include "ogrelistener.h"
 #include "ogreapp.h"
-#include "base.h"
 #include "objectsystem.h"
-#include "soundsystem.h"
-#include "playlist.h"
 #include "game.h"
 
 
@@ -39,129 +36,6 @@ bool OgreAppFrameListener::frameEnded(const FrameEvent &evt) {
 		updateStats();
 	return true;
 }
-
-
-// Mouse movement
-void OgreAppFrameListener::mouseMoved(MouseEvent *e) {
-	// Send it to the menu if necessary
-	if(gameApp->getState() != STATE_GAME) {
-		Real zmov = e->getRelZ();
-		if(zmov < 0)
-			gameApp->getMenu()->scrollDown();
-		else if(zmov > 0)
-			gameApp->getMenu()->scrollUp();
-	}
-	e->consume();
-}
-
-// Mouse dragging
-void OgreAppFrameListener::mouseDragged(MouseEvent *e) {
-	// Send it to the menu if necessary
-	if(gameApp->getState() != STATE_GAME) {
-		Real zmov = e->getRelZ();
-		if(zmov < 0)
-			gameApp->getMenu()->scrollDown();
-		else if(zmov > 0)
-			gameApp->getMenu()->scrollUp();
-	}
-	e->consume();
-}
-
-// MouseListener
-void OgreAppFrameListener::mousePressed(MouseEvent *e) {
-	// Send it to the menu if necessary
-	if(!mLMouseDown && gameApp->getState() != STATE_GAME) {
-		// Send a simulated keypress
-		KeyEvent k(NULL, 0, KC_RETURN, 0, 0);
-		gameApp->getMenu()->handleKeyPress(&k);
-	}
-
-	// Left mouse button down
-	if(e->getButtonID() & InputEvent::BUTTON0_MASK) {
-		mLMouseDown = true;
-	}
-
-	// Right mouse button down
-	else if(e->getButtonID() & InputEvent::BUTTON1_MASK) {
-		mRMouseDown = true;
-	}
-
-	// Middle mouse button down
-	else if(e->getButtonID() & InputEvent::BUTTON2_MASK) {
-		mMMouseDown = true;
-	}
-
-	e->consume();
-}
-
-void OgreAppFrameListener::mouseReleased(MouseEvent *e) {
-	// Left mouse button up
-	if(e->getButtonID() & InputEvent::BUTTON0_MASK) {
-		mLMouseDown = false;
-	}
-
-	// Right mouse button up
-	else if(e->getButtonID() & InputEvent::BUTTON1_MASK) {
-		mRMouseDown = false;
-	}
-
-	// Middle mouse button up
-	else if(e->getButtonID() & InputEvent::BUTTON2_MASK) {
-		mMMouseDown = false;
-	}
-
-	e->consume();
-}
-
-void OgreAppFrameListener::mouseClicked(MouseEvent *e) {
-	e->consume();
-}
-
-
-// KeyListener
-void OgreAppFrameListener::keyPressed(KeyEvent *e) {
-	// Quit?
-/*	if(e->getKey() == KC_ESCAPE) {
-		mQuit = true;
-		e->consume();
-		return;
-	}
-*/
-	mKeyDown[e->getKey()] = true;
-
-	// Handle the key
-	switch(e->getKey()) {
-		case KC_F1:
-			// Play a new track
-			SoundSystem::getSingleton().playMusic(getNextSong().c_str());
-			break;
-
-		case KC_F:
-			if(!e->isControlDown()) break;
-			// Toggle the stats display
-			mStatsOn = !mStatsOn;
-			showDebugOverlay(mStatsOn);
-			break;
-
-		case KC_SYSRQ:
-			// Take a screenshot
-			saveScreenshot();
-			mApp->getRoot()->clearEventTimes();
-			break;
-	}
-
-	// Send it to the menu if necessary
-	if(gameApp->getState() != STATE_GAME)
-		gameApp->menuKeyPress(e);
-
-	e->consume();
-}
-
-void OgreAppFrameListener::keyReleased(KeyEvent *e) {
-	mKeyDown[e->getKey()] = false;
-	e->consume();
-}
-
 
 
 // Update the debug overlay
@@ -183,9 +57,6 @@ void OgreAppFrameListener::updateStats() {
 
 		OverlayElement* guiTris = OverlayManager::getSingleton().getOverlayElement("Core/NumTris");
 		guiTris->setCaption(String("Triangle count: ") + StringConverter::toString(stats.triangleCount));
-
-		OverlayElement* guiDbg = OverlayManager::getSingleton().getOverlayElement("Core/DebugText");
-		guiDbg->setCaption(mWindow->getDebugText());
 	}
 	catch(...) {
 		// ignore
@@ -246,18 +117,19 @@ OgreAppFrameListener::OgreAppFrameListener(OgreApplication *app, RenderWindow *w
 	mQuit = false;
 	mPlayer = player;
 	mGameCamera = gamecam;
-	mLMouseDown = mRMouseDown = mMMouseDown = false;
 	mRenderMode = 0;
 	mScreenShots = 0;
 
-	mEventProcessor = new EventProcessor();
-	mEventProcessor->initialise(mWindow);
-	mEventProcessor->addMouseListener(this);
-	mEventProcessor->addMouseMotionListener(this);
-	mEventProcessor->addKeyListener(this);
-	mEventProcessor->startProcessingEvents();
-	mInputDevice = mEventProcessor->getInputReader();
+	// Initialise input
+	size_t windowHnd = 0;
+	win->getCustomAttribute("WINDOW", &windowHnd);
+	mInput = new InputHandler(this, windowHnd);
 
+	windowResized(mWindow);
+	WindowEventUtilities::addWindowEventListener(mWindow, this);
+
+
+	// Show debug info?
 	if(GameApplication::mGameConfig->GetValue("graphics", "debug_info", "off") == "on") {
 		showDebugOverlay(true);
 		mStatsOn = true;
@@ -265,6 +137,23 @@ OgreAppFrameListener::OgreAppFrameListener(OgreApplication *app, RenderWindow *w
 
 	registerCompositors();
 
-	for(int i=0; i<256; i++)
-		mKeyDown[i] = false;
+}
+
+
+// Unattach OIS before window shutdown (very important under Linux)
+void OgreAppFrameListener::windowClosed(RenderWindow *rw) {
+	if(rw == mWindow) {
+		if(mInput) {
+			delete mInput;
+			mInput = 0;
+		}
+	}
+}
+
+
+// Destructor
+OgreAppFrameListener::~OgreAppFrameListener() {
+    // Remove ourself as a Window listener
+	WindowEventUtilities::removeWindowEventListener(mWindow, this);
+	windowClosed(mWindow);
 }

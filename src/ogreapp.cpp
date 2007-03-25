@@ -103,7 +103,7 @@ bool OgreApplication::setup() {
 	// Set the icon (on Win32)
 #if(OGRE_PLATFORM == OGRE_PLATFORM_WIN32)
 	HWND hWnd;
-	mWindow->getCustomAttribute("HWND", &hWnd);
+	mWindow->getCustomAttribute("WINDOW", &hWnd);
 	SetClassLong(hWnd, GCL_HICON, (LONG)LoadIcon(hInstance, "ICON1")); 
 #endif 
 

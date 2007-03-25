@@ -57,7 +57,7 @@ static Real titleAlpha = 1.0f;
 
 
 // Update the menu
-void OgreAppFrameListener::doMenu(Real delta, const bool keyDown[]) {
+void OgreAppFrameListener::doMenu(Real delta) {
 	// Update all the moving objects (enemies, ...)
 	ObjectMapType::iterator i;
 	ObjectSystem *ob = ObjectSystem::getSingletonPtr();
@@ -225,13 +225,13 @@ void Menu::enterName(int place) {
 
 
 // Do the name entering
-void Menu::doEnterName(KeyEvent *e) {
+void Menu::doEnterName(const OIS::KeyEvent &e) {
 	bool typed = false;
-	char ch = e->getKeyChar();
+	char ch = e.text;
 	char *str = mNewName;
 
 	// Check the input
-	if(e->getKey() == KC_BACK) {
+	if(e.key == OIS::KC_BACK) {
 		// Play a typing sound
 		SoundSystem::getSingleton().playSound("typing");
 		str[mTextPos] = '\0';
@@ -241,7 +241,7 @@ void Menu::doEnterName(KeyEvent *e) {
 		// Update
 		mNewItem->setCaption(String(str) + "^");
 	}
-	else if(e->getKey() == KC_RETURN) {
+	else if(e.key == OIS::KC_RETURN) {
 		if(mTextPos > 0) {
 			// Done, save
 			hiscoreList.save(HISCORE_FILE);
@@ -426,22 +426,22 @@ void Menu::scrollDown() {
 
 
 // Handle a keypress
-void Menu::handleKeyPress(KeyEvent *e) {
+void Menu::handleKeyPress(const OIS::KeyEvent &e) {
 	if(mEnteringName) {
 		doEnterName(e);
 		if(mEnteringName) return;
 	}
 
-	switch(e->getKey()) {
-		case KC_UP:
-		case KC_LEFT:
+	switch(e.key) {
+		case OIS::KC_UP:
+		case OIS::KC_LEFT:
 			scrollUp();
 			break;
-		case KC_DOWN:
-		case KC_RIGHT:
+		case OIS::KC_DOWN:
+		case OIS::KC_RIGHT:
 			scrollDown();
 			break;
-		case KC_ESCAPE:
+		case OIS::KC_ESCAPE:
 			if(mMenuName == "MainMenu") break;
 			if(mMenuName == "GameOptions") {
 				// Restore the settings
@@ -462,12 +462,12 @@ void Menu::handleKeyPress(KeyEvent *e) {
 			hide();
 			setMenu("MainMenu", mPrevSelection);
 			break;
-		case KC_RETURN:
-		case KC_SPACE:
-		case KC_LCONTROL:
-		case KC_RCONTROL:
-		case KC_LSHIFT:
-		case KC_RSHIFT:
+		case OIS::KC_RETURN:
+		case OIS::KC_SPACE:
+		case OIS::KC_LCONTROL:
+		case OIS::KC_RCONTROL:
+		case OIS::KC_LSHIFT:
+		case OIS::KC_RSHIFT:
 			if(mMenuName == "MainMenu") mPrevSelection = mSelection;
 			handleSelection();
 			break;
@@ -579,6 +579,6 @@ int Menu::findMenuItems() {
 	if(mMenuName == "GameOptions") return 8;
 	if(mMenuName == "HighScores") return 1;
 	if(mMenuName == "TitleScreen") return 0;
-	return 1;
+	return 0;
 }
 

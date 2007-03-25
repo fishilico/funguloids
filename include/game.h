@@ -74,7 +74,7 @@ public:
 	int getState() const { return mGameState; }
 	void setEndGame();
 	bool hasGameEnded() const { return mEndGame; }
-	void menuKeyPress(KeyEvent *e) {
+	void menuKeyPress(const OIS::KeyEvent &e) {
 		mMenu->handleKeyPress(e);
 	}
 	Menu *getMenu() { return mMenu; }

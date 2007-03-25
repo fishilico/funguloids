@@ -141,7 +141,7 @@ DataStreamPtr MPakArchive::open(const String &filename) const {
 }
 
 
-StringVectorPtr MPakArchive::list(bool recursive) {
+StringVectorPtr MPakArchive::list(bool recursive, bool dirs) {
 	StringVectorPtr ret = StringVectorPtr(new StringVector());
 
 	FileInfoList::iterator i, iend;
@@ -153,7 +153,7 @@ StringVectorPtr MPakArchive::list(bool recursive) {
 	return ret;
 }
 
-FileInfoListPtr MPakArchive::listFileInfo(bool recursive) {
+FileInfoListPtr MPakArchive::listFileInfo(bool recursive, bool dirs) {
 	FileInfoList *fil = new FileInfoList();
 	FileInfoList::const_iterator i, iend;
 	iend = mFileList.end();
@@ -164,7 +164,7 @@ FileInfoListPtr MPakArchive::listFileInfo(bool recursive) {
 	return FileInfoListPtr(fil);
 }
 
-StringVectorPtr MPakArchive::find(const String &pattern, bool recursive) {
+StringVectorPtr MPakArchive::find(const String &pattern, bool recursive, bool dirs) {
 	StringVectorPtr ret = StringVectorPtr(new StringVector());
 
 	FileInfoList::iterator i, iend;
@@ -177,7 +177,7 @@ StringVectorPtr MPakArchive::find(const String &pattern, bool recursive) {
 	return ret;
 }
 
-FileInfoListPtr MPakArchive::findFileInfo(const String &pattern, bool recursive) {
+FileInfoListPtr MPakArchive::findFileInfo(const String &pattern, bool recursive, bool dirs) {
 	FileInfoListPtr ret = FileInfoListPtr(new FileInfoList());
 
 	FileInfoList::iterator i, iend;

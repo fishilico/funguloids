@@ -61,12 +61,7 @@ public:
 	}
 
 	Root *getRoot() const { return mRoot; }
-
 	RenderWindow *getRenderWindow() const { return mWindow; }
-
-	bool isLMouseDown() const { return mFrameListener->isLMouseDown(); }
-	bool isRMouseDown() const { return mFrameListener->isRMouseDown(); }
-	bool isMMouseDown() const { return mFrameListener->isMMouseDown(); }
 
 protected:
 	Root *mRoot;

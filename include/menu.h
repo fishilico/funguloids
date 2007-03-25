@@ -49,7 +49,7 @@ public:
 	}
 
 	int findMenuItems();
-	void handleKeyPress(KeyEvent *e);
+	void handleKeyPress(const OIS::KeyEvent &e);
 	void handleSelection();
 	int getNewState() const { return mNewState; }
 	void setMenu(const String &menu, int selection = 0);
@@ -64,7 +64,7 @@ public:
 	void scrollDown();
 
 	void enterName(int place);
-	void doEnterName(KeyEvent *e);
+	void doEnterName(const OIS::KeyEvent &e);
 	bool isEnteringName() const { return mEnteringName; }
 
 private:

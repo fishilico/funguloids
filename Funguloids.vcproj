@@ -21,7 +21,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				OptimizeForProcessor="2"
-				AdditionalIncludeDirectories="include;include\SimpleIni;lua\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\OgreMain\include&quot;"
+				AdditionalIncludeDirectories="include;include\SimpleIni;lua\include;&quot;$(OGRE_HOME)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -35,10 +35,10 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain_d.lib lua5.1.lib fmodex_vc.lib"
+				AdditionalDependencies="OgreMain_d.lib OIS_d.lib lua5.1.lib fmodex_vc.lib"
 				OutputFile="bin\$(ProjectName)_debug.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="lua;&quot;$(OGRE_HOME)\lib&quot;;&quot;$(OGRE_HOME)\OgreMain\lib\Debug&quot;"
+				AdditionalLibraryDirectories="lua;&quot;$(OGRE_HOME)\lib&quot;"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
 				TargetMachine="1"/>
@@ -75,8 +75,10 @@
 				GlobalOptimizations="TRUE"
 				EnableIntrinsicFunctions="TRUE"
 				FavorSizeOrSpeed="1"
+				OmitFramePointers="TRUE"
 				OptimizeForProcessor="2"
-				AdditionalIncludeDirectories="include;include\SimpleIni;lua\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\OgreMain\include&quot;"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="include;include\SimpleIni;lua\include;&quot;$(OGRE_HOME)\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -88,10 +90,10 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain.lib lua5.1.lib fmodex_vc.lib"
+				AdditionalDependencies="OgreMain.lib OIS.lib lua5.1.lib fmodex_vc.lib"
 				OutputFile="bin\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="lua;&quot;$(OGRE_HOME)\lib&quot;;&quot;$(OGRE_HOME)\OgreMain\lib\Release&quot;"
+				AdditionalLibraryDirectories="lua;&quot;$(OGRE_HOME)\lib&quot;"
 				GenerateDebugInformation="FALSE"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -152,6 +154,9 @@
 			</File>
 			<File
 				RelativePath=".\src\hiscore.cpp">
+			</File>
+			<File
+				RelativePath=".\src\input.cpp">
 			</File>
 			<File
 				RelativePath=".\src\main.cpp">
@@ -232,6 +237,9 @@
 			</File>
 			<File
 				RelativePath=".\include\hiscore.h">
+			</File>
+			<File
+				RelativePath=".\include\input.h">
 			</File>
 			<File
 				RelativePath=".\include\menu.h">

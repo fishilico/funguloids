@@ -27,10 +27,10 @@
 #define OGRELISTENER_H
 
 #include <Ogre.h>
-#include <OgreEventListeners.h>
-#include <OgreKeyEvent.h>
 #include <OgreStringConverter.h>
 #include <OgreException.h>
+
+#include "input.h"
 
 using namespace Ogre;
 
@@ -40,41 +40,38 @@ class Player;
 class GameCamera;
 
 // Frame listener
-class OgreAppFrameListener : public FrameListener, public KeyListener, public MouseMotionListener, public MouseListener {
+class OgreAppFrameListener : public FrameListener, WindowEventListener {
 public:
 	OgreAppFrameListener(OgreApplication *app, RenderWindow *win, Camera *cam, GameCamera *gamecam, SceneManager *sceneMgr, Player *player);
-	virtual ~OgreAppFrameListener() {
-		if(mEventProcessor)
-			delete mEventProcessor;
+	virtual ~OgreAppFrameListener();
+
+
+	//Adjust mouse clipping area
+	virtual void windowResized(RenderWindow *rw) {
+		unsigned int width, height, depth;
+		int left, top;
+		rw->getMetrics(width, height, depth, left, top);
+
+		mInput->setWindowExtents(width, height);
 	}
 
-
-	// MouseMotion
-	void mouseMoved(MouseEvent *e);
-	void mouseDragged(MouseEvent *e);
-
-	// MouseListener
-	void mouseClicked(MouseEvent *e);
-	void mouseEntered(MouseEvent *e) { }
-	void mouseExited(MouseEvent *e) { }
-	void mousePressed(MouseEvent *e);
-	void mouseReleased(MouseEvent *e);
-
-	// KeyListener
-	void keyClicked(KeyEvent *e) { }
-	void keyPressed(KeyEvent *e);
-	void keyReleased(KeyEvent *e);
+	virtual void windowClosed(RenderWindow *rw);
 
 	void quit() { mQuit = true; }
 
 	void doGame(Real delta);
-	void doMenu(Real delta, const bool keyDown[]);
+	void doMenu(Real delta);
 
 	bool frameStarted(const FrameEvent &evt);
 	bool frameEnded(const FrameEvent &evt);
 
 	void saveScreenshot();
 	void registerCompositors();
+
+	void toggleStats() {
+		mStatsOn = !mStatsOn;
+		showDebugOverlay(mStatsOn);
+	}
 
 	void showDebugOverlay(bool show) {
 		if(mDebugOverlay) {
@@ -85,24 +82,17 @@ public:
 		}
 	}
 
-	bool isLMouseDown() const { return mLMouseDown; }
-	bool isRMouseDown() const { return mRMouseDown; }
-	bool isMMouseDown() const { return mMMouseDown; }
-
 	void setPlayer(Player *player) { mPlayer = player; }
 
 protected:
-	EventProcessor *mEventProcessor;
-	InputReader *mInputDevice;
 	RenderWindow *mWindow;
 	Camera *mCamera;
 	SceneManager *mSceneMgr;
 
+	InputHandler *mInput;
+
 	Player *mPlayer;
 	GameCamera *mGameCamera;
-	bool mKeyDown[256];
-
-	bool mLMouseDown, mRMouseDown, mMMouseDown;
 
 	int mRenderMode;
 	int mScreenShots;

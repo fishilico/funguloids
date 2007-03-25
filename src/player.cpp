@@ -220,9 +220,9 @@ void Player::quit() {
 
 
 // Move the player
-void Player::move(Real delta, const bool keyDown[]) {
+void Player::move(Real delta, InputHandler *input) {
 	// Quit?
-	if(keyDown[KC_ESCAPE]) {
+	if(input->isKeyDown(OIS::KC_ESCAPE)) {
 		if(!mEscDown && !mConfirmQuit) {
 			mConfirmQuit = true;
 			mEscDown = true;
@@ -234,8 +234,8 @@ void Player::move(Real delta, const bool keyDown[]) {
 		mEscDown = false;
 
 	if(mConfirmQuit) {
-		if(keyDown[KC_ESCAPE] && !mEscDown) quit();
-		else if(keyDown[KC_RETURN]) {
+		if(input->isKeyDown(OIS::KC_ESCAPE) && !mEscDown) quit();
+		else if(input->isKeyDown(OIS::KC_RETURN)) {
 			mConfirmQuit = false;
 			mSpaceDown = true;
 			OverlayManager::getSingleton().getByName("ConfirmQuit")->hide();
@@ -447,7 +447,7 @@ void Player::move(Real delta, const bool keyDown[]) {
 
 	// Check for input
 	if(!mIsDead && !mOnBase) {
-		if(keyDown[KC_SPACE] || keyDown[KC_LCONTROL] || keyDown[KC_RCONTROL] || keyDown[KC_LSHIFT] || keyDown[KC_RSHIFT] || keyDown[KC_RETURN] || gameApp->isMMouseDown()) {
+		if(input->isKeyDown(OIS::KC_SPACE) || input->isKeyDown(OIS::KC_LCONTROL) || input->isKeyDown(OIS::KC_RCONTROL) || input->isKeyDown(OIS::KC_LSHIFT) || input->isKeyDown(OIS::KC_RSHIFT) || input->isKeyDown(OIS::KC_RETURN) || input->isMMouseDown()) {
 			if(!mSpaceDown) {
 				mSpaceDown = true;
 
@@ -472,9 +472,9 @@ void Player::move(Real delta, const bool keyDown[]) {
 			mSpaceDown = false;
 
 		// Turn
-		if(keyDown[KC_LEFT] || gameApp->isLMouseDown())
+		if(input->isKeyDown(OIS::KC_LEFT) || input->isLMouseDown())
 			yaw(Radian(+5 * delta));
-		else if(keyDown[KC_RIGHT] || gameApp->isRMouseDown())
+		else if(input->isKeyDown(OIS::KC_RIGHT) || input->isRMouseDown())
 			yaw(Radian(-5 * delta));
 	}
 

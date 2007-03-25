@@ -52,10 +52,14 @@ bool OgreAppFrameListener::frameStarted(const FrameEvent &evt) {
 	if(mWindow->isClosed() || mQuit)
 		return false;
 
+	// Capture the input devices
+	mInput->capture();
+
+
 	// Do the game / menu
 	switch(gameApp->getState()) {
 		case STATE_MENU:
-			doMenu(evt.timeSinceLastFrame, mKeyDown); break;
+			doMenu(evt.timeSinceLastFrame); break;
 		case STATE_GAME:
 			doGame(evt.timeSinceLastFrame); break;
 	}
@@ -117,7 +121,7 @@ void OgreAppFrameListener::doGame(Real delta) {
 	if(mPlayer->isConfirmQuit()) delta = 0;
 
 	// Move the player
-	mPlayer->move(delta, mKeyDown);
+	mPlayer->move(delta, mInput);
 
 
 	// Move the camera

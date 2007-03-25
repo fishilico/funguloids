@@ -49,11 +49,11 @@ public:
 	void unload();
 
 	DataStreamPtr open(const String &filename) const;
-	StringVectorPtr list(bool recursive = true);
-	FileInfoListPtr listFileInfo(bool recursive = true);
+	StringVectorPtr list(bool recursive = true, bool dirs = false);
+	FileInfoListPtr listFileInfo(bool recursive = true, bool dirs = false);
 
-	StringVectorPtr find(const String &pattern, bool recursive = true);
-	FileInfoListPtr findFileInfo(const String &pattern, bool recursive);
+	StringVectorPtr find(const String &pattern, bool recursive = true, bool dirs = false);
+	FileInfoListPtr findFileInfo(const String &pattern, bool recursive, bool dirs = false);
 
 	bool exists(const String &filename);
 };

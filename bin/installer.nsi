@@ -8,9 +8,9 @@
 ;General
 
   ;Name and file
-  !define APPNAME "Those Funny Funguloids! v1.01"
+  !define APPNAME "Those Funny Funguloids! v1.05"
   Name "${APPNAME}"
-  OutFile "funguloids-win32-1.01.exe"
+  OutFile "funguloids-win32-1.05.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\Those Funny Funguloids"
@@ -72,14 +72,10 @@ Section "Main data" SecMain
   File Funguloids.exe
 
   File cg.dll
-  File DevIL.dll
+  File OIS.dll
   File fmodex.dll
-  File ILU.dll
-  File ILUT.dll
   File msvc*.dll
   File OgreMain.dll
-  File OgrePlatform.dll
-  File zlib1.dll
 
   File gamesettings.cfg
   File plugins.cfg

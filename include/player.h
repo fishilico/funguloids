@@ -40,6 +40,7 @@ const int OTYPE_PLAYER = OTYPE_MOVING_BASIC + 1;
 
 class GameCamera;
 class Base;
+class InputHandler;
 
 class Player : public MovingObject {
 private:
@@ -97,7 +98,7 @@ public:
 	Player(const String &name, SceneManager *sceneMgr, const String &mesh, const Vector3 &pos, GameCamera *cam, bool managed=true);
 	~Player();
 
-	void move(Real delta, const bool keyDown[]);
+	void move(Real delta, InputHandler *input);
 	RibbonTrail *getTrail() const { return mTrail; }
 
 	bool isConfirmQuit() const { return mConfirmQuit; }
