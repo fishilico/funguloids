@@ -1,0 +1,26 @@
+"Those Funny Funguloids!"
+Copyright (c) 2006-2007, Mika Halttunen & Teemu Ruokolainen
+
+
+I have provided a simple makefile for building "Those Funny Funguloids!".
+I realise it's not the best way to do things in Linux, and I'm hoping 
+that someone more experienced with these things would provide a proper 
+package using the autotools & what have you..
+
+You need to have Ogre 1.4, OIS, Lua 5.1 and FMOD Ex properly installed. Open
+the makefile and set the correct include directories for the libs, if the
+defaults won't work. Then just run make and it should build. It'll look 
+for the plugins from the OGRE lib directory, adjust plugins.cfg to 
+reflect your settings.
+
+See bin/readme.html for the rest of the documentation (it's 
+heavily Windows oriented, though).
+
+Thanks for the interest, have fun! :)
+
+
+Contact me at: lsoft@mbnet.fi
+http://funguloids.sourceforge.net
+
+--
+Mika Halttunen

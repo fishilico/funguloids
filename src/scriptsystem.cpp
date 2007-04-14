@@ -153,7 +153,7 @@ static int CreateMushroom(lua_State *L) {
 
 	// Get the params
 	const char *name = lua_tostring(L, 1);
-	int color = lua_tonumber(L, 2);
+	int color = (int)lua_tonumber(L, 2);
 	Real xpos = lua_tonumber(L, 3);
 	Real ypos = lua_tonumber(L, 4);
 
@@ -220,7 +220,7 @@ static int CreateBase(lua_State *L) {
 
 	// Get the params
 	const char *name = lua_tostring(L, 1);
-	int color = lua_tonumber(L, 2);
+	int color = (int)lua_tonumber(L, 2);
 	Real xpos = lua_tonumber(L, 3);
 	Real ypos = lua_tonumber(L, 4);
 	const char *level;

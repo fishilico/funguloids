@@ -139,7 +139,7 @@ bool InputHandler::keyPressed(const OIS::KeyEvent &evt) {
 			break;
 
 		case OIS::KC_F:
-			if(!mKeyboard->isModifierDown(OIS::Keyboard::Modifier::Ctrl)) break;
+			if(!mKeyboard->isModifierDown(OIS::Keyboard::Ctrl)) break;
 			// Toggle the stats display
 			mFrameListener->toggleStats();
 			break;
@@ -149,6 +149,8 @@ bool InputHandler::keyPressed(const OIS::KeyEvent &evt) {
 			mFrameListener->saveScreenshot();
 			gameApp->getRoot()->clearEventTimes();
 			break;
+
+		default: break;
 	}
 
 	// Send it to the menu if necessary

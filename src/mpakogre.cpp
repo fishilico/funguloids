@@ -31,12 +31,11 @@
 
 #include "mpakogre.h"
 
-#include <sys/types.h>
-#include <sys/stat.h>
-
 #if OGRE_PLATFORM == OGRE_PLATFORM_LINUX || OGRE_PLATFORM == OGRE_PLATFORM_APPLE
-#   include "OgreSearchOps.h"
+#   include <OgreSearchOps.h>
 #   include <sys/param.h>
+#   include <sys/types.h>
+#   include <sys/stat.h>
 #   define MAX_PATH MAXPATHLEN
 #endif
 
@@ -77,6 +76,10 @@ void MPakArchive::load() {
 			mFileList.push_back(info);
 		}
 
+		// The following is commented out since it isn't really needed,
+		// I'm not planning to use the override directory.. It wasn't compiling on
+		// Linux anyways, as the _find* aren't exported currently (Ogre Eihort 1.4.0)
+/*
 		// Find the possible files in the override directory (media) and add them too
 		if(mPakFile->override_dir != NULL) {
 			// Start searching
@@ -111,7 +114,7 @@ void MPakArchive::load() {
 			if(handle != -1)
 				_findclose(handle);
 		}
-
+*/
 
 	}
 }

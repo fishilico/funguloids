@@ -287,8 +287,7 @@ void Menu::updateOptionsItem(int i, bool change) {
 	String str;
 	char volstr[16] = "";
 	Real vol = 0;
-	int ivol = 0;
-
+	
 	switch(i) {
 		// Bloom effect
 		case MENU_OPTIONS_BLOOM:
@@ -433,6 +432,7 @@ void Menu::handleKeyPress(const OIS::KeyEvent &e) {
 	}
 
 	switch(e.key) {
+		default: break;
 		case OIS::KC_UP:
 		case OIS::KC_LEFT:
 			scrollUp();
