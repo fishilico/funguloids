@@ -1,6 +1,12 @@
 "Those Funny Funguloids!"
 Copyright (c) 2006-2007, Mika Halttunen & Teemu Ruokolainen
 
+------------------
+UPDATED: The initial release had the bloom accidently disabled,
+it's been fixed in this release. Also, now the Linux build will use
+ALSA by default. Edit gamesettings.cfg if you instead want to use the
+default soundsystem picked by FMOD Ex (which may or may not be ALSA).
+------------------
 
 I have provided a simple makefile for building "Those Funny Funguloids!".
 I realise it's not the best way to do things in Linux, and I'm hoping 
