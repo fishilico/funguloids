@@ -266,11 +266,13 @@ FMODExSoundSystem::FMODExSoundSystem(SceneManager *mgr) {
 
 	// Make FMOD to use ALSA on Linux, if specified on the gamesettings.cfg
 #if OGRE_PLATFORM == OGRE_PLATFORM_LINUX
-	String alsa = GameApplication::mGameConfig->GetValue("audio", "use_alsa", "on");
-	if(alsa.compare("off") != 0) {
-		result = mSystem->setOutput(FMOD_OUTPUTTYPE_ALSA);
-		if(errorCheck(result))
-			return;
+	if(!mSoundDisabled) {
+		String alsa = GameApplication::mGameConfig->GetValue("audio", "fmod_use_alsa", "on");
+		if(alsa.compare("off") != 0) {
+			result = mSystem->setOutput(FMOD_OUTPUTTYPE_ALSA);
+			if(errorCheck(result))
+				return;
+		}
 	}
 #endif
 

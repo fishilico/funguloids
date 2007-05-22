@@ -1,6 +1,9 @@
 -- Add music files to the playlist
 -- (remember to use normal slashes "/", not backslashes "\"!)
-AddToPlaylist(GetMusicDir() .. "*.*");
+AddToPlaylist("%%musicinstalldir%%/*.ogg");
+AddToPlaylist("%%musicinstalldir%%/*.mp3");
+AddToPlaylist(GetMusicDir() .. "*.ogg");
+AddToPlaylist(GetMusicDir() .. "*.mp3");
 --AddToPlaylist("C:/My Music/*.mp3");
 
 -- Shuffle the playlist

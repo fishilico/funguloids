@@ -1,0 +1,23 @@
+"Those Funny Funguloids!"
+Copyright (c) 2006-2007, Mika Halttunen & Teemu Ruokolainen
+
+This Linux version (v1.06) is based on my initial, preliminary attempt, and has
+been since dremendously improved (i.e. made to use the standard autotools,
+support for OpenAL added, etc..) by Piet (<funguloids@superpiet.de>). So big
+cheers for him making Funguloids on Linux possible! =)
+
+Please refer to INSTALL on how to build and install the game properly. You have
+the option to use either OpenAL or the proprietary FMOD Ex for the audio output.
+Ogre 1.4 or later, along with OIS and Lua 5.1 are needed as well.
+
+See bin/readme.html for the rest of the documentation.
+
+
+Thanks for the interest, have fun! :)
+
+
+Contact me at: lsoft@mbnet.fi
+http://funguloids.sourceforge.net
+
+--
+Mika Halttunen

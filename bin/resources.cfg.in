@@ -1,0 +1,10 @@
+# Resource locations to be added to the 'boostrap' path
+[Bootstrap]
+MPK=%%gameinstalldir%%bootstrap.mpk
+
+# Resource locations to be added to the default path
+[General]
+MPK=%%gameinstalldir%%funguloids.mpk
+FileSystem=%%gameinstalldir%%music
+FileSystem=%%gameinstalldir%%icon
+

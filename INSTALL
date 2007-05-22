@@ -1,32 +1,202 @@
 "Those Funny Funguloids!"
 Copyright (c) 2006-2007, Mika Halttunen & Teemu Ruokolainen
 
-------------------
-UPDATED: The initial release had the bloom accidently disabled,
-it's been fixed in this release. Also, now the Linux build will use
-ALSA by default. Edit gamesettings.cfg if you instead want to use the
-default soundsystem picked by FMOD Ex (which may or may not be ALSA).
-------------------
 
-I have provided a simple makefile for building "Those Funny Funguloids!".
-I realise it's not the best way to do things in Linux, and I'm hoping 
-that someone more experienced with these things would provide a proper 
-package using the autotools & what have you..
-
-You need to have Ogre 1.4, OIS, Lua 5.1 and FMOD Ex properly installed. Open
-the makefile and set the correct include directories for the libs, if the
-defaults won't work. Then just run make and it should build. It'll look 
-for the plugins from the OGRE lib directory, adjust plugins.cfg to 
-reflect your settings.
-
-See bin/readme.html for the rest of the documentation (it's 
-heavily Windows oriented, though).
-
-Thanks for the interest, have fun! :)
+This document is intented to help you build Funguloids under Linux and
+was written by Piet <funguloids@superpiet.de>.
 
 
-Contact me at: lsoft@mbnet.fi
-http://funguloids.sourceforge.net
+REQUIREMENTS
+------------
 
---
-Mika Halttunen
+  To build funguloids from source, you need to have a number of tools and
+  libraries installed. Note that most of these things should already be
+  available prepackaged and optimized for your distribution, so it is
+  recommended that you check your distribution first before downloading the
+  source code from the websites.
+
+* Linux development tools (your distribution should come with these)
+    - gcc compiler (you need the c++ compiler g++), bintools
+
+* Ogre 3D SDK (version 1.4 or later)
+    - 3D graphics library (http://www.ogre3d.org/)
+
+* Object Oriented Input System (OIS)
+    - cross platform input system (http://sourceforge.net/projects/wgois)
+
+* LUA (version 5.1 or later)
+    - light-weight and powerful scripting language (http://www.lua.org/)
+
+* OpenGL
+    OpenGL libraries and headers are specific to your graphics card. Make sure
+    that you have hardware accelerated OpenGL drivers installed. Software
+    renderers like Mesa will make funguloids unplayable slow.
+
+  Funguloids needs sound support and can use OpenAL or FMOD for sound
+  rendering (I personally recommend using OpenAL over FMOD since it is free,
+  open source and does not boast about being best in every aspect):
+
+* FMOD Ex
+  - commercial sound library (http://www.fmod.org/)
+  - comes with built-in support for Ogg Vorbis and MP3
+
+OR
+
+* OpenAL
+  - open source sound library and 3D sound renderer (http://www.openal.org/)
+  - both the OpenAL library and the AL utilities (ALUT) are needed. They might
+    come in one or two packages, depending on your distribution.
+
+  With OpenAL, you can optionally enable support for background music from
+  Ogg Vorbis or MP3 files. You then need to supply:
+
+* Ogg Vorbis support
+  - open and patent-free audio encoding (http://www.vorbis.com/)
+  - libvorbis and libogg are both needed. You are problably best off with
+    your distribution's optimized packages.
+
+AND/OR
+
+* MP3 support via libmad
+  - high-quality MPEG audio decoder (http://www.underbit.com/products/mad/)
+  - called MAD because of its effects on developers (just kidding, it is
+    'MPEG Audio Decoder')
+
+
+INSTALLATION
+------------
+
+  In best autotools tradition, simply enter the source directory and execute
+
+    ./configure
+    make
+    make install
+
+  This will configure funguloids to be installed in the '/usr/local/' tree with
+  automagic detection of libraries and features. For the last part (the
+  'make install') you need to have write access to the directories you are
+  installing in (probably root for a system-wide installation; try
+  'sudo make install'). For configuration options see below.
+
+  If you have downloaded the sources without data files, you will need to copy
+  them into '${prefix}/share/games/funguloids/'. The files needed are
+  'bootstrap.mpk' and 'funguloids.mpk' (${prefix} defaults to
+  '/usr/local/' and can be set with the --prefix option).
+
+  Start the game by executing '${prefix}/games/funguloids'. It will create a
+  directory ('.funguloids/') in your home directory containing the
+  configuration and highscores (unless you compiled the shared highscores
+  feature, see below).
+
+  If you like you can add system-wide music files (only the extensions 'ogg'
+  and 'mp3' will be recognised) in  '${prefix}/share/games/funguloids/music/'.
+  Each user can have his own additional tracks in '~/.funguloids/music/'.
+
+  To remove Funguloids from your computer use 'make uninstall'. It will
+  probably leave some empty directories but most of the files will be
+  removed ;-)
+
+
+  You can customise the build process by specifying additional parameters for
+  the configure script. Type './configure --help' for additional informations.
+  The most important options are:
+
+    --prefix=<path>
+        This is the basic path under which funguloids will be installed. You
+        can set this to '$HOME' if you want to install it in your home
+        directory. Defaults to '/usr/local/'.
+
+    --enable-shared-highscore
+        This enables the use of a system-wide highscore file. It will be
+        installed as '/var/games/funguloids/hiscore.lst' (no configure
+        option so far) with its group set to 'games', which allows users from
+        this group to save their highscores. You have to make sure by yourself
+        that this group exists and all players are in this group (Funguloids
+        cannot be installed setgid as GTK (used by the Ogre setup) prohibits
+        that for security reasons). Also note that there is no locking so
+        concurrent write access might garble the scores. Use this feature on
+        your own risk or send a patch if you really depend on more robust
+        score keeping across systems.
+
+ICON FILE
+---------
+
+  There is a icon included that you can use for your desktop manager's menu.
+  Its location is '${prefix}/share/pixmaps/funguloids.png'.
+
+
+SETTING UP AUDIO OUTPUT
+-----------------------
+
+  Getting audio output to work on Linux can be a pain! Today ALSA is the sound
+  system of choice and comes with "legacy support" for OSS, the old (Linux)
+  interface for audio output via /dev/dsp. While ALSA supports multiple sound
+  sources (applications doing audio output simultanously) and a lot of other
+  gimmicks, it still has to be set up (although the defaults are rather
+  resonable)!
+  My first advice is to simply try it. Start Funguloids and if you have sound
+  output everything is fine. If not, read on ;-)
+  However, this is not the place to go too deep into all those details but a
+  few words might save you some headaches. I assume that some sort of sound
+  output already works on your system (like playing back MP3s).
+  One basic problem is that only one application can use the sound hardware. If
+  your desktop manager uses a 'sound daemon' of some kind (like esd or artsd)
+  this daemon has already connected to your sound card and allows no other
+  application to do audio output. Note that this is not only true for 'sound
+  daemons'. Every application that does sound output directly to the sound card
+  will block the hardware). In this case you can 1) either stop the sound
+  daemon, 2) tell Funguloids to use this sound daemon or 3) configure ALSA to
+  allow more than one applications to connect to the sound hardware.
+  Option 1) should be clear. Everytime you want to play Funguloids you
+  have to stop the sound daemon and start it again after you finished. This is
+  not really convenient and not neccessary in most cases. 2) With OpenAL sound
+  rendering you can tell OpenAL to use the sound daemon. You do this by creating
+  a configuration file in your home directory named '.openalrc'. This file
+  should at least contain the following line:
+    (define devices '(SOUNDDEVICE))
+  with SOUNDDEVICE being one (or a space-separated list) of 'alsa', 'esd',
+  'arts', 'sdl', or 'native'. Search the web for more informations about the
+  '.openalrc'. To my knowledge there is no current official documentation for
+  this file. Please correct me if I'm wrong.
+  Option 3) can be achived by either using hardware that supports sound mixing
+  ('SB Live' comes to my mind) or using ALSA's 'dmix' plugin. With a recent
+  ALSA library you can simply specify
+    (define alsa-out-device "plug:dmix")
+  in your '.openalrc'. However, all applications that are supposed to do audio
+  output at the same time must use 'plug:dmix' or else it won't work. This can
+  be remedied by defining ALSA's 'default' device to be 'plug:dmix', so that
+  all recent (ALSA >= 1.0) applications do so be default. You can put your
+  configuration into $HOME/.asoundrc or system-wide in /etc/asound.conf.
+  For details have a look in the ALSA wiki at http://alsa.opensrc.org/,
+  notably http://alsa.opensrc.org/.asoundrc and http://alsa.opensrc.org/Dmix
+
+  If you have choosen FMOD Ex for audio rendering, you can tell it to use ALSA
+  or OSS. In Funguloids' configuration file 'gamesettings.cfg' you can set
+  the option 'fmod_use_alsa' to 'on' fpr ALSA output and 'off' for OSS. The
+  default is to use ALSA.
+
+
+  Clicks, pops and scratching sound
+  ---------------------------------
+  Even if you have audio output working you might get some 'noise' / clicking /
+  popping sound (you name it). This is encountered by more than a few people
+  and is in my experience always caused by sample rate mismatch. For example
+  your sound card is fixed to a sample rate of 48 kHz and you are playing back
+  audio data with a sample rate of 44,1 kHz (quite common since DVD audio is at
+  48kHz and CD audio is at 44,1 kHz). During playback the sound system has to
+  convert 44,1 to 48 kHz. When this isn't done carefully you end up with single
+  samples just not 'fitting together' - and producing the dreaded clicks. While
+  the actual resampling isn't the problem, the timing is. Again, search the web
+  for details. You can set up ALSA to do explicit sample
+  rate conversation or tell dmix to use your preferred sample rate (dmix'
+  default sample rate is 48 kHz). However, while this might fix the clicks for
+  one sample rate it might break the other so do some testing until you are
+  happy with both. I cannot give a simple solution as the details depend on
+  your hardware but you should start setting dmix' 'rate' option to 44100 and
+  try different values for the configuration options 'period_size' and
+  'buffer_size' as they are the keys. And make sure you have read the wiki
+  pages mentioned above.
+
+
+Good luck and have fun!
+
