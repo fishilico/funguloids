@@ -99,7 +99,8 @@ span.version2 {
 }
 
 span.file {
-	font-family: courier;
+	font-family: monospace;
+	font-size: 130%;
 	color: rgb(163, 128, 124);
 }
 

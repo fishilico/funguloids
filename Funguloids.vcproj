@@ -22,7 +22,7 @@
 				Optimization="0"
 				OptimizeForProcessor="2"
 				AdditionalIncludeDirectories="include;include\SimpleIni;lua\include;&quot;$(OGRE_HOME)\include&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;SOUND_SYSTEM_FMOD"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -79,7 +79,7 @@
 				OptimizeForProcessor="2"
 				OptimizeForWindowsApplication="TRUE"
 				AdditionalIncludeDirectories="include;include\SimpleIni;lua\include;&quot;$(OGRE_HOME)\include&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;SOUND_SYSTEM_FMOD"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderThrough=""
@@ -147,6 +147,9 @@
 				RelativePath=".\src\effects.cpp">
 			</File>
 			<File
+				RelativePath=".\src\fmodexsoundsystem.cpp">
+			</File>
+			<File
 				RelativePath=".\src\game.cpp">
 			</File>
 			<File
@@ -198,9 +201,6 @@
 				RelativePath=".\src\scriptsystem.cpp">
 			</File>
 			<File
-				RelativePath=".\src\soundsystem.cpp">
-			</File>
-			<File
 				RelativePath=".\src\tentacles.cpp">
 			</File>
 			<File
@@ -228,6 +228,9 @@
 			</File>
 			<File
 				RelativePath=".\include\effects.h">
+			</File>
+			<File
+				RelativePath=".\include\fmodexsoundsystem.h">
 			</File>
 			<File
 				RelativePath=".\include\game.h">

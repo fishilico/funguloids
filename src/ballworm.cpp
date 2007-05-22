@@ -28,6 +28,7 @@
 #include "gamecamera.h"
 #include "effects.h"
 #include "soundsystem.h"
+#include "game.h"
 
 
 // Ball worm constructor
@@ -81,14 +82,14 @@ void BallWorm::move(Real delta) {
 	mNode->translate(mCurrentSpeed * delta);
 
 	// Check collisions versus the player
-	if(mPlayer->isDead() || mPlayer->isOnBase() || mPlayer->isGoingToSpecialLevel()) return;
+	if(mPlayer->isDead() || mPlayer->isOnBase() || mPlayer->isGoingToSpecialLevel() || gameApp->getState() != STATE_GAME) return;
 
 	Vector3 ppos = mPlayer->getPosition();
 	Vector3 npos = mNode->getPosition();
 
 	for(int f=0; f<numBalls; f++) {
 		if(mBallDestroyed[f]) continue;
-		Vector3 d = mBalls[f]->getWorldPosition() - ppos;
+		Vector3 d = mBalls[f]->_getDerivedPosition() - ppos;
 		d.z = 0;
 		Real dist = d.squaredLength();
 		if(dist < 9) {
@@ -101,7 +102,7 @@ void BallWorm::move(Real delta) {
 
 			// Create an effect
 			try {
-				Effect *effect = new Effect(EFFECT_MUSHROOM_CATCH, mBalls[f]->getName() + "Effect", mSceneMgr, "", mBalls[f]->getWorldPosition());
+				Effect *effect = new Effect(EFFECT_MUSHROOM_CATCH, mBalls[f]->getName() + "Effect", mSceneMgr, "", mBalls[f]->_getDerivedPosition());
 				effect->createParticles("WormBallEffect");
 				effect->setDuration(1.5f);
 			}

@@ -15,7 +15,7 @@ material Ogre/Compositor/BlackAndWhite
 			depth_check off
 			scene_blend alpha_blend
 
-			vertex_program_ref Ogre/Compositor/StdQuad_vp
+			vertex_program_ref Ogre/Compositor/StdQuad_Cg_vp
 			{
 			}
 

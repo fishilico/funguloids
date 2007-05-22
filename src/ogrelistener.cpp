@@ -67,7 +67,7 @@ void OgreAppFrameListener::updateStats() {
 // Register the compositors
 void OgreAppFrameListener::registerCompositors() {
 	Viewport *vp = mApp->getRenderWindow()->getViewport(0);
-	CompositorInstance *instance = CompositorManager::getSingleton().addCompositor(vp, "Bloom");
+	CompositorManager::getSingleton().addCompositor(vp, "Bloom");
 	String bloom = GameApplication::mGameConfig->GetValue("graphics", "bloom", "on");
 	CompositorManager::getSingleton().setCompositorEnabled(vp, "Bloom", bloom.compare("off") != 0);
 
@@ -153,7 +153,7 @@ void OgreAppFrameListener::windowClosed(RenderWindow *rw) {
 
 // Destructor
 OgreAppFrameListener::~OgreAppFrameListener() {
-    // Remove ourself as a Window listener
+	// Remove ourself as a Window listener
 	WindowEventUtilities::removeWindowEventListener(mWindow, this);
 	windowClosed(mWindow);
 }

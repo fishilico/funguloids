@@ -153,7 +153,7 @@ static int CreateMushroom(lua_State *L) {
 
 	// Get the params
 	const char *name = lua_tostring(L, 1);
-	int color = lua_tonumber(L, 2);
+	int color = (int)lua_tonumber(L, 2);
 	Real xpos = lua_tonumber(L, 3);
 	Real ypos = lua_tonumber(L, 4);
 
@@ -220,7 +220,7 @@ static int CreateBase(lua_State *L) {
 
 	// Get the params
 	const char *name = lua_tostring(L, 1);
-	int color = lua_tonumber(L, 2);
+	int color = (int)lua_tonumber(L, 2);
 	Real xpos = lua_tonumber(L, 3);
 	Real ypos = lua_tonumber(L, 4);
 	const char *level;
@@ -409,6 +409,24 @@ static int GetNextSong(lua_State *L) {
 	return 1;
 }
 
+
+// Get the music directory
+// $HOME/music/ on Linux, the ./music/ on Windows
+static int GetMusicDir(lua_State *L) {
+	// Return the music directory
+	String dir;
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32	// For Windows
+	dir = "music/";
+#else							// For Linux/Unix/etc.
+	extern String getFunguloidsDir();
+	dir = getFunguloidsDir() + "music/";
+#endif
+
+	lua_pushstring(L, dir.c_str());
+	return 1;	
+}
+
 ////////////////////////////////////////////
 
 
@@ -448,6 +466,7 @@ ScriptSystem::ScriptSystem(SceneManager *mgr, const char *startup_file) {
 	lua_register(mLuaVM, "AddToPlaylist", AddToPlaylist);
 	lua_register(mLuaVM, "ShufflePlaylist", ShufflePlaylist);
 	lua_register(mLuaVM, "GetNextSong", GetNextSong);
+	lua_register(mLuaVM, "GetMusicDir", GetMusicDir);
 	LogManager::getSingleton().logMessage("ScriptSystem created.");
 
 	// Execute the start up script, if specified

@@ -8,9 +8,9 @@
 ;General
 
   ;Name and file
-  !define APPNAME "Those Funny Funguloids! v1.05"
+  !define APPNAME "Those Funny Funguloids! v1.06"
   Name "${APPNAME}"
-  OutFile "funguloids-win32-1.05.exe"
+  OutFile "funguloids-win32-1.06.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\Those Funny Funguloids"
@@ -89,6 +89,7 @@ Section "Main data" SecMain
 
   SetOutPath "$INSTDIR\music"
   File music\*.lua
+  File music\MarylandInMay.ogg
 
   SetOutPath "$INSTDIR\docs"
   File docs\*.*
@@ -137,6 +138,7 @@ Section "Uninstall"
   Delete "$INSTDIR\plugins\*.*"
   RMDir "$INSTDIR\plugins"
   Delete "$INSTDIR\music\playlist.lua"
+  Delete "$INSTDIR\music\MarylandInMay.ogg"
   RMDir "$INSTDIR\music"
   Delete "$INSTDIR\media\*.*"
   RMDir "$INSTDIR\media"

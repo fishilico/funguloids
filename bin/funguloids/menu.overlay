@@ -70,11 +70,12 @@ Version
 		element TextArea(VersionText)
 		{
 			metrics_mode relative
-			left 0.96
+			alignment right
+			left 0.997
 			top 0.005
 			font_name VeraBold
-			char_height 0.02
-			colour 1 1 1 0.4
+			char_height 0.03
+			colour 1 1 1 0.25
 			caption v1.05
 		}
 	}
@@ -101,7 +102,7 @@ MenuScroller
 			top 0
 			font_name MenuFont
 			char_height 0.060
-			caption "Those Funny Funguloids!"   * ^ *   CREDITS   * ^ *   Code: Mika Halttunen   * ^ *   Game Design: Teemu Ruokolainen   * ^ *   Artwork: Mika Halttunen   * ^ *   Sound Design: Teemu Ruokolainen   * ^ *   http://funguloids.sourceforge.net   * ^ *   Copyright (c) 2006-2007, Mika Halttunen & Teemu Ruokolainen   * ^ *   THANKS FOR THE INTEREST - ENJOY THE GAME!
+			caption "Those Funny Funguloids!"   * ^ *   CREDITS   * ^ *   Code: Mika Halttunen   * ^ *   Game Design: Teemu Ruokolainen   * ^ *   Artwork: Mika Halttunen   * ^ *   Sound Design & Music: Teemu Ruokolainen   * ^ *   http://funguloids.sourceforge.net   * ^ *   Copyright (c) 2006-2007, Mika Halttunen & Teemu Ruokolainen   * ^ *   THANKS FOR THE INTEREST - ENJOY THE GAME!
 			colour_bottom 1 0.75 0.7 0.4
 			colour_top 1 0.0 0 0.4
 		}

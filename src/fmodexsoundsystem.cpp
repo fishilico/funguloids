@@ -23,37 +23,16 @@
 //
 //***************************************************************************/
 
-#include "game.h"
 #include "soundsystem.h"
+
+#ifdef SOUND_SYSTEM_FMOD
+
+#include "game.h"
+#include "fmodexsoundsystem.h"
 #include "playlist.h"
 #include "mpakogre.h"
 
-template<> SoundSystem* Singleton<SoundSystem>::ms_Singleton = 0;
-
-// File locator for sound files
-// (based on wiki example at http://www.ogre3d.org/wiki/index.php/File_SoundManager.cpp)
-class SoundLocator : public ResourceGroupManager {
-public:
-	SoundLocator() {}
-	~SoundLocator() {}
-
-	Archive *findSound(String &filename) {
-		ResourceGroup *grp = getResourceGroup("General");
-		if(!grp)
-			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, "Cannot locate a resource group called 'General'", "ResourceGroupManager::openResource");
-		
-		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
-		ResourceLocationIndex::iterator rit = grp->resourceIndexCaseSensitive.find(filename);
-		if(rit != grp->resourceIndexCaseSensitive.end()) {
-			// Found in the index
-			Archive *fileArchive = rit->second;
-			filename = fileArchive->getName() + "/" + filename;
-			return fileArchive;
-		}
-
-		return NULL;
-	}
-};
+template<> FMODExSoundSystem* Singleton<FMODExSoundSystem>::ms_Singleton = 0;
 
 
 // Checks for FMOD error and prints an error message
@@ -69,20 +48,10 @@ bool errorCheck(FMOD_RESULT result) {
 // Music end callback
 FMOD_RESULT F_CALLBACK endCallBack(FMOD_CHANNEL *channel, FMOD_CHANNEL_CALLBACKTYPE type, int command, unsigned int commandData1, unsigned int commandData2) {
 	// Play another song
-	//SoundSystem::getSingleton().playMusic(getNextSong().c_str());
-	SoundSystem::getSingleton().playNextSong();
+	//FMODExSoundSystem::getSingleton().playMusic(getNextSong());
+	FMODExSoundSystem::getSingleton().playNextSong();
 	return FMOD_OK;
 }
-
-
-// Sound resource
-class SoundResource {
-public:
-	Archive *fileArchive;
-	DataStreamPtr streamPtr;
-	String fileName;
-};
-
 
 // File system callbacks
 // (fileName is a pointer to a SoundResource)
@@ -113,7 +82,7 @@ FMOD_RESULT F_CALLBACK fileClose(void *handle, void *userdata) {
 	SoundResource *soundResource;
 	soundResource = static_cast<SoundResource*>(handle);
 	soundResource->streamPtr->close();
-	
+
 	return FMOD_OK;
 }
 
@@ -139,7 +108,7 @@ FMOD_RESULT F_CALLBACK fileSeek(void *handle, unsigned int pos, void *userdata) 
 
 
 // Load a sound (with specified frequency variation)
-void SoundSystem::loadSound(const String &file, Real freqVar, bool looped) {
+void FMODExSoundSystem::loadSound(const String &file, Real freqVar, bool looped) {
 	if(mSoundDisabled) return;
 
 	//String soundFile = "media/sounds/" + file + ".wav";
@@ -174,7 +143,7 @@ void SoundSystem::loadSound(const String &file, Real freqVar, bool looped) {
 
 
 // Play a sound (with specified pan)
-FMOD::Channel *SoundSystem::playSound(const String &file, Real pan) {
+FMOD::Channel* FMODExSoundSystem::playSound(const String &file, Real pan) {
 	if(mSoundDisabled) return NULL;
 	Real vol;
 	mSoundChannels->getVolume(&vol);
@@ -191,7 +160,7 @@ FMOD::Channel *SoundSystem::playSound(const String &file, Real pan) {
 
 
 // Play a looped sound (returns the channel so the called can stop the sound)
-FMOD::Channel *SoundSystem::playLoopedSound(const String &file) {
+FMOD::Channel * FMODExSoundSystem::playLoopedSound(const String &file) {
 	if(mSoundDisabled) return NULL;
 	Real vol;
 	mSoundChannels->getVolume(&vol);
@@ -207,7 +176,7 @@ FMOD::Channel *SoundSystem::playLoopedSound(const String &file) {
 
 
 // Play some music
-void SoundSystem::playMusic(const char *file) {
+void FMODExSoundSystem::playMusic(const std::string& file) {
 	if(mSoundDisabled) return;
 	if(String(file).empty()) return;
 
@@ -225,10 +194,10 @@ void SoundSystem::playMusic(const char *file) {
 	errorCheck(result);
 
 	// Load
-	result = mSystem->createStream(file, FMOD_HARDWARE | FMOD_LOOP_OFF | FMOD_2D, 0, &mMusic);
+	result = mSystem->createStream(file.c_str(), FMOD_HARDWARE | FMOD_LOOP_OFF | FMOD_2D, 0, &mMusic);
 	if(errorCheck(result)) {
 		markBadSong();
-		playMusic(getNextSong().c_str());
+		playMusic(getNextSong());
 
 		// Reset the file system
 		result = mSystem->setFileSystem(fileOpen, fileClose, fileRead, fileSeek, 2048);
@@ -254,27 +223,27 @@ void SoundSystem::playMusic(const char *file) {
 
 
 // Set the music volume
-void SoundSystem::setMusicVolume(Real vol) {
+void FMODExSoundSystem::setMusicVolume(Real vol) {
 	if(mMusic && mMusicChannel)
 		mMusicChannel->setVolume(vol);
 }
 
 
 // Set the sound volume
-void SoundSystem::setSoundVolume(Real vol) {
+void FMODExSoundSystem::setSoundVolume(Real vol) {
 	if(mSoundChannels)
 		mSoundChannels->setVolume(vol);
 }
 
 
-// SoundSystem constructor
-SoundSystem::SoundSystem(SceneManager *mgr) {
+// FMODExSoundSystem constructor
+FMODExSoundSystem::FMODExSoundSystem(SceneManager *mgr) {
 	assert(mgr);
 	mSystem = 0;
 	mMusic = 0;
 	mMusicChannel = 0;
-	mSceneMgr = mgr;
-	mPlayNextSong = false;
+// 	mSceneMgr = mgr;
+// 	mPlayNextSong = false;
 
 	// Create the System object and initialise
 	FMOD_RESULT result = FMOD::System_Create(&mSystem);
@@ -295,6 +264,18 @@ SoundSystem::SoundSystem(SceneManager *mgr) {
 	else
 		mSoundDisabled = false;
 
+	// Make FMOD to use ALSA on Linux, if specified on the gamesettings.cfg
+#if OGRE_PLATFORM == OGRE_PLATFORM_LINUX
+	if(!mSoundDisabled) {
+		String alsa = GameApplication::mGameConfig->GetValue("audio", "fmod_use_alsa", "on");
+		if(alsa.compare("off") != 0) {
+			result = mSystem->setOutput(FMOD_OUTPUTTYPE_ALSA);
+			if(errorCheck(result))
+				return;
+		}
+	}
+#endif
+
 	result = mSystem->init(128, FMOD_INIT_NORMAL, 0);
 	if(errorCheck(result))
 		return;
@@ -310,15 +291,15 @@ SoundSystem::SoundSystem(SceneManager *mgr) {
 	errorCheck(result);
 	mSoundChannels->setVolume(vol);
 
-	LogManager::getSingleton().logMessage("SoundSystem created.");
+	LogManager::getSingleton().logMessage("FMODExSoundSystem created.");
 
 	// Init the playlist
 	initPlaylist();
 }
 
 
-// SoundSystem destructor
-SoundSystem::~SoundSystem() {
+// FMODExSoundSystem destructor
+FMODExSoundSystem::~FMODExSoundSystem() {
 	FMOD_RESULT result;
 
 	while(!mSounds.empty()) {
@@ -337,27 +318,26 @@ SoundSystem::~SoundSystem() {
 		errorCheck(result);
 	}
 
-	LogManager::getSingleton().logMessage("SoundSystem destroyed.");
+	LogManager::getSingleton().logMessage("FMODExSoundSystem destroyed.");
 }
 
 
 // Update the sound system
-void SoundSystem::update() {
-	assert(mSystem); 
+void FMODExSoundSystem::update() {
+	assert(mSystem);
 	mSystem->update();
 	if(mPlayNextSong) {
-		playMusic(getNextSong().c_str());
+		playMusic(getNextSong());
 		mPlayNextSong = false;
 	}
 }
-
-
-
-SoundSystem *SoundSystem::getSingletonPtr() {
+FMODExSoundSystem *FMODExSoundSystem::getSingletonPtr() {
 	return ms_Singleton;
 }
 
-SoundSystem &SoundSystem::getSingleton() {
+FMODExSoundSystem &FMODExSoundSystem::getSingleton() {
 	assert(ms_Singleton);
 	return *ms_Singleton;
 }
+
+#endif

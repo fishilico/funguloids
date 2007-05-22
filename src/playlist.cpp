@@ -23,25 +23,19 @@
 //
 //***************************************************************************/
 
-
 #include "ogreapp.h"
 #include "playlist.h"
 #include <vector>
 #include <algorithm>
 
-#include <sys/types.h>
-#include <sys/stat.h>
-
-#if OGRE_PLATFORM == OGRE_PLATFORM_LINUX || OGRE_PLATFORM == OGRE_PLATFORM_APPLE
-#   include "OgreSearchOps.h"
-#   include <sys/param.h>
-#   define MAX_PATH MAXPATHLEN
-#endif
-
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-#   include <windows.h>
-#   include <direct.h>
-#   include <io.h>
+#    define WIN32_LEAN_AND_MEAN
+#    include <windows.h>
+#else
+#    include <stdlib.h>
+#    include <stdio.h>
+#    include <string.h>
+#    include <dirent.h>
 #endif
 
 
@@ -62,7 +56,72 @@ void initPlaylist() {
 // Add files to the playlist (wildcards supported)
 void addToPlaylist(const String &files) {
 	int count = 0;
-	String path = files.substr(0, files.find_last_of('/')) + '/';
+
+	String path = files.substr(0, files.find_last_of('/'));
+	String search = files.substr(files.find_last_of('/')+1);
+
+// For Windows
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+	WIN32_FIND_DATA findData;
+
+	HANDLE handle = FindFirstFile(files.c_str(), &findData);
+	if(handle != INVALID_HANDLE_VALUE) {
+		String name = String(findData.cFileName);
+		// Add the file to the playlist
+		if(!(findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+			if(name != "playlist.lua") {
+				String fullPath = path + "/" + name;
+				playList.push_back(fullPath);
+				count++;
+			}
+		}
+
+		while(FindNextFile(handle, &findData)) {
+			String name = String(findData.cFileName);
+			if(!(findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+				if(name != "playlist.lua") {
+					String fullPath = path + "/" + name;
+					playList.push_back(fullPath);
+					count++;
+				}
+			}
+		}
+
+		FindClose(handle);
+	}
+// For Linux/Unix/etc.
+#else
+	DIR *dp;
+	dirent *ep;
+
+	dp = opendir(path.c_str());
+	if(!dp)
+		return;
+
+	// Start searching
+	while((ep = readdir(dp)) ) {
+		String name = String(ep->d_name);
+
+		// Skip directories
+		if(ep->d_type == DT_DIR) continue;	// If this doesn't work, comment it and uncomment the following hack
+		//if(ep->d_name[0] == '.') continue;
+		// Cheap hack: if the filename doesn't have a dot in it, it's a directory.. :P
+		//if(name.find_first_of('.') == String::npos) continue;
+
+		if(name == "playlist.lua") continue;
+
+		// Check if it matches the search
+		if(StringUtil::match(name, search)) {
+			String fullPath = path + "/" + name;
+			playList.push_back(fullPath);
+			count++;
+		}
+	}
+
+	closedir(dp);
+#endif
+
+/*	String path = files.substr(0, files.find_last_of('/')) + '/';
 	if(path == (files + '/')) path = "";
 
 	// Start searching
@@ -87,8 +146,9 @@ void addToPlaylist(const String &files) {
 	
 	if(handle != -1)
 		_findclose(handle);
+*/
 
-	LogManager::getSingleton().logMessage("Added " + StringConverter::toString(count) + " files to the playlist.");
+	LogManager::getSingleton().logMessage("Added " + StringConverter::toString(count) + " files from \"" + path + "\" to the playlist.");
 }
 
 

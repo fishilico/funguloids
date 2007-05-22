@@ -117,7 +117,6 @@ Player::Player(const String &name, SceneManager *sceneMgr, const String &mesh, c
 	// Create player light
 	Light *plight = mSceneMgr->createLight("PlayerLight");
 	plight->setType(Light::LT_POINT);
-	Real rad = 50;
 	plight->setDiffuseColour(ColourValue(0.3f, 0.65f, 1)); // 0.3 0.3 1
 	plight->setSpecularColour(ColourValue(1, 1, 1));
 	plight->setCastShadows(true);

@@ -4,4 +4,40 @@ vertex_program Ogre/BasicVertexPrograms/AmbientOneTexture cg
 	source Example_Basic.cg
 	entry_point ambientOneTexture_vp
 	profiles vs_1_1 arbvp1
+
+	default_params
+	{
+		param_named_auto worldViewProj worldviewproj_matrix
+		param_named_auto ambient ambient_light_colour
+	}
+}
+
+// A really basic ambient pass program, support for one texture coodinate set
+vertex_program Ogre/BasicVertexPrograms/AmbientOneTextureHLSL hlsl
+{
+	source Example_Basic.hlsl
+	entry_point ambientOneTexture_vp
+	target vs_1_1
+
+	default_params
+	{
+		param_named_auto worldViewProj worldviewproj_matrix
+		param_named_auto ambient ambient_light_colour
+	}
+}
+// A really basic ambient pass program, support for one texture coodinate set
+vertex_program Ogre/BasicVertexPrograms/AmbientOneTextureGLSL glsl
+{
+	source AmbientOneTexture.glsl
+
+	default_params
+	{
+		param_named_auto ambient ambient_light_colour
+	}
+}
+
+vertex_program Ogre/BasicVertexPrograms/AmbientOneTextureUnified unified
+{
+	delegate Ogre/BasicVertexPrograms/AmbientOneTextureGLSL
+	delegate Ogre/BasicVertexPrograms/AmbientOneTextureHLSL
 }

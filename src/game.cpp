@@ -47,6 +47,34 @@ GameApplication *gameApp;
 
 
 
+// Helper function which returns suitable path for the
+// config file. It first checks the user's home directory,
+// (in Linux only) and if that fails it uses the default directory.
+String getConfigLocation(bool reading) {
+#if OGRE_PLATFORM == OGRE_PLATFORM_LINUX
+	extern String getFunguloidsDir();
+
+	// Get the path to the config file
+	String tmp = getFunguloidsDir() + SETTINGS_FILE;
+
+	// Check if the config file exists there
+	if(reading) {
+		FILE *ftest = fopen(tmp.c_str(), "rt");
+		if(!ftest) {
+			// It doesn't exist, try the default
+			return SETTINGS_FILE;
+		}
+		fclose(ftest);
+	}
+
+	return tmp;
+#endif
+
+	// Return the default
+	return SETTINGS_FILE;
+}
+
+
 // Prepare the frame to render
 bool OgreAppFrameListener::frameStarted(const FrameEvent &evt) {
 	if(mWindow->isClosed() || mQuit)
@@ -221,7 +249,7 @@ void GameApplication::endGame() {
 
 	// Check if the player qualifies for the high scores
 	if(mPlayer->isDead()) {
-		hiscoreList.load(HISCORE_FILE);
+		hiscoreList.load(getHiscoreLocation(true));
 		int place = hiscoreList.addName("zzz", mPlayer->getScore());
 		if(place != -1) {
 			mMenu->setMenu("HighScores");

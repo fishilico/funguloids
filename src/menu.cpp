@@ -30,6 +30,13 @@
 #include "hiscore.h"
 #include <OgreTextAreaOverlayElement.h>
 
+
+// Version string
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+  #undef VERSION
+  #define VERSION		"1.06"
+#endif
+
 // Menu items
 enum {
 	MENU_MAIN_START = 0,
@@ -184,8 +191,12 @@ void Menu::setMenu(const String &menu, int selection) {
 		gameApp->loadLevel("menubg.lua");
 
 		// Load the high scores
-		hiscoreList.load(HISCORE_FILE);
+		hiscoreList.load(getHiscoreLocation(true));
 		firstTime = false;
+		
+		// Update the version string
+		TextAreaOverlayElement *ver = static_cast<TextAreaOverlayElement*>(OverlayManager::getSingleton().getOverlayElement("VersionText"));
+		ver->setCaption("v" VERSION);
 	}
 
 	// Update the options menu
@@ -244,7 +255,7 @@ void Menu::doEnterName(const OIS::KeyEvent &e) {
 	else if(e.key == OIS::KC_RETURN) {
 		if(mTextPos > 0) {
 			// Done, save
-			hiscoreList.save(HISCORE_FILE);
+			hiscoreList.save(getHiscoreLocation(false));
 			mEnteringName = false;
 
 			TextAreaOverlayElement *item = static_cast<TextAreaOverlayElement*>(OverlayManager::getSingleton().getOverlayElement("HighScores1"));
@@ -287,8 +298,7 @@ void Menu::updateOptionsItem(int i, bool change) {
 	String str;
 	char volstr[16] = "";
 	Real vol = 0;
-	int ivol = 0;
-
+	
 	switch(i) {
 		// Bloom effect
 		case MENU_OPTIONS_BLOOM:
@@ -433,6 +443,7 @@ void Menu::handleKeyPress(const OIS::KeyEvent &e) {
 	}
 
 	switch(e.key) {
+		default: break;
 		case OIS::KC_UP:
 		case OIS::KC_LEFT:
 			scrollUp();
@@ -445,7 +456,7 @@ void Menu::handleKeyPress(const OIS::KeyEvent &e) {
 			if(mMenuName == "MainMenu") break;
 			if(mMenuName == "GameOptions") {
 				// Restore the settings
-				gameApp->mGameConfig->LoadFile("gamesettings.cfg");
+				gameApp->mGameConfig->LoadFile(getConfigLocation(true).c_str());
 				String str = gameApp->mGameConfig->GetValue("graphics", "bloom", "on");
 				CompositorManager::getSingleton().setCompositorEnabled(gameApp->getRenderWindow()->getViewport(0), "Bloom", (str != "off"));
 
@@ -509,7 +520,7 @@ void Menu::handleSelection() {
 				break;
 			case MENU_OPTIONS_CANCEL: {	// Cancel, back to main
 				// Restore the settings
-				gameApp->mGameConfig->LoadFile("gamesettings.cfg");
+				gameApp->mGameConfig->LoadFile(getConfigLocation(true).c_str());
 				String str = gameApp->mGameConfig->GetValue("graphics", "bloom", "on");
 				CompositorManager::getSingleton().setCompositorEnabled(gameApp->getRenderWindow()->getViewport(0), "Bloom", (str != "off"));
 
@@ -530,7 +541,7 @@ void Menu::handleSelection() {
 
 			case MENU_OPTIONS_ACCEPT:	// Save the settings, back to main
 				// Save
-				gameApp->mGameConfig->SaveFile("gamesettings.cfg");
+				gameApp->mGameConfig->SaveFile(getConfigLocation(false).c_str());
 
 				// Return to main
 				hide();

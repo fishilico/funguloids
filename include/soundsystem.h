@@ -28,45 +28,55 @@
 
 #include <Ogre.h>
 #include <OgreSingleton.h>
-#include <fmod.hpp>
-#include <fmod_errors.h>
-#include <map>
+
+#ifdef HAVE_CONFIG_H
+	#include "config.h"
+#else
+	// TODO: fallback/error if autoconf fails or whatever
+#endif
+
+#ifdef SOUND_SYSTEM_OPENAL
+	#include "openalsoundsystem.h"
+#else
+	#ifdef SOUND_SYSTEM_FMOD
+		#include "fmodexsoundsystem.h"
+	#endif
+#endif
 
 using namespace Ogre;
 using namespace std;
 
-
-typedef map<String, FMOD::Sound*> SoundMapType;
-
-// SoundSystem
-class SoundSystem : public Singleton<SoundSystem> {
-private:
-	FMOD::System *mSystem;				// FMOD System
-	FMOD::Sound *mMusic;				// Background music stream
-	FMOD::ChannelGroup *mSoundChannels;	// Sound channels group
-	FMOD::Channel *mMusicChannel;		// Music channel
-	SceneManager *mSceneMgr;			// Ogre scene manager
-
-	SoundMapType mSounds;				// Sounds
-	bool mSoundDisabled;				// Is the sound output disabled?
-	bool mPlayNextSong;					// Should we change the song?
-
+// Sound resource
+class SoundResource {
 public:
-	SoundSystem(SceneManager *mgr);
-	~SoundSystem();
-
-	void update();
-	void playMusic(const char *file);
-	void loadSound(const String &file, Real freqVar = 0, bool looped = false);
-	FMOD::Channel *playSound(const String &file, Real pan = 0);
-	FMOD::Channel *playLoopedSound(const String &file);
-	void setMusicVolume(Real vol);
-	void setSoundVolume(Real vol);
-	void playNextSong() { mPlayNextSong = true; }
-
-	static SoundSystem &getSingleton();
-	static SoundSystem *getSingletonPtr();
+	Archive *fileArchive;
+	DataStreamPtr streamPtr;
+	String fileName;
 };
 
+// File locator for sound files
+// (based on wiki example at http://www.ogre3d.org/wiki/index.php/File_SoundManager.cpp)
+class SoundLocator : public ResourceGroupManager {
+public:
+	SoundLocator() {}
+	~SoundLocator() {}
+
+	Archive *findSound(String &filename) {
+		ResourceGroup *grp = getResourceGroup("General");
+		if(!grp)
+			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, "Cannot locate a resource group called 'General'", "ResourceGroupManager::openResource");
+
+		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
+		ResourceLocationIndex::iterator rit = grp->resourceIndexCaseSensitive.find(filename);
+		if(rit != grp->resourceIndexCaseSensitive.end()) {
+			// Found in the index
+			Archive *fileArchive = rit->second;
+			filename = fileArchive->getName() + "/" + filename;
+			return fileArchive;
+		}
+
+		return NULL;
+	}
+};
 
 #endif

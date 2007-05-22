@@ -37,33 +37,39 @@ extern HINSTANCE hInstance;	// from main.cpp
 #endif
 
 
+#if(OGRE_PLATFORM == OGRE_PLATFORM_LINUX)
+	extern String getFunguloidsDir();
+#endif
 
-OgreApplication::~OgreApplication() {
-	if(ObjectSystem::getSingletonPtr())
-		delete ObjectSystem::getSingletonPtr();
+#ifdef HAVE_CONFIG_H
+	#include "config.h"
+#endif
 
-	destroyEffectLights(mSceneMgr);
+// Defines for the different paths
+#ifndef OGRE_PLUGINS_AND_RESOURCES_PATH		// This path needs read only access
+  #define OGRE_PLUGINS_AND_RESOURCES_PATH ""
+#endif
+#if(OGRE_PLATFORM == OGRE_PLATFORM_LINUX)
+  #ifndef OGRE_CONFIG_AND_LOG_PATH		// This path needs rw access
+    #define OGRE_CONFIG_AND_LOG_PATH getFunguloidsDir()
+  #endif
+#endif
+#if(OGRE_PLATFORM == OGRE_PLATFORM_WIN32)
+  #ifndef OGRE_CONFIG_AND_LOG_PATH
+    #define OGRE_CONFIG_AND_LOG_PATH String("")
+  #endif 
+#endif
 
-	if(ScriptSystem::getSingletonPtr())
-		delete ScriptSystem::getSingletonPtr();
-
-	if(SoundSystem::getSingletonPtr())
-		delete SoundSystem::getSingletonPtr();
-
-	if(mFrameListener)
-		delete mFrameListener;
-
-	if(mRoot)
-		delete mRoot;
-
-	if(mMPakFactory)
-		delete mMPakFactory;
-}
 
 
 // Setup
 bool OgreApplication::setup() {
-	mRoot = new Root();
+	// Create Ogre root
+	mRoot = new Root(
+			String(OGRE_PLUGINS_AND_RESOURCES_PATH) + "plugins.cfg",
+			OGRE_CONFIG_AND_LOG_PATH + "ogre.cfg",
+			OGRE_CONFIG_AND_LOG_PATH + "Ogre.log"
+			);
 
 	// Random seed
 	srand(time(NULL));
@@ -71,12 +77,12 @@ bool OgreApplication::setup() {
 	// Add the MPK archive support
 	mMPakFactory = new MPakArchiveFactory();
 	ArchiveManager::getSingleton().addArchiveFactory(mMPakFactory);
-	
+
 	// Load resource paths from config file
 	ConfigFile cf;
-	cf.load("resources.cfg");
+	cf.load(String(OGRE_PLUGINS_AND_RESOURCES_PATH) + "resources.cfg");
 
-    // Parse the resources.cfg
+	// Parse the resources.cfg
 	ConfigFile::SectionIterator seci = cf.getSectionIterator();
 
 	String secName, typeName, archName;
@@ -104,8 +110,8 @@ bool OgreApplication::setup() {
 #if(OGRE_PLATFORM == OGRE_PLATFORM_WIN32)
 	HWND hWnd;
 	mWindow->getCustomAttribute("WINDOW", &hWnd);
-	SetClassLong(hWnd, GCL_HICON, (LONG)LoadIcon(hInstance, "ICON1")); 
-#endif 
+	SetClassLong(hWnd, GCL_HICON, (LONG)LoadIcon(hInstance, "ICON1"));
+#endif
 
 	// Create the SceneManager
 	createSceneManager();
@@ -124,9 +130,33 @@ bool OgreApplication::setup() {
 	new SoundSystem(mSceneMgr);
 
 	// Create the scene
-    createScene();
+	createScene();
 
 	// Create the frame listener
 	createFrameListener();
-    return true;
+	return true;
 }
+
+// Destructor
+OgreApplication::~OgreApplication() {
+	if(ObjectSystem::getSingletonPtr())
+		delete ObjectSystem::getSingletonPtr();
+
+	destroyEffectLights(mSceneMgr);
+
+	if(ScriptSystem::getSingletonPtr())
+		delete ScriptSystem::getSingletonPtr();
+
+	if(SoundSystem::getSingletonPtr())
+		delete SoundSystem::getSingletonPtr();
+
+	if(mFrameListener)
+		delete mFrameListener;
+
+	if(mRoot)
+		delete mRoot;
+
+	if(mMPakFactory)
+		delete mMPakFactory;
+}
+
