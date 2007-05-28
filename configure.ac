@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.50)
-AC_INIT(funguloids,[1.06-3])
+AC_INIT(funguloids,[1.06-4])
 AC_CONFIG_SRCDIR([src/mpak.cpp])
 AC_CONFIG_HEADER([include/config.h])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -60,7 +60,11 @@ AC_ARG_WITH(lua,
 
 FUNGU_SEARCH_HEADER( [lua.h], [$lua_dir /usr/local /usr], [ include/lua5.1 include/lua / ] )
 if test "x$FUNGU_FOUND_HEADER" = "xno"; then
-	AC_MSG_ERROR(Lua not found. You can specify its location with [[--with-lua=/path/to/include/lua51]])
+	PKG_CHECK_MODULES(LUA, [lua >= 5.1],[],[
+		PKG_CHECK_MODULES(LUA, [lua5.1 >= 5.1],[],[
+			AC_MSG_ERROR(Lua 5.1 not found. You can specify its location with [[--with-lua=/path/to/include/lua51]])
+		])
+	])
 else
 	CFLAGS="$CFLAGS $FUNGU_FOUND_HEADER"
 	CPPFLAGS="$CPPFLAGS $FUNGU_FOUND_HEADER"
@@ -68,6 +72,8 @@ else
 fi
 AC_LANG_POP
 
+AC_SUBST(LUA_CFLAGS)
+AC_SUBST(LUA_LIBS)
 
 # SOUND ----------------------------------------------------
 # 1. FMOD  -------------------------------------------------

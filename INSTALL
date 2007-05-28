@@ -16,21 +16,39 @@ REQUIREMENTS
   source code from the websites.
 
 * Linux development tools (your distribution should come with these)
-    - gcc compiler (you need the c++ compiler g++), bintools
+    - gcc compiler (you need the C++ compiler g++), bintools
 
 * Ogre 3D SDK (version 1.4 or later)
     - 3D graphics library (http://www.ogre3d.org/)
 
+  Be sure to have compiled support for NVIDIA's Cg Toolkit into Ogre as
+  Funguloids makes use of shaders :-)
+
+  There are also reports of problems with the FreeImage library. Ogre can use
+  FreeImage or DevIL for image loading. Due to licensing issues FreeImage is
+  the current default library so if you experience crashes related to
+  FreeImage try compiling Ogre against DevIL (use '--disable-freeimage' when
+  configuring the Ogre source).
+
 * Object Oriented Input System (OIS)
     - cross platform input system (http://sourceforge.net/projects/wgois)
 
-* LUA (version 5.1 or later)
+* Lua (version 5.1 or later)
     - light-weight and powerful scripting language (http://www.lua.org/)
+
+    There is some confusion in the naming of the pkg-config file across the
+    various Linux distributions. Debian package based distris have named the
+    file 'lua5.1.pc' to allow multiple versions of Lua to be installed in
+    parallel. Self compiled versions use 'lua.pc' and some distris might even
+    ship Lua development packages without this file. configure searches in some
+    reasonable locations and upon failure tries to use the pkg-config file. Use
+    the '--with-lua=' option to specify the path to the include file 'lua.hpp'.
 
 * OpenGL
     OpenGL libraries and headers are specific to your graphics card. Make sure
     that you have hardware accelerated OpenGL drivers installed. Software
     renderers like Mesa will make funguloids unplayable slow.
+
 
   Funguloids needs sound support and can use OpenAL or FMOD for sound
   rendering (I personally recommend using OpenAL over FMOD since it is free,

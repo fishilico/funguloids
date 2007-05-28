@@ -1,7 +1,7 @@
 bininstall_PROGRAMS = funguloids
 funguloids_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/include/SimpleIni
-funguloids_LDADD = @OIS_LIBS@ @OGRE_LIBS@
-funguloids_CXXFLAGS = @OIS_CFLAGS@ @OGRE_CFLAGS@
+funguloids_LDADD = @OIS_LIBS@ @OGRE_LIBS@ @LUA_LIBS@
+funguloids_CXXFLAGS = @OIS_CFLAGS@ @OGRE_CFLAGS@ @LUA_CFLAGS@
 
 funguloids_SOURCES = asteroid.cpp \
 	ballworm.cpp \
