@@ -51,12 +51,17 @@ public:
 	void clear();								// Clear the list
 	void sort();								// Sort the list
 	int addName(char *name, long score);		// Add a record
-	void save(char *file);						// Save the list
-	void load(char *file);						// Load the list
+	void save(const String &file);					// Save the list
+	void load(const String &file);					// Load the list
 	void updateOverlay();						// Update the overlay
 };
 
 // Global high score list
 extern HiscoreList hiscoreList;
+
+// Helper function which returns suitable path for the
+// hiscore file. It first checks the user's home directory,
+// (in Linux only) and if that fails it uses the default directory.
+String getHiscoreLocation(bool reading);
 
 #endif

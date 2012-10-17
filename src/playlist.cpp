@@ -148,7 +148,7 @@ void addToPlaylist(const String &files) {
 		_findclose(handle);
 */
 
-	LogManager::getSingleton().logMessage("Added " + StringConverter::toString(count) + " files to the playlist.");
+	LogManager::getSingleton().logMessage("Added " + StringConverter::toString(count) + " files from \"" + path + "\" to the playlist.");
 }
 
 

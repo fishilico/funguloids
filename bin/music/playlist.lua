@@ -1,6 +1,6 @@
 -- Add music files to the playlist
 -- (remember to use normal slashes "/", not backslashes "\"!)
-AddToPlaylist("music/*.*");
+AddToPlaylist(GetMusicDir() .. "*.*");
 --AddToPlaylist("C:/My Music/*.mp3");
 
 -- Shuffle the playlist

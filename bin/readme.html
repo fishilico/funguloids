@@ -14,7 +14,7 @@
 	</div>
 
 	<div class="menu">
-	<h2>.: Version 1.05 -- README :.</h2>
+	<h2>.: Version 1.06 -- README :.</h2>
 	</div>
 
 	<div class="maincontent">
@@ -50,6 +50,16 @@
 	<div class="content">
 		<h2>Version history</h2>
 		<ul>
+			<li><span class="version1">Version 1.06</span> <span class="version2">(released on 22.05.2007)</span>
+				<ul>
+					<li>We have music now!</li>
+					<li>A proper <b>Linux</b> version is now available, thanks to Piet!</li>
+					<li>More nicely aligned high scores</li>
+					<li>Upgraded to Ogre v1.4.1</li>
+					<li>Small bug fixes plus more platform independant code..</li>
+				</ul>
+			</li>
+			<br/>
 			<li><span class="version1">Version 1.05</span> <span class="version2">(released on 25.03.2007)</span>
 				<ul>
 					<li>Upgraded to the latest Ogre (v1.4 Eihort) for better performance and stability</li>
@@ -127,12 +137,15 @@
 			<li><span class="version1">"Dynamic Light Shadows"</span> controls whether the dynamic ligts cast shadows or not. If you're running slow, this is
 			a good first choice to disable as it doesn't decrease the visual quality too much.</li>
 		</ul>
-		<p>The volume settings should be self-explanatory. Now, you may be wondering, why there's "Music volume" when there's no music? Read on.</p>
+		<p>The volume settings should be self-explanatory.</p>
 		<p>Funguloids supports playing music (mp3, ogg, mod/xm/it/s3m + more!) from your music collection on the background when you're playing.
 		You can copy your music files to the <span class="file">music</span> folder of the game, or open the <span class="file">music/playlist.lua</span> script (in Notepad, for example)
-		and edit it to play your files from different locations. Pressing <span class="version1">F1</span> key in the game skips to the next track in the playlist. I recommend some
+		and edit it to play your files from different locations. Linux version only supports mp3 and ogg by default, and plays custom music from <span class="file">$HOME/.funguloids/music/</span>.
+		Pressing <span class="version1">F1</span> key in the game skips to the next track in the playlist.</p>
+		<!-- I recommend some
 		nice and calm piano music, works really well! :) As of now, there is no music included with the game. Maybe in later versions, or in a
 		separate "music pack", but no promises.. If you think you have what it takes, feel free to <a href="#credits">contact us</a> on the subject.</p>
+		-->
 
 		<p>When you finally get to the actual playing -part, you might be interested to know that this game uses only three buttons (either from the keyboard or the mouse) for its controls.
 		<span class="version1">LEFT</span> and <span class="version1">RIGHT arrow keys</span> (or mouse buttons)
@@ -148,7 +161,7 @@
 		<p><span class="note"><span class="version1">*)</span> In the first version the OpenGL port was inferior, looked uglier (the bloom shader was not too great, my fault).
 		Now the situation has improved greatly, it looks virtually the same as in D3D. So use whatever you want, or what works better for you. :) In my case, the
 		OpenGL is still much slower (especially with shadows on), so I continue with D3D. I still recommend D3D for most Windows users, as it tends to
-		be better supported. Your mileage may vary, of course.</span></p>
+		be better supported. Your mileage may vary, of course. Linux users obviously don't have D3D available.</span></p>
 		<p style="font-size: smaller;"><a href="#contents">^ To the contents</a></p>
 	</div>
 	<b class="rbottom">
@@ -171,6 +184,8 @@
 		<p>On my own computer, which is AMD Athlon XP 2600+ with 768MB of RAM, and a ATI Radeon 9600 Pro, the game runs quite alright in 800x600 (with
 		the best settings). Disabling the "Dynamic light shadows" helps to make it run well enough on my PC. The 9600 Pro is the bottleneck here.
 		</p>
+		<p>Currently on Linux, due to an Ogre <a href="http://www.ogre3d.org/mantis/view.php?id=170">bug</a>, Funguloids <b>may not work</b> if the graphics card doesn't support the shaders.
+		This may or may not also affect the Windows version if OpenGL is used.</p>
 		<p>Here is some tips on how to make the game run better.</p>
 		<ol>
 			<li><span class="version1">Turn off the shadows.</span> This increases the speed dramatically, although it doesn't look very nice without them..</li>
@@ -180,7 +195,7 @@
 			<li><span class="version1">Reduce the display resolution.</span> Try running in 640x480 or 800x600 for the best performance.
 				You can edit <span class="file">ogre.cfg</span> directly, or just delete it and select different resolution from the list at the game startup.</li>
 			<li><span class="version1">Turn off the sounds.</span> Set the sound volume to zero in the <i>Game Options</i> to disable them, or edit <span class="file">gamesettings.cfg</span>.</li>
-			<li><span class="version1">Use Direct3D instead of OpenGL, if possible.</span> Before you flame me, do read my comments on the <a href="#opengl">issue</a>.</li>
+			<li><span class="version1">Use Direct3D (on Windows) instead of OpenGL, if possible.</span> Before you flame me, do read my comments on the <a href="#opengl">issue</a>.</li>
 			<li><span class="version1">Keep your (display) drivers up to date.</span> Bad drivers equals bad performance. Stay up to date.</li>
 		</ol>
 		<p style="font-size: smaller;"><a href="#contents">^ To the contents</a></p>
@@ -199,21 +214,24 @@
 	<div class="content">
 		<h2>Building from the sources</h2>
 		<p><span class="version1">If you're using a precompiled binary version, as most of you probably are, you can skip this. :)</span></p>
+
+		<p><span class="version1">For Windows:</span></p>
 		<p>First of all, you need the latest source package. Download it from <a href="http://funguloids.sourceforge.net">http://funguloids.sourceforge.net</a>.
 		As of now, the source package only contains project files (<span class="file">Funguloids.vcproj</span>) for <b>MSVC++ 2003</b> (7.1). However, you should be able to open that with
 		<b>MSVC++ 2005</b> (8.0) and maybe with <b>Code::Blocks</b> too. Contributions such as project files for these and other compilers are welcome!</p>
 		<p>To build Funguloids, you need to have <a href="http://www.ogre3d.org">Ogre</a> (SDK will do) and <a href="http://www.fmod.org">FMOD Ex</a>
 		installed. <a href="http://www.lua.org">Lua 5.1</a> is included for <b>MSVC++ 2003</b> (might work with other compilers, too).
+		<a href="http://sourceforge.net/projects/wgois">OIS</a> is included in Ogre dependencies.
 		Note that starting from v1.05 Funguloids builds with Ogre <b>Eihort</b> (v1.4.x) only. <b>Dagon</b> (v1.2.x) users should
 		upgrade. On the other hand, versions 1.0 and 1.01 only work with <b>Dagon</b>.</p>
 		<p>Note that the project file assumes you have Ogre installed to a directory specified by the environment variable <span class="file">OGRE_HOME</span>.
 		For FMOD, you have to add its directories to your compiler search path.</p>
-		<p>When you have all the things set up correctly, the build should work alright. Well, then, what about other platforms? Read on.</p>
-		<p>It should be possible, with some effort, get Funguloids built and running on Linux / MacOS X / etc.. I can only manage the Windows
-		build myself, so I'm hoping that somebody using different platform could help me out with a working build.
-		I think the possible problems lie in the file handling (configs, highscores, ...), that is if you'd want to support the usual Linux way
-		of having configuration settings in one place, data files in another, etc. All kinds of contributions are welcome! Btw, should you need to access the data in <span class="file">funguloids.mpk</span>,
-		I can supply a simple tool for handling .MPK files, or you can roll your own using the sources (<span class="file">mpak.cpp/.h</span>).</p>
+		<p>When you have all the things set up correctly, the build should work alright.</p>
+
+		<p><span class="version1">For Linux:</span></p>
+		<p>Starting from version 1.06 Funguloids is finally (properly) available for Linux too, thanks to Piet &lt;<a href="mailto:funguloidsNOSPAM@superpiet.de">funguloids NOSPAM@superpiet.de</a>&gt;. Read the file <span class="file">INSTALL</span> for
+		instructions on how to build and install the game. You have the option to use the free <a href="http://openal.org/">OpenAL</a>
+		instead of the proprietary FMOD Ex.</p>
 		<p style="font-size: smaller;"><a href="#contents">^ To the contents</a></p>
 	</div>
 	<b class="rbottom">
@@ -232,10 +250,10 @@
 		<p><span class="date">Code:</span> Mika Halttunen &lt;<a href="mailto:lsoftNOSPAM@mbnet.fi">lsoftNOSPAM@mbnet.fi</a>&gt;<br/>
 		<span class="date">Game Design:</span> Teemu Ruokolainen<br/>
 		<span class="date">Artwork:</span> Mika Halttunen<br/>
-		<span class="date">Sound Effects:</span> Teemu Ruokolainen<br/>
+		<span class="date">Sound Design &amp; Music:</span> Teemu Ruokolainen<br/>
 		</p>
-		<p>We're using <a href="http://www.ogre3d.org/">Ogre</a> graphics engine for visuals, <a href="http://www.lua.org">Lua</a>
-		for scripting and <a href="http://www.fmod.org">FMOD Ex</a> for audio output.<br/>
+		<p>We're using <a href="http://www.ogre3d.org/">Ogre</a> graphics engine for visuals, <a href="http://sourceforge.net/projects/wgois">OIS</a>
+		for input, <a href="http://www.lua.org">Lua</a>	for scripting and <a href="http://www.fmod.org">FMOD Ex</a> for audio output.
 		<a href="http://code.jellycan.com/simpleini/">SimpleIni</a> is used for the configuration reading/writing.
 		Installer made with <a href="http://nsis.sourceforge.net">NSIS</a>. EXE and DLLs compressed with
 		<a href="http://upx.sourceforge.net">UPX</a>. Hosted by <a href="http://sourceforge.net">SourceForge</a>.

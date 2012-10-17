@@ -43,6 +43,14 @@ enum {
 };
 
 
+#define SETTINGS_FILE	"gamesettings.cfg"
+
+// Helper function which returns suitable path for the
+// config file. It first checks the user's home directory,
+// (in Linux only) and if that fails it uses the default directory.
+String getConfigLocation(bool reading);
+
+
 class Player;
 class GameCamera;
 class Menu;
@@ -54,7 +62,7 @@ public:
 		// Load the game settings
 		//mGameConfig = new ConfigFile();
 		mGameConfig = new CSimpleIniA();
-		mGameConfig->LoadFile("gamesettings.cfg");
+		mGameConfig->LoadFile(getConfigLocation(true).c_str());
 		//mGameConfig->load("gamesettings.cfg");
 	}
 

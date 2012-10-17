@@ -13,7 +13,7 @@ float4 main(float2 texCoord: TEXCOORD0) : COLOR {
 
 
 
-//	return ( sharp + blur * 1.8 ) / 2;
+	return ( sharp + blur * 1.8 ) / 2;
 
 //	float4 color	= lerp( sharp, blur, 0.4f );
 
@@ -21,7 +21,7 @@ float4 main(float2 texCoord: TEXCOORD0) : COLOR {
 
 
 
-	return ( sharp + blur * 1.8 ) / 2 + luminance(blur) * float4( 0.5, 0.5, 0.5, 0) + luminance(sharp) * float4( 0.3, 0.3, 0.3, 0);
+//	return ( sharp + blur * 1.8 ) / 2 + luminance(blur) * float4( 0.5, 0.5, 0.5, 0) + luminance(sharp) * float4( 0.3, 0.3, 0.3, 0);
 	//return  luminance(blur) * 2 * float4( 0.5, 0.5, 0.5, 0) + luminance(sharp) * 2 * float4( 0.3, 0.3, 0.3, 0);
 /*
 	return ( sharp + blur * 0.9) / 2 +

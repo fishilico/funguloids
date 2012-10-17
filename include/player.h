@@ -87,8 +87,8 @@ private:
 	int mPlaytimeSec;				// Playtime seconds
 	Real mPlaytime;					// Counts the play time seconds
 
-	FMOD::Channel *mBaseSound;		// Base sound loop
-	FMOD::Channel *mFlySound;		// Flying sound loop
+	SoundChannel *mBaseSound;		// Base sound loop
+	SoundChannel *mFlySound;		// Flying sound loop
 	Real mConstantFlySoundCounter;	// Counter for the constant flying sound (flight1)
 	Real mFlySoundCounter;			// Counter for the flying sounds
 

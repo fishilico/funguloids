@@ -52,11 +52,13 @@ InputHandler::InputHandler(OgreAppFrameListener *listener, size_t hWnd) {
 
 
 InputHandler::~InputHandler() {
-	if(mMouse)
+/*	if(mMouse)
 		delete mMouse;
 	if(mKeyboard)
-		delete mKeyboard;
+		delete mKeyboard;*/
 	OIS::InputManager::destroyInputSystem(mInputManager);
+	mMouse = 0;
+	mKeyboard = 0;
 }
 
 
@@ -126,7 +128,7 @@ bool InputHandler::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID 
 	return true;
 }
 
-		
+
 // KeyListener
 bool InputHandler::keyPressed(const OIS::KeyEvent &evt) {
 	mKeyDown[evt.key] = true;
@@ -135,7 +137,7 @@ bool InputHandler::keyPressed(const OIS::KeyEvent &evt) {
 	switch(evt.key) {
 		case OIS::KC_F1:
 			// Play a new track
-			SoundSystem::getSingleton().playMusic(getNextSong().c_str());
+			SoundSystem::getSingleton().playMusic(getNextSong());
 			break;
 
 		case OIS::KC_F:

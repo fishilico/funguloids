@@ -33,6 +33,78 @@
 // Global high score list
 HiscoreList hiscoreList;
 
+#ifdef HAVE_CONFIG_H
+	#include "config.h"
+#endif
+
+#ifndef FUNGULOIDS_HIGHSCORE_PATH // this path needs rw access
+  #define FUNGULOIDS_HIGHSCORE_PATH getFunguloidsDir()
+#endif
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_LINUX
+// The hiscore files are saved to the users HOME directory in Linux, but
+// not in Windows.
+#include <string>
+#include <sys/stat.h>
+#include <dirent.h>
+
+
+// Helper function which gets the .funguloids directory from the
+// user's home directory. It creates the dir if it doesn't exist.
+String getFunguloidsDir() {
+	// Get the HOME environment variable
+	char *home = getenv("HOME");
+	if(home != NULL) {
+		String tmp = String(home) + "/.funguloids/";
+		// Check if the directory exists
+		DIR *dp = NULL;
+		dp = opendir(tmp.c_str());
+		if(!dp) {
+			// It doesn't exist, try to create it
+			if(mkdir(tmp.c_str(), S_IRWXU))
+				// Can't create it
+				return "";
+			return tmp;
+		}
+		else {
+			// It does exist.
+			closedir(dp);
+			return tmp;
+		}
+	}
+
+	// The HOME variable wasn't available
+	return "";
+}
+#endif
+
+// Helper function which returns suitable path for the
+// hiscore file. It first checks the user's home directory,
+// (in Linux only) and if that fails it uses the default directory.
+String getHiscoreLocation(bool reading) {
+#if OGRE_PLATFORM == OGRE_PLATFORM_LINUX
+	// Get the path to the hiscore file
+//	String tmp = getFunguloidsDir() + HISCORE_FILE;
+	String tmp = String(FUNGULOIDS_HIGHSCORE_PATH) + HISCORE_FILE;
+
+	// Check if the hiscore file exists there
+	if(reading) {
+		FILE *ftest = fopen(tmp.c_str(), "rt");
+		if(!ftest) {
+			// It doesn't exist, try the default
+			return HISCORE_FILE;
+		}
+		fclose(ftest);
+	}
+
+	return tmp;
+#endif
+
+	// Return the default
+	return HISCORE_FILE;
+}
+
+
 
 // Update the overlay
 void HiscoreList::updateOverlay() {
@@ -54,9 +126,9 @@ void HiscoreList::updateOverlay() {
 
 
 // Save the list to a file
-void HiscoreList::save(char *file) {
+void HiscoreList::save(const String &file) {
 	FILE *fout;
-	fout = fopen(file, "wb");
+	fout = fopen(file.c_str(), "wb");
 	if(!fout) {
 		LogManager::getSingleton().logMessage("Unable to save the hiscore list!");
 		return;
@@ -76,9 +148,9 @@ void HiscoreList::save(char *file) {
 
 
 // Load the list from a file
-void HiscoreList::load(char *file) {
+void HiscoreList::load(const String &file) {
 	FILE *fin;
-	fin = fopen(file, "rb");
+	fin = fopen(file.c_str(), "rb");
 	if(!fin) {
 		// The list wasn't found, no problem.
 		clear();
