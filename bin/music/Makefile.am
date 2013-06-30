@@ -6,7 +6,7 @@ playlist.lua: playlist.lua.in
 	cat playlist.lua.in | sed 's,%%musicinstalldir%%,@musicinstalldir@,' > playlist.lua
 
 install-data-hook:
-	if test -r MarylandInMay.ogg; then cp MarylandInMay.ogg "@musicinstalldir@"; fi;
+	if test -r MarylandInMay.ogg; then cp MarylandInMay.ogg "$(DESTDIR)@musicinstalldir@"; fi;
 
 
 distclean: clean

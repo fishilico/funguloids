@@ -1,6 +1,6 @@
 
 // Whirler pick up
-WhirlerPickup
+particle_system WhirlerPickup
 {
 	material WhirlerParticle
 	particle_width 5
@@ -54,7 +54,7 @@ WhirlerPickup
 
 
 // Whirler sparks
-WhirlerSparks
+particle_system WhirlerSparks
 {
 	material ParticleSpark
 	particle_width 5

@@ -42,7 +42,7 @@
 using namespace std;
 
 // Play list files
-static vector<String> playList;
+static std::vector<String> playList;
 static unsigned int currentSong = -1;
 
 

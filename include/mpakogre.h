@@ -49,13 +49,30 @@ public:
 	void unload();
 
 	DataStreamPtr open(const String &filename) const;
+	DataStreamPtr open(const String &filename, bool) const { return open(filename); };
 	StringVectorPtr list(bool recursive = true, bool dirs = false);
 	FileInfoListPtr listFileInfo(bool recursive = true, bool dirs = false);
 
 	StringVectorPtr find(const String &pattern, bool recursive = true, bool dirs = false);
-	FileInfoListPtr findFileInfo(const String &pattern, bool recursive, bool dirs = false);
+	FileInfoListPtr findFileInfo(const String &pattern, bool recursive, bool dirs = false) const;
 
 	bool exists(const String &filename);
+
+	time_t getModifiedTime(const String& filename)
+	{
+		struct stat tagStat;
+		bool ret = (stat(mName.c_str(), &tagStat) == 0);
+
+		if (ret)
+		{
+			return tagStat.st_mtime;
+		}
+		else
+		{
+			return 0;
+		}
+
+	}
 };
 
 

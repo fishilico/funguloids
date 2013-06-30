@@ -269,7 +269,7 @@ void OggStream::rewindOggFile( )
 //----------------------------------------------------------------------------
 void OggStream::logInfo()
 {
-	stringstream ss;
+	std::stringstream ss;
 	ss	<< "version         " << mVorbisInfo->version         << "\n"
 		<< "channels        " << mVorbisInfo->channels        << "\n"
 		<< "rate (hz)       " << mVorbisInfo->rate            << "\n"

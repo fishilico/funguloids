@@ -1,5 +1,5 @@
 // Red mushroom pick up
-MushroomPickup1
+particle_system MushroomPickup1
 {
 	material ParticleGlow
 	particle_width 9
@@ -46,7 +46,7 @@ MushroomPickup1
 
 
 // Reddish White sparks
-MushroomSparks1
+particle_system MushroomSparks1
 {
 	material ParticleSpark
 	particle_width 5
@@ -89,7 +89,7 @@ MushroomSparks1
 
 
 // Green mushroom pick up
-MushroomPickup2
+particle_system MushroomPickup2
 {
 	material ParticleGlow
 	particle_width 9
@@ -136,7 +136,7 @@ MushroomPickup2
 
 
 // Greenish White sparks
-MushroomSparks2
+particle_system MushroomSparks2
 {
 	material ParticleSpark
 	particle_width 5
@@ -179,7 +179,7 @@ MushroomSparks2
 
 
 // Blue mushroom pick up
-MushroomPickup3
+particle_system MushroomPickup3
 {
 	material ParticleGlow
 	particle_width 9
@@ -226,7 +226,7 @@ MushroomPickup3
 
 
 // Blueish White sparks
-MushroomSparks3
+particle_system MushroomSparks3
 {
 	material ParticleSpark
 	particle_width 5
@@ -270,7 +270,7 @@ MushroomSparks3
 
 
 // Yellow mushroom pick up
-MushroomPickup4
+particle_system MushroomPickup4
 {
 	material ParticleGlow
 	particle_width 9
@@ -317,7 +317,7 @@ MushroomPickup4
 
 
 // Yellowish White sparks
-MushroomSparks4
+particle_system MushroomSparks4
 {
 	material ParticleSpark
 	particle_width 5

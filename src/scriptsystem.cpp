@@ -38,7 +38,7 @@
 #include "mpakogre.h"
 #include <vector>
 
-template<> ScriptSystem* Singleton<ScriptSystem>::ms_Singleton = 0;
+template<> ScriptSystem* Singleton<ScriptSystem>::msSingleton = 0;
 
 
 // Log error messages
@@ -48,7 +48,7 @@ void luaError(const String &str) {
 
 
 // This keeps track of the lights created in script
-static vector<Light*> scriptLights;
+static std::vector<Light*> scriptLights;
 
 
 // File locator for script files
@@ -137,7 +137,7 @@ static int CreateAsteroid(lua_State *L) {
 	Asteroid *roid = new Asteroid(String(name), ScriptSystem::getSingleton().getSceneMgr(), String(mesh), String(mat), pos);
 	roid->setScale(scale, scale, scale);
 	roid->setMass(scale * 10.0f);
-	roid->getEntity()->setNormaliseNormals(true);
+	//roid->getEntity()->setNormaliseNormals(true);
 	return 0;
 }
 
@@ -439,7 +439,7 @@ ScriptSystem::ScriptSystem(SceneManager *mgr, const char *startup_file) {
 
 	LogManager::getSingleton().logMessage("Using " + String(LUA_VERSION));
 	// Create the script engine
-	mLuaVM = lua_open();
+	mLuaVM = luaL_newstate();
 	if(!mLuaVM)
 		LogManager::getSingleton().logMessage(LML_CRITICAL, "Unable to create the script engine!");
 
@@ -564,12 +564,12 @@ bool ScriptSystem::executeScript(const char *file) {
 
 
 ScriptSystem *ScriptSystem::getSingletonPtr() {
-	return ms_Singleton;
+	return msSingleton;
 }
 
 ScriptSystem &ScriptSystem::getSingleton() {
-	assert(ms_Singleton);
-	return *ms_Singleton;
+	assert(msSingleton);
+	return *msSingleton;
 }
 
 

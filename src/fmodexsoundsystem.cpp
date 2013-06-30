@@ -32,7 +32,7 @@
 #include "playlist.h"
 #include "mpakogre.h"
 
-template<> FMODExSoundSystem* Singleton<FMODExSoundSystem>::ms_Singleton = 0;
+template<> FMODExSoundSystem* Singleton<FMODExSoundSystem>::msSingleton = 0;
 
 
 // Checks for FMOD error and prints an error message
@@ -332,12 +332,12 @@ void FMODExSoundSystem::update() {
 	}
 }
 FMODExSoundSystem *FMODExSoundSystem::getSingletonPtr() {
-	return ms_Singleton;
+	return msSingleton;
 }
 
 FMODExSoundSystem &FMODExSoundSystem::getSingleton() {
-	assert(ms_Singleton);
-	return *ms_Singleton;
+	assert(msSingleton);
+	return *msSingleton;
 }
 
 #endif

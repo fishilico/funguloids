@@ -34,7 +34,7 @@
 using namespace std;
 using namespace Ogre;
 
-typedef map<String, MovingObject*> ObjectMapType;
+typedef std::map<String, MovingObject*> ObjectMapType;
 
 // ObjectSystem
 class ObjectSystem : public Singleton<ObjectSystem> {

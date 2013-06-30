@@ -180,10 +180,10 @@ StringVectorPtr MPakArchive::find(const String &pattern, bool recursive, bool di
 	return ret;
 }
 
-FileInfoListPtr MPakArchive::findFileInfo(const String &pattern, bool recursive, bool dirs) {
+FileInfoListPtr MPakArchive::findFileInfo(const String &pattern, bool recursive, bool dirs) const {
 	FileInfoListPtr ret = FileInfoListPtr(new FileInfoList());
 
-	FileInfoList::iterator i, iend;
+	FileInfoList::const_iterator i, iend;
 	iend = mFileList.end();
 	for(i = mFileList.begin(); i != iend; ++i) {
 		if(StringUtil::match(i->filename, pattern, true))
@@ -219,7 +219,7 @@ MPakDataStream::~MPakDataStream() {
 }
 
 size_t MPakDataStream::read(void *buf, size_t count) {
-	return fread(buf, count, 1, mFileHandle);
+	return fread(buf, 1, count, mFileHandle);
 }
 
 void MPakDataStream::skip(long count) {

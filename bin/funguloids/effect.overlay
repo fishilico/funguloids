@@ -1,5 +1,5 @@
 // Special level transition overlay
-SpecialLevelTransition
+overlay SpecialLevelTransition
 {
 	zorder 600
 
@@ -16,7 +16,7 @@ SpecialLevelTransition
 
 
 // Ball worm glow overlay
-BallWormGlow
+overlay BallWormGlow
 {
 	zorder 601
 

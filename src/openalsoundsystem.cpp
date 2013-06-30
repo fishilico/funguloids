@@ -35,16 +35,16 @@
 #include "playlist.h"
 #include "mpakogre.h"
 
-template<> OpenALSoundSystem* Singleton<OpenALSoundSystem>::ms_Singleton = 0;
+template<> OpenALSoundSystem* Singleton<OpenALSoundSystem>::msSingleton = 0;
 
 OpenALSoundSystem* OpenALSoundSystem::getSingletonPtr() {
-	return ms_Singleton;
+	return msSingleton;
 }
 
 
 OpenALSoundSystem& OpenALSoundSystem::getSingleton() {
-	assert(ms_Singleton);
-	return *ms_Singleton;
+	assert(msSingleton);
+	return *msSingleton;
 }
 
 
@@ -266,14 +266,14 @@ int OpenALSoundSystem::initialise( unsigned int devIndex )
 
 	int attributes[] = { 0 };
 	mContext = alcCreateContext(mDevice, attributes);
-	if ( (err = alGetError()) != AL_NO_ERROR) {
+	if ( (err = alcGetError(mDevice)) != ALC_NO_ERROR) {
 		LogManager::getSingleton().logMessage("OpanAL: error creating context: " + lastALError(err) );
 		return 1;
 	}
 //	check_alc_error("Couldn't create audio context: ");
 	alcMakeContextCurrent(mContext);
 //	check_alc_error("Couldn't select audio context: ");
-	if ( (err = alGetError()) != AL_NO_ERROR) {
+	if ( (err = alcGetError(mDevice)) != ALC_NO_ERROR) {
 		LogManager::getSingleton().logMessage("OpanAL: error making context current: " + lastALError(err) );
 		return 2;
 	}

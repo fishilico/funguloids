@@ -1,0 +1,17 @@
+*~
+*.bak
+*.o
+.*.swp
+*.mpk
+Makefile
+/autom4te.cache
+/bin/funguloids.bin
+/bin/music/playlist.lua
+/bin/plugins.cfg
+/bin/resources.cfg
+/config.log
+/config.status
+/include/config.h
+/include/stamp-h1
+/src/.deps
+/src/funguloids

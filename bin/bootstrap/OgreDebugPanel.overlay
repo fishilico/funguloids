@@ -1,5 +1,5 @@
 // Ogre overlay scripts
-Core/DebugOverlay
+overlay Core/DebugOverlay
 {
 	zorder 500
 	// Stats block

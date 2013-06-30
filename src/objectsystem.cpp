@@ -26,7 +26,7 @@
 #include "objectsystem.h"
 #include "game.h"
 
-template<> ObjectSystem* Singleton<ObjectSystem>::ms_Singleton = 0;
+template<> ObjectSystem* Singleton<ObjectSystem>::msSingleton = 0;
 
 
 // ObjectSystem constructor
@@ -135,11 +135,11 @@ void ObjectSystem::findFreePosition(Vector3 &pos, const Vector3 &playerPos, Real
 
 
 ObjectSystem *ObjectSystem::getSingletonPtr() {
-	return ms_Singleton;
+	return msSingleton;
 }
 
 ObjectSystem &ObjectSystem::getSingleton() {
-	assert(ms_Singleton);
-	return *ms_Singleton;
+	assert(msSingleton);
+	return *msSingleton;
 }
 

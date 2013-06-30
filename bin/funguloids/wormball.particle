@@ -1,5 +1,5 @@
 // Worm ball catch effect
-WormBallEffect
+particle_system WormBallEffect
 {
 	material ParticleGlow
 	particle_width 5

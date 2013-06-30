@@ -42,7 +42,7 @@ using namespace Ogre;
 using namespace std;
 
 
-typedef map<String, FMOD::Sound*> SoundMapType;
+typedef std::map<String, FMOD::Sound*> SoundMapType;
 
 // FMODExSoundSystem
 class FMODExSoundSystem : public Singleton<FMODExSoundSystem> {

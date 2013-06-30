@@ -1,5 +1,5 @@
 // Player death
-PlayerDeath
+particle_system PlayerDeath
 {
 	material ParticleGlow
 	particle_width 15
@@ -43,7 +43,7 @@ PlayerDeath
 
 
 // Player death sparks
-PlayerDeathSparks
+particle_system PlayerDeathSparks
 {
 	material ParticleSpark
 	particle_width 2.5

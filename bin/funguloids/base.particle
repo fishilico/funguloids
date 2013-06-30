@@ -1,5 +1,5 @@
 // Open base particles (red)
-BaseOpen1
+particle_system BaseOpen1
 {
 	material ParticleRing
 	particle_width 10
@@ -40,7 +40,7 @@ BaseOpen1
 
 
 // Open base particles (green)
-BaseOpen2
+particle_system BaseOpen2
 {
 	material ParticleRing
 	particle_width 10
@@ -81,7 +81,7 @@ BaseOpen2
 
 
 // Open base particles (blue)
-BaseOpen3
+particle_system BaseOpen3
 {
 	material ParticleRing
 	particle_width 10
@@ -122,7 +122,7 @@ BaseOpen3
 
 
 // Open base particles (yellow)
-BaseOpen4
+particle_system BaseOpen4
 {
 	material ParticleRing
 	particle_width 10
@@ -164,7 +164,7 @@ BaseOpen4
 
 
 // Open base particles (core base / yellow)
-CoreBaseOpen
+particle_system CoreBaseOpen
 {
 	material ParticleRing
 	particle_width 10

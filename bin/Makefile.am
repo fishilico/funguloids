@@ -14,7 +14,7 @@ resources.cfg: resources.cfg.in
 
 # copy the exe into this dir only for developing, real installation is done directly in ../bin/Makefile
 all:
-	cp -a ../src/funguloids .
+	cp -a ../src/funguloids ./funguloids.bin
 
 install-data-hook:
 	if test "x@highscoredir@" != "x"; then \
@@ -23,8 +23,8 @@ install-data-hook:
 		chgrp -R @highscoregroup@ "@highscoredir@"; \
 		chmod -R g+w "@highscoredir@"; \
 	fi; \
-	if test -r bootstrap.mpk; then cp bootstrap.mpk "@gameinstalldir@"; fi; \
-	if test -r funguloids.mpk; then cp funguloids.mpk "@gameinstalldir@"; fi
+	if test -r bootstrap.mpk; then cp bootstrap.mpk "$(DESTDIR)@gameinstalldir@"; fi; \
+	if test -r funguloids.mpk; then cp funguloids.mpk "$(DESTDIR)@gameinstalldir@"; fi
 
 uninstall-hook:
 	rm -rf "@docinstalldir@"
@@ -32,5 +32,5 @@ uninstall-hook:
 distclean: clean
 
 clean:
-	-rm -f funguloids funguloids.sh plugins.cfg resources.cfg Ogre.log ogre.cfg *~
+	-rm -f funguloids.bin funguloids.sh plugins.cfg resources.cfg Ogre.log ogre.cfg *~
 

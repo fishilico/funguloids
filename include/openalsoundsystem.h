@@ -47,7 +47,7 @@ using namespace Ogre;
 using namespace std;
 
 
-typedef map<String, ALuint> SoundMapType;
+typedef std::map<String, ALuint> SoundMapType;
 
 // Number of independent channels for sound fx
 const int NUM_SOUND_CHANNELS = 32;

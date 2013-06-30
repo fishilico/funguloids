@@ -1,0 +1,4 @@
+To build things from upstream Git repo (git://funguloids.git.sourceforge.net/gitroot/funguloids/funguloids),
+run aclocal && autoheader && autoconf && automake.
+Then apply patches from ArchLinux User Repository (https://aur.archlinux.org/packages/funguloids).
+Run ./configure --prefix=/usr && make && make DESTDIR=/ install

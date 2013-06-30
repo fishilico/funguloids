@@ -1,5 +1,5 @@
 // Black hole particles
-BlackHoleParts
+particle_system BlackHoleParts
 {
 	material ParticleStar
 	particle_width 1.5

@@ -1,5 +1,5 @@
 // Quit confirmation message
-ConfirmQuit
+overlay ConfirmQuit
 {
 	zorder 510
 	container Panel(ConfirmPanel)
@@ -37,7 +37,7 @@ ConfirmQuit
 
 
 // Main menu logo
-Logo
+overlay Logo
 {
 	zorder 520
 
@@ -54,7 +54,7 @@ Logo
 
 
 // Version string
-Version
+overlay Version
 {
 	zorder 510
 
@@ -83,7 +83,7 @@ Version
 
 
 // Menu scroller
-MenuScroller
+overlay MenuScroller
 {
 	zorder 530
 
@@ -111,7 +111,7 @@ MenuScroller
 
 
 // Main menu overlay
-MainMenu
+overlay MainMenu
 {
 	zorder 510
 
@@ -188,7 +188,7 @@ MainMenu
 
 
 // Options menu overlay
-GameOptions
+overlay GameOptions
 {
 	zorder 510
 
@@ -334,7 +334,7 @@ GameOptions
 
 
 // High scores overlay
-HighScores
+overlay HighScores
 {
 	zorder 510
 
@@ -727,7 +727,7 @@ HighScores
 
 
 // Title screen
-TitleScreen
+overlay TitleScreen
 {
 	zorder 525
 	container Panel(TitlePanel)

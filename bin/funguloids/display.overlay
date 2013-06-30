@@ -1,5 +1,5 @@
 // Game display overlay
-DisplayOverlay
+overlay DisplayOverlay
 {
 	zorder 500
 

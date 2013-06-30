@@ -1,4 +1,4 @@
-//****************************************************************************
+/****************************************************************************
 // "Those Funny Funguloids!"
 // http://funguloids.sourceforge.net
 // Copyright (c) 2006-2007, Mika Halttunen
@@ -31,7 +31,9 @@
 #endif
 
 #ifdef SOUND_STREAM_MP3
-
+#include <unistd.h>
+#include <cstdlib>
+#include <sys/types.h>
 #include <sys/stat.h>
 #include <sstream>
 #include "Ogre.h"
@@ -232,7 +234,7 @@ void MP3Stream::rewindFile( )
 //----------------------------------------------------------------------------
 void MP3Stream::logInfo( struct mad_header *Header )
 {
-	stringstream ss;
+	std::stringstream ss;
 
 	/* Convert the layer number to it's printed representation. */
 	ss << "mpeg 1 layer ";
