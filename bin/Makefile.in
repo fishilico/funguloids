@@ -738,6 +738,8 @@ install-data-hook:
 	fi; \
 	if test -r bootstrap.mpk; then cp bootstrap.mpk "$(DESTDIR)@gameinstalldir@"; fi; \
 	if test -r funguloids.mpk; then cp funguloids.mpk "$(DESTDIR)@gameinstalldir@"; fi
+	if test -r bootstrap; then cp -r bootstrap "$(DESTDIR)@gameinstalldir@"; fi; \
+	if test -r funguloids; then cp -r funguloids "$(DESTDIR)@gameinstalldir@"; fi
 
 uninstall-hook:
 	rm -rf "@docinstalldir@"

@@ -171,7 +171,7 @@ void HiscoreList::load(const String &file) {
 
 
 // Add a name to the list. Returns the place.
-int HiscoreList::addName(char *name, long score) {
+int HiscoreList::addName(const char *name, long score) {
 	// Check if we qualify
 	if(mList[NUM_NAMES-1].score >= score)
 		return -1;

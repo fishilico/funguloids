@@ -50,7 +50,7 @@ public:
 
 	void clear();								// Clear the list
 	void sort();								// Sort the list
-	int addName(char *name, long score);		// Add a record
+	int addName(const char *name, long score);	// Add a record
 	void save(const String &file);					// Save the list
 	void load(const String &file);					// Load the list
 	void updateOverlay();						// Update the overlay
