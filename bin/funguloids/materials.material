@@ -108,7 +108,7 @@ material Logo
 
 			texture_unit
 			{
-				texture logo.dds
+				texture logo.png
 				tex_address_mode clamp
 			}
 		}

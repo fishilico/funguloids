@@ -15,12 +15,12 @@ function BackgroundCreate()
 		nebula1_R = 0.3;  nebula1_G = 0.15; nebula1_B = 0.1;
 		nebula2_R = 0.0;  nebula2_G = 0.0;  nebula2_B = 0.0;
 		nebula3_R = 0.20; nebula3_G = 0.05;  nebula3_B = 0.1;
-		backgroundImage = "bg4.dds";
+		backgroundImage = "bg4.png";
 	else
 		nebula1_R = 0.2;  nebula1_G = 0.15; nebula1_B = 0.05;
 		nebula2_R = 0.0;  nebula2_G = 0.0;  nebula2_B = 0.0;
 		nebula3_R = 0.10; nebula3_G = 0.12;  nebula3_B = 0.15;
-		backgroundImage = "bg8.dds";
+		backgroundImage = "bg8.png";
 	end
 --	nebula1_R = 0.2;  nebula1_G = 0.15; nebula1_B = 0.1;
 --	nebula2_R = 0.0;  nebula2_G = 0.0;  nebula2_B = 0.0;

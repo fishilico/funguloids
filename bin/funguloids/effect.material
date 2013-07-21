@@ -14,7 +14,7 @@ material SpecialLevelTransition
 
 			texture_unit
 			{
-				texture fieryglow.dds
+				texture fieryglow.png
 				tex_address_mode wrap
 				filtering none
 				scroll_anim -0.1 0.05
@@ -68,7 +68,7 @@ material BallWormGlow
 
 			texture_unit
 			{
-				texture whiteglow.dds
+				texture whiteglow.png
 				tex_address_mode wrap
 				filtering none
 				scroll_anim 0.01 0.08
