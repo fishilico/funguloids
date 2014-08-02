@@ -4,6 +4,10 @@
 .*.swp
 *.mpk
 Makefile
+/archlinux/*.tar.gz
+/archlinux/*.pkg.tar.*
+/archlinux/pkg/
+/archlinux/src/
 /autom4te.cache
 /bin/funguloids.bin
 /bin/music/playlist.lua

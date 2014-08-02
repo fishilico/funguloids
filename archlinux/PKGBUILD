@@ -14,10 +14,13 @@ depends=('ogre' 'ois' 'freealut' 'lua51' 'libogg' 'libvorbis' 'libmad')
 source=(https://github.com/fishilico/funguloids/archive/$_githubver.tar.gz)
 md5sums=('fc1236cb28bbb12685cb7e8368bf00d7')
 
-
 build() {
-  cd ${srcdir}/${pkgname}-${_githubver}
+  cd "${srcdir}/${pkgname}-${_githubver}"
   ./configure --prefix=/usr
   make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${_githubver}"
   make DESTDIR=${pkgdir} install
 }
