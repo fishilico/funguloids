@@ -31,9 +31,13 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS([stdlib.h string.h sys/param.h wchar.h])
 
 # OGRE ----------------------------------------------------
-PKG_CHECK_MODULES(OGRE, [OGRE >= 1.4])
+PKG_CHECK_MODULES(OGRE, [OGRE >= 1.9.0])
 AC_SUBST(OGRE_CFLAGS)
 AC_SUBST(OGRE_LIBS)
+
+PKG_CHECK_MODULES(OGRE_OVERLAY, [OGRE-Overlay >= 1.9.0])
+AC_SUBST([OGRE_OVERLAY_CFLAGS])
+AC_SUBST([OGRE_OVERLAY_LIBS])
 
 # Ogre plugin directory for bin/plugins.cfg
 ogreplugindir=`pkg-config --variable=plugindir OGRE`
