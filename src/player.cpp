@@ -33,6 +33,7 @@
 #include "effects.h"
 #include "scriptsystem.h"
 #include "base.h"
+#include <OgreOverlayManager.h>
 
 
 // Player constructor

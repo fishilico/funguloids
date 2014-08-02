@@ -83,7 +83,7 @@ public:
 	virtual ~MPakArchiveFactory() {}
 	const String &getType(void) const;
 
-	Archive *createInstance(const String &name) {
+	Archive *createInstance(const String &name, bool readOnly) {
 		return new MPakArchive(name, "MPK");
 	}
 

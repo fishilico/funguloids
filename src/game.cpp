@@ -33,6 +33,7 @@
 #include "scriptsystem.h"
 #include "soundsystem.h"
 #include "hiscore.h"
+#include <OgreOverlayManager.h>
 
 
 // Playfield size (which is really read from the level script..)

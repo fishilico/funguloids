@@ -29,6 +29,7 @@
 #include "scriptsystem.h"
 #include "soundsystem.h"
 #include "mpakogre.h"
+#include <OgreOverlaySystem.h>
 
 #if(OGRE_PLATFORM == OGRE_PLATFORM_WIN32)
 #define WIN32_LEAN_AND_MEAN
@@ -74,6 +75,9 @@ bool OgreApplication::setup() {
 	// Random seed
 	srand(time(NULL));
 
+	// Initialize the overlay system
+	OverlaySystem *overlaySys = new OverlaySystem();
+
 	// Add the MPK archive support
 	mMPakFactory = new MPakArchiveFactory();
 	ArchiveManager::getSingleton().addArchiveFactory(mMPakFactory);
@@ -115,6 +119,7 @@ bool OgreApplication::setup() {
 
 	// Create the SceneManager
 	createSceneManager();
+	mSceneMgr->addRenderQueueListener(overlaySys);
 
 	// Set up the scene
 	createCamera();

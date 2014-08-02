@@ -29,6 +29,7 @@
 #include "soundsystem.h"
 #include "hiscore.h"
 #include <OgreTextAreaOverlayElement.h>
+#include <OgreOverlayManager.h>
 
 
 // Version string

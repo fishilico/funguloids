@@ -27,6 +27,7 @@
 #include "ogreapp.h"
 #include "objectsystem.h"
 #include "game.h"
+#include <OgreOverlayManager.h>
 
 
 // After a rendered frame

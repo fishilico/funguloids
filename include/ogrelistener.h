@@ -29,6 +29,7 @@
 #include <Ogre.h>
 #include <OgreStringConverter.h>
 #include <OgreException.h>
+#include <OgreOverlay.h>
 
 #include "input.h"
 

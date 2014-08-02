@@ -29,6 +29,7 @@
 #include "game.h"
 #include "hiscore.h"
 #include <OgreTextAreaOverlayElement.h>
+#include <OgreOverlayManager.h>
 
 // Global high score list
 HiscoreList hiscoreList;
