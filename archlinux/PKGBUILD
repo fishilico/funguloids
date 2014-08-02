@@ -4,15 +4,15 @@
 pkgname=funguloids
 pkgver=1.06.4
 _realver=1.06-4
-_githubver=1.06.4-patched
-pkgrel=6
+_githubver=1.06.4.2
+pkgrel=6.2
 pkgdesc="3D game about collecting mushrooms in outerspace"
 arch=('i686' 'x86_64')
 url="http://funguloids.sourceforge.net/"
 license=('GPL')
 depends=('ogre' 'ois' 'freealut' 'lua51' 'libogg' 'libvorbis' 'libmad')
 source=(https://github.com/fishilico/funguloids/archive/$_githubver.tar.gz)
-md5sums=('fc1236cb28bbb12685cb7e8368bf00d7')
+md5sums=('35cc2f3be35e2137af90930ebcc37989')
 
 build() {
   cd "${srcdir}/${pkgname}-${_githubver}"
