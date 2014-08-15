@@ -11,6 +11,7 @@ url="http://funguloids.sourceforge.net/"
 license=('GPL')
 depends=('ogre' 'ois' 'freealut' 'lua51' 'libogg' 'libvorbis' 'libmad')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-linux-${_realver}.tar.bz2
+        funguloids.desktop
         funguloids-alc_error.patch
         funguloids-gcc44.patch
         funguloids-ogre_1.6.patch funguloids-strcmp.patch
@@ -23,6 +24,7 @@ source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-linux-${_realver}
         funguloids-boost-system.patch
         funguloids-ogre-1.9.0.patch)
 md5sums=('1d9d92b08f58715d3dcb59c2ebcb7db7'
+         '3c970b99c50b0ba1af72d1d0d41db752'
          '534ad262a561eab8e28a5a28827020fe'
          '8a183ffa27d468435106dc4417c58db1'
          '34c898ca360f92ad140e5322d409088a'
@@ -84,4 +86,8 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   make DESTDIR=${pkgdir} install
+
+  # install desktop file
+  install -Dm644 ${srcdir}/funguloids.desktop \
+    ${pkgdir}/usr/share/applications/funguloids.desktop
 }
