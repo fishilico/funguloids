@@ -9,7 +9,7 @@ pkgdesc="3D game about collecting mushrooms in outerspace"
 arch=('i686' 'x86_64')
 url="http://funguloids.sourceforge.net/"
 license=('GPL')
-depends=('ogre' 'ois' 'freealut' 'lua' 'libogg' 'libvorbis' 'libmad')
+depends=('ogre' 'ois' 'freealut' 'lua51' 'libogg' 'libvorbis' 'libmad')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-linux-${_realver}.tar.bz2
         funguloids-alc_error.patch
         funguloids-gcc44.patch
