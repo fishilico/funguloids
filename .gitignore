@@ -4,6 +4,7 @@
 .*.swp
 *.mpk
 Makefile
+/archlinux/*.tar.bz2
 /archlinux/*.tar.gz
 /archlinux/*.pkg.tar.*
 /archlinux/pkg/
