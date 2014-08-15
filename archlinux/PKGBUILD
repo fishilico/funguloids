@@ -4,7 +4,7 @@
 pkgname=funguloids
 pkgver=1.06.4
 _realver=1.06-4
-pkgrel=5
+pkgrel=6
 pkgdesc="3D game about collecting mushrooms in outerspace"
 arch=('i686' 'x86_64')
 url="http://funguloids.sourceforge.net/"
