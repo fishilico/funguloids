@@ -287,7 +287,7 @@ int OpenALSoundSystem::initialise( unsigned int devIndex )
 		LogManager::getSingleton().logMessage("OpenALSoundSystem(): initialised OpenAL" );
 	}
 
-	stringstream ss;
+	std::stringstream ss;
 	ss << "OpenAL Vendor: " << alGetString(AL_VENDOR) << std::endl;
 	ss << "OpenAL Version: " << alGetString(AL_VERSION) << std::endl;
 	ss << "OpenAL Renderer: " << alGetString(AL_RENDERER) << std::endl;

@@ -18,10 +18,10 @@ all:
 
 install-data-hook:
 	if test "x@highscoredir@" != "x"; then \
-		mkdir -p "@highscoredir@"; \
-		if test ! -e "@highscoredir@/hiscore.lst"; then cp hiscore.lst.in "@highscoredir@/hiscore.lst"; fi; \
-		chgrp -R @highscoregroup@ "@highscoredir@"; \
-		chmod -R g+w "@highscoredir@"; \
+		mkdir -p "$(DESTDIR)@highscoredir@"; \
+		if test ! -e "(DESTDIR)@highscoredir@/hiscore.lst"; then cp hiscore.lst.in "(DESTDIR)@highscoredir@/hiscore.lst"; fi; \
+		chgrp -R @highscoregroup@ "(DESTDIR)@highscoredir@"; \
+		chmod -R g+w "(DESTDIR)@highscoredir@"; \
 	fi; \
 	if test -r bootstrap.mpk; then cp bootstrap.mpk "$(DESTDIR)@gameinstalldir@"; fi; \
 	if test -r funguloids.mpk; then cp funguloids.mpk "$(DESTDIR)@gameinstalldir@"; fi
@@ -29,7 +29,7 @@ install-data-hook:
 	if test -r funguloids; then cp -r funguloids "$(DESTDIR)@gameinstalldir@"; fi
 
 uninstall-hook:
-	rm -rf "@docinstalldir@"
+	rm -rf "$(DESTDIR)@docinstalldir@"
 
 distclean: clean
 

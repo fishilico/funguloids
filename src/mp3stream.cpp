@@ -36,6 +36,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sstream>
+#include <climits>
 #include "Ogre.h"
 
 #include "mp3stream.h"
