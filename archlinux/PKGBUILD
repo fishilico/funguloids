@@ -1,5 +1,5 @@
-# Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 # Maintainer: Nicolas Iooss <nicolas.iooss_aur at m4x.org
+# Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 
 pkgname=funguloids
 pkgver=1.06.4
@@ -23,20 +23,20 @@ source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-linux-${_realver}
         funguloids-compilation.patch
         funguloids-boost-system.patch
         funguloids-ogre-1.9.0.patch)
-md5sums=('1d9d92b08f58715d3dcb59c2ebcb7db7'
-         '3c970b99c50b0ba1af72d1d0d41db752'
-         '534ad262a561eab8e28a5a28827020fe'
-         '8a183ffa27d468435106dc4417c58db1'
-         '34c898ca360f92ad140e5322d409088a'
-         '742ccc09463858d2c884cc348fed1f76'
-         '16ec314d20bfd7deda866cb5be80ae2d'
-         '31601d57ad749396898ab074ed602cf9'
-         'c1f2bb3ced905304586ea7055f04af44'
-         '01ce094dba98bd99a255792935fe07c0'
-         'dd05749fc642ccca87bc8115b65b3fa4'
-         'cb0be4fe216a1a7cfd83d5fa427752f5'
-         'a483f7e882381fca74b2058ea5be0679'
-         '357c4138733fe1003625fc9b0f0c11b2')
+sha256sums=('e9c9074a5d2de11690484a7e8eef7de9dd7d360ea72185ea35c54976646ef5cf'
+            'ceaf1c19d5ed694ff3832320ef6b6b268f73cbf16bc5998c15de47c77298885a'
+            '753a8ac858ff21e81f2a3466092e297703d081689ceaa1159fe6cb42d97d06a6'
+            'b2b7767da01529ef6944eba3dd6c14c0883e723d6c2658838f186f6809da9695'
+            '345c0b54e6ca28a7b243ec9e86a6310062d973f8c35236856b7d66cefc7f9f97'
+            '107a0eec5efb2eea99c86d7dad91e28a20ca1f35d4f5eda067ae64c88c9d0304'
+            'eb5c821adbc9e6d93f6a78cb40a661e97ffa67eb6ab346913318cbcf3bc66083'
+            '12a8cd48b299d9a7de74a9bdae429a4a2489ee8357e9af935e89bf5f417ff157'
+            '2f184587b549315b5a76c77253366d6b4154bf25b8804056ec67736531d813a3'
+            'a70e2a40b19f3e0e3c44aa8fa41d866854ce21d111decce1d43f8fba04f7a16c'
+            '334831c41160457a4b0162bab349ba77570bbcc0b8e8c63a8e01e8a50c40bd48'
+            '4ed88c6502601d684fd7e85dbe33684e36669bdf65583f782b24ddd596dcaf3c'
+            'e17a559558d49e493f3f19ae6baa147c64fb37497fb384d31e0d3bc7ae484df1'
+            'a007990ef35c249fe4440938553737d14f2dd8377407ee97fecdc6f17b1136ec')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -85,9 +85,9 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 
   # install desktop file
-  install -Dm644 ${srcdir}/funguloids.desktop \
-    ${pkgdir}/usr/share/applications/funguloids.desktop
+  install -Dm644 "${srcdir}/funguloids.desktop" \
+    "${pkgdir}/usr/share/applications/funguloids.desktop"
 }
