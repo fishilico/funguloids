@@ -53,7 +53,9 @@ AC_SUBST(OIS_LIBS)
 # LUA ----------------------------------------------------
 PKG_CHECK_MODULES(LUA, [lua >= 5.1, lua < 5.2],[],[
 	PKG_CHECK_MODULES(LUA, [lua5.1 >= 5.1],[],[
-		AC_MSG_ERROR(Lua 5.1 not found)
+		PKG_CHECK_MODULES(LUA, [lua51 >= 5.1, lua51 < 5.2],[],[
+			AC_MSG_ERROR(Lua 5.1 not found)
+		])
 	])
 ])
 
