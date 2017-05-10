@@ -50,15 +50,15 @@ public:
 
 	DataStreamPtr open(const String &filename) const;
 	DataStreamPtr open(const String &filename, bool) const { return open(filename); };
-	StringVectorPtr list(bool recursive = true, bool dirs = false);
-	FileInfoListPtr listFileInfo(bool recursive = true, bool dirs = false);
+	StringVectorPtr list(bool recursive = true, bool dirs = false) const;
+	FileInfoListPtr listFileInfo(bool recursive = true, bool dirs = false) const;
 
-	StringVectorPtr find(const String &pattern, bool recursive = true, bool dirs = false);
+	StringVectorPtr find(const String &pattern, bool recursive = true, bool dirs = false) const;
 	FileInfoListPtr findFileInfo(const String &pattern, bool recursive, bool dirs = false) const;
 
-	bool exists(const String &filename);
+	bool exists(const String &filename) const;
 
-	time_t getModifiedTime(const String& filename)
+	time_t getModifiedTime(const String& filename) const
 	{
 		struct stat tagStat;
 		bool ret = (stat(mName.c_str(), &tagStat) == 0);

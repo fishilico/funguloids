@@ -540,7 +540,7 @@ bool ScriptSystem::executeScript(const char *file) {
 	
 	// Load it as a string
 	DataStreamPtr dat = arch->open(String(file));
-	if(dat.isNull()) {
+	if(!dat) {
 		OGRE_EXCEPT(Exception::ERR_FILE_NOT_FOUND, "ScriptSystem error: Could not find " + fil, "ScriptSystem::executeScript()");
 		return false;
 	}

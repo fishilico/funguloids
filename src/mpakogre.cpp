@@ -144,10 +144,10 @@ DataStreamPtr MPakArchive::open(const String &filename) const {
 }
 
 
-StringVectorPtr MPakArchive::list(bool recursive, bool dirs) {
+StringVectorPtr MPakArchive::list(bool recursive, bool dirs) const {
 	StringVectorPtr ret = StringVectorPtr(new StringVector());
 
-	FileInfoList::iterator i, iend;
+	FileInfoList::const_iterator i, iend;
 	iend = mFileList.end();
 	for(i = mFileList.begin(); i != iend; ++i) {
 		ret->push_back(i->filename);
@@ -156,7 +156,7 @@ StringVectorPtr MPakArchive::list(bool recursive, bool dirs) {
 	return ret;
 }
 
-FileInfoListPtr MPakArchive::listFileInfo(bool recursive, bool dirs) {
+FileInfoListPtr MPakArchive::listFileInfo(bool recursive, bool dirs) const {
 	FileInfoList *fil = new FileInfoList();
 	FileInfoList::const_iterator i, iend;
 	iend = mFileList.end();
@@ -167,10 +167,10 @@ FileInfoListPtr MPakArchive::listFileInfo(bool recursive, bool dirs) {
 	return FileInfoListPtr(fil);
 }
 
-StringVectorPtr MPakArchive::find(const String &pattern, bool recursive, bool dirs) {
+StringVectorPtr MPakArchive::find(const String &pattern, bool recursive, bool dirs) const {
 	StringVectorPtr ret = StringVectorPtr(new StringVector());
 
-	FileInfoList::iterator i, iend;
+	FileInfoList::const_iterator i, iend;
 	iend = mFileList.end();
 	for(i = mFileList.begin(); i != iend; ++i) {
 		if(StringUtil::match(i->filename, pattern, true))
@@ -193,7 +193,7 @@ FileInfoListPtr MPakArchive::findFileInfo(const String &pattern, bool recursive,
 	return ret;
 }
 
-bool MPakArchive::exists(const String &filename) {
+bool MPakArchive::exists(const String &filename) const {
 	int i = mPakFile->find_file(filename.c_str());
 	return (i != -1);
 }

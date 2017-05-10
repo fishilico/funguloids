@@ -23,6 +23,7 @@
 //
 //***************************************************************************/
 
+#include <OgreRectangle2D.h>
 #include "bground.h"
 #include "game.h"
 #include "scriptsystem.h"
