@@ -2,6 +2,7 @@
 *.bak
 *.o
 .*.swp
+*.log
 *.mpk
 Makefile
 /archlinux/*.tar.bz2
@@ -14,7 +15,6 @@ Makefile
 /bin/music/playlist.lua
 /bin/plugins.cfg
 /bin/resources.cfg
-/config.log
 /config.status
 /include/config.h
 /include/stamp-h1
