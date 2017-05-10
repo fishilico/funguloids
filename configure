@@ -6510,8 +6510,8 @@ $as_echo "no" >&6; }
 fi
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for OGRE" >&5
-$as_echo_n "checking for OGRE... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for OGRE >= 1.9.0" >&5
+$as_echo_n "checking for OGRE >= 1.9.0... " >&6; }
 
 if test -n "$OGRE_CFLAGS"; then
     pkg_cv_OGRE_CFLAGS="$OGRE_CFLAGS"
@@ -6551,7 +6551,7 @@ fi
 
 
 if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
@@ -6578,7 +6578,7 @@ Alternatively, you may set the environment variables OGRE_CFLAGS
 and OGRE_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details." "$LINENO" 5
 elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
@@ -6604,8 +6604,8 @@ fi
 
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for OGRE_OVERLAY" >&5
-$as_echo_n "checking for OGRE_OVERLAY... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for OGRE-Overlay >= 1.9.0" >&5
+$as_echo_n "checking for OGRE-Overlay >= 1.9.0... " >&6; }
 
 if test -n "$OGRE_OVERLAY_CFLAGS"; then
     pkg_cv_OGRE_OVERLAY_CFLAGS="$OGRE_OVERLAY_CFLAGS"
@@ -6645,7 +6645,7 @@ fi
 
 
 if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
@@ -6672,7 +6672,7 @@ Alternatively, you may set the environment variables OGRE_OVERLAY_CFLAGS
 and OGRE_OVERLAY_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details." "$LINENO" 5
 elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
@@ -6705,8 +6705,8 @@ $as_echo "$as_me: Ogre plugins found in ${ogreplugindir}" >&6;}
 # OIS ----------------------------------------------------
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for OIS" >&5
-$as_echo_n "checking for OIS... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for OIS >= 0.7" >&5
+$as_echo_n "checking for OIS >= 0.7... " >&6; }
 
 if test -n "$OIS_CFLAGS"; then
     pkg_cv_OIS_CFLAGS="$OIS_CFLAGS"
@@ -6746,7 +6746,7 @@ fi
 
 
 if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
@@ -6773,7 +6773,7 @@ Alternatively, you may set the environment variables OIS_CFLAGS
 and OIS_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details." "$LINENO" 5
 elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
@@ -6801,8 +6801,8 @@ fi
 # LUA ----------------------------------------------------
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for LUA" >&5
-$as_echo_n "checking for LUA... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for lua >= 5.1, lua < 5.2" >&5
+$as_echo_n "checking for lua >= 5.1, lua < 5.2... " >&6; }
 
 if test -n "$LUA_CFLAGS"; then
     pkg_cv_LUA_CFLAGS="$LUA_CFLAGS"
@@ -6842,7 +6842,7 @@ fi
 
 
 if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
@@ -6861,8 +6861,8 @@ fi
 
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for LUA" >&5
-$as_echo_n "checking for LUA... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for lua5.1 >= 5.1" >&5
+$as_echo_n "checking for lua5.1 >= 5.1... " >&6; }
 
 if test -n "$LUA_CFLAGS"; then
     pkg_cv_LUA_CFLAGS="$LUA_CFLAGS"
@@ -6902,7 +6902,7 @@ fi
 
 
 if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
@@ -6921,8 +6921,8 @@ fi
 
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for LUA" >&5
-$as_echo_n "checking for LUA... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for lua51 >= 5.1, lua51 < 5.2" >&5
+$as_echo_n "checking for lua51 >= 5.1, lua51 < 5.2... " >&6; }
 
 if test -n "$LUA_CFLAGS"; then
     pkg_cv_LUA_CFLAGS="$LUA_CFLAGS"
@@ -6962,7 +6962,7 @@ fi
 
 
 if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
@@ -6982,7 +6982,7 @@ fi
 			as_fn_error $? "Lua 5.1 not found" "$LINENO" 5
 
 elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 			as_fn_error $? "Lua 5.1 not found" "$LINENO" 5
@@ -6996,13 +6996,13 @@ $as_echo "yes" >&6; }
 fi
 
 elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for LUA" >&5
-$as_echo_n "checking for LUA... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for lua51 >= 5.1, lua51 < 5.2" >&5
+$as_echo_n "checking for lua51 >= 5.1, lua51 < 5.2... " >&6; }
 
 if test -n "$LUA_CFLAGS"; then
     pkg_cv_LUA_CFLAGS="$LUA_CFLAGS"
@@ -7042,7 +7042,7 @@ fi
 
 
 if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
@@ -7062,7 +7062,7 @@ fi
 			as_fn_error $? "Lua 5.1 not found" "$LINENO" 5
 
 elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 			as_fn_error $? "Lua 5.1 not found" "$LINENO" 5
@@ -7084,13 +7084,13 @@ $as_echo "yes" >&6; }
 fi
 
 elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for LUA" >&5
-$as_echo_n "checking for LUA... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for lua5.1 >= 5.1" >&5
+$as_echo_n "checking for lua5.1 >= 5.1... " >&6; }
 
 if test -n "$LUA_CFLAGS"; then
     pkg_cv_LUA_CFLAGS="$LUA_CFLAGS"
@@ -7130,7 +7130,7 @@ fi
 
 
 if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
@@ -7149,8 +7149,8 @@ fi
 
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for LUA" >&5
-$as_echo_n "checking for LUA... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for lua51 >= 5.1, lua51 < 5.2" >&5
+$as_echo_n "checking for lua51 >= 5.1, lua51 < 5.2... " >&6; }
 
 if test -n "$LUA_CFLAGS"; then
     pkg_cv_LUA_CFLAGS="$LUA_CFLAGS"
@@ -7190,7 +7190,7 @@ fi
 
 
 if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
@@ -7210,7 +7210,7 @@ fi
 			as_fn_error $? "Lua 5.1 not found" "$LINENO" 5
 
 elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 			as_fn_error $? "Lua 5.1 not found" "$LINENO" 5
@@ -7224,13 +7224,13 @@ $as_echo "yes" >&6; }
 fi
 
 elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for LUA" >&5
-$as_echo_n "checking for LUA... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for lua51 >= 5.1, lua51 < 5.2" >&5
+$as_echo_n "checking for lua51 >= 5.1, lua51 < 5.2... " >&6; }
 
 if test -n "$LUA_CFLAGS"; then
     pkg_cv_LUA_CFLAGS="$LUA_CFLAGS"
@@ -7270,7 +7270,7 @@ fi
 
 
 if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
@@ -7290,7 +7290,7 @@ fi
 			as_fn_error $? "Lua 5.1 not found" "$LINENO" 5
 
 elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
 
 			as_fn_error $? "Lua 5.1 not found" "$LINENO" 5
