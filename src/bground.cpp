@@ -72,7 +72,7 @@ void createBackground(SceneManager *sceneMgr) {
 	Real bgx = rand()%100 < 50 ? -1.0f : 1.0f;
 	Real bgy = rand()%100 < 50 ? -1.0f : 1.0f;
 	bgRect->setCorners(-bgx, bgy, bgx, -bgy);
-	bgRect->setMaterial("Background");
+	bgRect->setMaterial(MaterialManager::getSingleton().getByName("Background"));
 
 	// Render the background before everything else
 	bgRect->setRenderQueueGroup(RENDER_QUEUE_SKIES_EARLY);

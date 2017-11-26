@@ -66,6 +66,7 @@ public:
 protected:
 	Root *mRoot;
 	Camera *mCamera;
+	SceneNode* mCamNode;
 	SceneManager *mSceneMgr;
 	RenderWindow *mWindow;
 	OgreAppFrameListener *mFrameListener;
@@ -93,10 +94,12 @@ protected:
 
 	// Create the camera
 	virtual void createCamera() {
+		mCamNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 		mCamera = mSceneMgr->createCamera("PlayerCam");
-		mCamera->setPosition(Vector3(0,0,500));
-		mCamera->lookAt(Vector3(0,0,-300));
 		mCamera->setNearClipDistance(5);
+		mCamNode->attachObject(mCamera);
+		mCamNode->setPosition(Vector3(0,0,500));
+		mCamera->lookAt(Vector3(0,0,-300));
 	}
 
     // Create the viewport

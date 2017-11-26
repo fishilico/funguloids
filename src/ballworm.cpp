@@ -85,7 +85,6 @@ void BallWorm::move(Real delta) {
 	if(mPlayer->isDead() || mPlayer->isOnBase() || mPlayer->isGoingToSpecialLevel() || gameApp->getState() != STATE_GAME) return;
 
 	Vector3 ppos = mPlayer->getPosition();
-	Vector3 npos = mNode->getPosition();
 
 	for(int f=0; f<numBalls; f++) {
 		if(mBallDestroyed[f]) continue;

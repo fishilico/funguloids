@@ -518,7 +518,7 @@ size_t _vorbisRead( void *ptr, size_t byteSize, size_t sizeToRead, void *memfile
 //----------------------------------------------------------------------------
 int _vorbisSeek(void *memfile, ogg_int64_t offset, int seekTo )
 {
-	size_t spaceToEOF;             // How much more we can read till we hit the EOF marker
+	ogg_int64_t spaceToEOF;             // How much more we can read till we hit the EOF marker
 	ogg_int64_t actualOffset;   // How much we can actually offset it by
 	OggMemoryFile* vorbisData;             // The data we passed in (for the typecast)
 
@@ -539,7 +539,7 @@ int _vorbisSeek(void *memfile, ogg_int64_t offset, int seekTo )
 	case SEEK_CUR:
 		// Seek from where we are
 		// Make sure we dont go past the end
-		spaceToEOF = vorbisData->dataSize - vorbisData->dataRead;
+		spaceToEOF = (ogg_int64_t)(vorbisData->dataSize - vorbisData->dataRead);
 		if (offset < spaceToEOF)
 				actualOffset = (offset);
 		else

@@ -348,12 +348,14 @@ void GameApplication::setEndGame() {
 
 
 void GameApplication::createCamera() {
+	mCamNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	mCamera = mSceneMgr->createCamera("MainCam");
-	mCamera->setPosition(Vector3(0,0,115));
-	mCamera->lookAt(Vector3(0,0,0));
 	mCamera->setNearClipDistance(10);
+	mCamNode->attachObject(mCamera);
+	mCamNode->setPosition(Vector3(0,0,115));
+	mCamera->lookAt(Vector3(0,0,0));
 
-	mGameCamera = new GameCamera(mCamera);
+	mGameCamera = new GameCamera(mCamera, mCamNode);
 }
 
 

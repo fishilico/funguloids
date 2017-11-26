@@ -29,6 +29,7 @@
 class GameCamera {
 private:
 	Camera *mCamera;			// Pointer to the Ogre camera
+	SceneNode *mCamNode;			// Scene node for the camera
 	SceneNode *mTarget;			// Target node
 	Real mCamZ;					// Camera Z coordinate (doesn't change)
 	Real mCamZoom;				// Zoom target
@@ -37,14 +38,15 @@ private:
 	Quaternion mOriginalOr;		// Original orientation
 
 public:
-	GameCamera(Camera *cam) {
+	GameCamera(Camera *cam, SceneNode* camNode) {
 		mCamera = cam;
+		mCamNode = camNode;
 		mTarget = NULL;
-		mCamZ = cam->getPosition().z;
+		mCamZ = camNode->getPosition().z;
 		mZoomIn = false;
 		mRotating = 0;
 		mCamZoom = 0;
-		mOriginalOr = cam->getOrientation();
+		mOriginalOr = camNode->getOrientation();
 	}
 
 	void followTarget(Real delta, Real speed);
@@ -52,7 +54,7 @@ public:
 		mTarget = node;
 		Vector3 pos = mTarget->getPosition();
 		pos.z = mCamZ;
-		mCamera->setPosition(pos);
+		mCamNode->setPosition(pos);
 	}
 
 	Real getRotation() const { return mRotating; }
@@ -67,7 +69,7 @@ public:
 
 	void resetRotation() {
 		mRotating = 0;
-		mCamera->setOrientation(mOriginalOr);
+		mCamNode->setOrientation(mOriginalOr);
 	}
 
 	void setZoomIn(Real zpos) {
@@ -80,13 +82,14 @@ public:
 
 	void setZoomOut(Real zpos) {
 		mCamZoom = mCamZ;
-		Vector3 pos = mCamera->getPosition();
+		Vector3 pos = mCamNode->getPosition();
 		pos.z = zpos;
-		mCamera->setPosition(pos);
+		mCamNode->setPosition(pos);
 		mZoomIn = false;
 	}
 
 	Camera *getCamera() const { return mCamera; }
+	SceneNode *getCamNode() const { return mCamNode; }
 };
 
 #endif

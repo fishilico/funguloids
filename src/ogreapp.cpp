@@ -87,16 +87,15 @@ bool OgreApplication::setup() {
 	cf.load(String(OGRE_PLUGINS_AND_RESOURCES_PATH) + "resources.cfg");
 
 	// Parse the resources.cfg
-	ConfigFile::SectionIterator seci = cf.getSectionIterator();
-
-	String secName, typeName, archName;
-	while(seci.hasMoreElements()) {
-		secName = seci.peekNextKey();
-		ConfigFile::SettingsMultiMap *settings = seci.getNext();
-		ConfigFile::SettingsMultiMap::iterator i;
-		for(i = settings->begin(); i != settings->end(); ++i) {
-			typeName = i->first;
-			archName = i->second;
+	const ConfigFile::SettingsBySection_ &sections = cf.getSettingsBySection();
+	ConfigFile::SettingsBySection_::const_iterator seci;
+	for (seci = sections.begin(); seci != sections.end(); ++seci) {
+		String secName = seci->first;
+		const ConfigFile::SettingsMultiMap &settings = seci->second;
+		ConfigFile::SettingsMultiMap::const_iterator i;
+		for(i = settings.begin(); i != settings.end(); ++i) {
+			String typeName = i->first;
+			String archName = i->second;
 			ResourceGroupManager::getSingleton().addResourceLocation(archName, typeName, secName);
 		}
 	}
@@ -104,7 +103,7 @@ bool OgreApplication::setup() {
 
 	// Get the configuration
 	if(!mRoot->restoreConfig())
-		if(!mRoot->showConfigDialog())
+		if(!mRoot->showConfigDialog(NULL))
 			return false;
 
 	// Initialise the system

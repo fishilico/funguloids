@@ -21,7 +21,7 @@
 //
 //  3. This notice may not be removed or altered from any source distribution.
 //
-//***************************************************************************/
+// **************************************************************************/
 
 // NOTICE: This file is written by Piet (thanks! :), <funguloids@superpiet.de>,
 // for the Linux version of Funguloids.
@@ -223,7 +223,6 @@ void MP3Stream::unload( )
 //----------------------------------------------------------------------------
 void MP3Stream::rewindFile( )
 {
-	int result;
 	if ( mFileLoaded )
 	{
 		// memory file

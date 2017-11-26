@@ -401,7 +401,7 @@ void Player::move(Real delta, InputHandler *input) {
 			}
 
 			// Cancel the rotation
-			Quaternion q = mCamera->getCamera()->getOrientation();
+			Quaternion q = mCamera->getCamNode()->getOrientation();
 			Degree rot; Vector3 axis;
 			q.ToAngleAxis(rot, axis);
 			mNode->rotate(Vector3::UNIT_Z, Radian(rot));
@@ -671,7 +671,7 @@ void Player::afterCollision(MovingObject *other) {
 
 	// Wrap the camera
 	Vector3 pos = getPosition();
-	Vector3 cPos = mCamera->getCamera()->getPosition();
+	Vector3 cPos = mCamera->getCamNode()->getPosition();
 	Real dx = pos.x - cPos.x;
 	Real dy = pos.y - cPos.y;
 
@@ -684,7 +684,7 @@ void Player::afterCollision(MovingObject *other) {
 	else if(dy < -playfieldHeight)
 		cPos.y -= playfieldHeight*2;
 
-	mCamera->getCamera()->setPosition(cPos);
+	mCamera->getCamNode()->setPosition(cPos);
 }
 
 
@@ -787,7 +787,7 @@ void Player::respawn() {
 void Player::moveTo(const Vector3 &pos) {
 	setPosition(pos);
 	mFlareNode->setPosition(pos);
-	mCamera->getCamera()->setPosition(pos);
+	mCamera->getCamNode()->setPosition(pos);
 	mCamera->setZoomOut(50);
 	mChangeLevel = false;
 
@@ -807,30 +807,30 @@ void Player::wrapAround() {
 	bool wrapped = false;
 	if(pos.x < -playfieldWidth) {
 		pos.x += playfieldWidth*2;
-		Vector3 camPos = mCamera->getCamera()->getPosition();
+		Vector3 camPos = mCamera->getCamNode()->getPosition();
 		camPos.x += playfieldWidth*2;
-		mCamera->getCamera()->setPosition(camPos);
+		mCamera->getCamNode()->setPosition(camPos);
 		wrapped = true;
 	}
 	else if(pos.x > playfieldWidth) {
 		pos.x -= playfieldWidth*2;
-		Vector3 camPos = mCamera->getCamera()->getPosition();
+		Vector3 camPos = mCamera->getCamNode()->getPosition();
 		camPos.x -= playfieldWidth*2;
-		mCamera->getCamera()->setPosition(camPos);
+		mCamera->getCamNode()->setPosition(camPos);
 		wrapped = true;
 	}
 	if(pos.y < -playfieldHeight) {
 		pos.y += playfieldHeight*2;
-		Vector3 camPos = mCamera->getCamera()->getPosition();
+		Vector3 camPos = mCamera->getCamNode()->getPosition();
 		camPos.y += playfieldHeight*2;
-		mCamera->getCamera()->setPosition(camPos);
+		mCamera->getCamNode()->setPosition(camPos);
 		wrapped = true;
 	}
 	else if(pos.y > playfieldHeight) {
 		pos.y -= playfieldHeight*2;
-		Vector3 camPos = mCamera->getCamera()->getPosition();
+		Vector3 camPos = mCamera->getCamNode()->getPosition();
 		camPos.y -= playfieldHeight*2;
-		mCamera->getCamera()->setPosition(camPos);
+		mCamera->getCamNode()->setPosition(camPos);
 		wrapped = true;
 	}
 	setPosition(pos);

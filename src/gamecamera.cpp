@@ -33,7 +33,7 @@ const Real cameraAreaHeight = playfieldHeight - 48.0f;
 
 void GameCamera::followTarget(Real delta, Real speed) {
 	Vector3 targetPos = mTarget->getPosition();
-	Vector3 camPos = mCamera->getPosition();
+	Vector3 camPos = mCamNode->getPosition();
 	camPos.z = targetPos.z;
 	Vector3 dir = targetPos - camPos;
 
@@ -41,7 +41,7 @@ void GameCamera::followTarget(Real delta, Real speed) {
 	// Move towards the target
 	Vector3 mov = dir * delta * speed;
 	mov.z = 0;
-	Vector3 pos = mCamera->getPosition() + mov;
+	Vector3 pos = mCamNode->getPosition() + mov;
 
 	// Rotation
 	if(mRotating > 0) {
@@ -62,5 +62,5 @@ void GameCamera::followTarget(Real delta, Real speed) {
 		}
 	}
 
-	mCamera->setPosition(pos);
+	mCamNode->setPosition(pos);
 }

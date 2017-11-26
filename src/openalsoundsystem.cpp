@@ -415,7 +415,7 @@ void OpenALSoundSystem::loadSound(const String &fileName, Real freqVar, bool loo
 
 	// open
 	soundResource->streamPtr = soundResource->fileArchive->open(soundResource->fileName);
-	if(soundResource->streamPtr.isNull()) {
+	if(!soundResource->streamPtr) {
 		LogManager::getSingleton().logMessage("Could not open " + soundFile + "!");
 		return;
 	}
