@@ -83,7 +83,7 @@ protected:
 
 	// Create the scene manager
 	virtual void createSceneManager() {
-		mSceneMgr = mRoot->createSceneManager(ST_GENERIC);
+		mSceneMgr = mRoot->createSceneManager();
 	}
 
 	// Create the frame listener
