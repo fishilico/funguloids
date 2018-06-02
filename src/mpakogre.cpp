@@ -23,7 +23,6 @@
 //
 //***************************************************************************/
 
-#include <OgreStableHeaders.h>
 #include <OgreLogManager.h>
 #include <OgreException.h>
 #include <OgreStringVector.h>
