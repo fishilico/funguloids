@@ -4,6 +4,7 @@
 PluginFolder=%%ogreplugindir%%
 
 # Define plugins
+Plugin=Codec_FreeImage
 Plugin=RenderSystem_GL
 Plugin=Plugin_ParticleFX
 Plugin=Plugin_OctreeSceneManager
