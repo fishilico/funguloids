@@ -3,7 +3,7 @@ overlay SpecialLevelTransition
 {
 	zorder 600
 
-	container Panel(Effect)
+	overlay_element Effect Panel
 	{
 		metrics_mode relative
 		left 0.0
@@ -20,7 +20,7 @@ overlay BallWormGlow
 {
 	zorder 601
 
-	container Panel(GlowEffect)
+	overlay_element GlowEffect Panel
 	{
 		metrics_mode relative
 		left 0.0

@@ -3,7 +3,7 @@ overlay Core/DebugOverlay
 {
 	zorder 500
 	// Stats block
-	container BorderPanel(Core/StatPanel)
+	overlay_element Core/StatPanel BorderPanel
 	{
 		metrics_mode pixels
 		vert_align bottom
@@ -23,7 +23,7 @@ overlay Core/DebugOverlay
         	border_bottom_uv      0.0039 0.0039 0.9961 0.0000
 	    	border_bottomright_uv 0.9961 0.0039 1.0000 0.0000
 
-		container Panel(Core/BreakPanel)
+		overlay_element Core/BreakPanel Panel
 		{
 			metrics_mode pixels
 			left 5
@@ -33,7 +33,7 @@ overlay Core/DebugOverlay
 			material Core/StatsBreak
 		}
 
-		element TextArea(Core/CurrFps)
+		overlay_element Core/CurrFps TextArea
 		{
 			metrics_mode pixels
 			left 5
@@ -42,11 +42,11 @@ overlay Core/DebugOverlay
 			height 30
 			font_name VeraBold
 			char_height 19
-			caption Current FPS:
+			caption "Current FPS:"
 			colour_top 0.7 1 1
 			colour_bottom 0.7 1 1
 		}
-		element TextArea(Core/AverageFps)
+		overlay_element Core/AverageFps TextArea
 		{
 			metrics_mode pixels
 			left 5
@@ -55,11 +55,11 @@ overlay Core/DebugOverlay
 			height 30
 			font_name VeraBold
 			char_height 16
-			caption AVERAGE FPS:
+			caption "AVERAGE FPS:"
 			colour_top 0.5 0.7 0.7
 			colour_bottom 0.3 0.5 0.5
 		}
-		element TextArea(Core/WorstFps)
+		overlay_element Core/WorstFps TextArea
 		{
 			metrics_mode pixels
 			left 5
@@ -68,11 +68,11 @@ overlay Core/DebugOverlay
 			height 30
 			font_name VeraBold
 			char_height 16
-			caption WORST FPS:
+			caption "WORST FPS:"
 			colour_top 0.5 0.7 0.7
 			colour_bottom 0.3 0.5 0.5
 		}
-		element TextArea(Core/BestFps)
+		overlay_element Core/BestFps TextArea
 		{
 			metrics_mode pixels
 			left 5
@@ -81,11 +81,11 @@ overlay Core/DebugOverlay
 			height 30
 			font_name VeraBold
 			char_height 16
-			caption BEST FPS:
+			caption "BEST FPS:"
 			colour_top 0.5 0.7 0.7
 			colour_bottom 0.3 0.5 0.5
 		}
-		element TextArea(Core/NumTris)
+		overlay_element Core/NumTris TextArea
 		{
 			metrics_mode pixels
 			left 5
@@ -94,11 +94,11 @@ overlay Core/DebugOverlay
 			height 30
 			font_name VeraBold
 			char_height 16
-			caption Triangle Count:
+			caption "Triangle Count:"
 			colour_top 0.5 0.7 0.7
 			colour_bottom 0.3 0.5 0.5
 		}
-		element TextArea(Core/DebugText)
+		overlay_element Core/DebugText TextArea
 		{
 			metrics_mode pixels
 			left 230

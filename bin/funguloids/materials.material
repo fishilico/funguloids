@@ -516,7 +516,7 @@ material AsteroidMat
 			// Normalisation cube map
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 1
 				tex_address_mode clamp
 			}
@@ -599,7 +599,7 @@ material AsteroidMat
 			// Normalisation cube map, with dot product on bump map
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 1
 				tex_address_mode clamp
 				colour_op_ex dotproduct src_texture src_current
@@ -709,7 +709,7 @@ material Level2AsteroidMat
 			// Normalisation cube map
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 1
 				tex_address_mode clamp
 			}
@@ -792,7 +792,7 @@ material Level2AsteroidMat
 			// Normalisation cube map, with dot product on bump map
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 1
 				tex_address_mode clamp
 				colour_op_ex dotproduct src_texture src_current
@@ -903,7 +903,7 @@ material Level3AsteroidMat
 			// Normalisation cube map
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 1
 				tex_address_mode clamp
 			}
@@ -986,7 +986,7 @@ material Level3AsteroidMat
 			// Normalisation cube map, with dot product on bump map
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 1
 				tex_address_mode clamp
 				colour_op_ex dotproduct src_texture src_current
@@ -1096,7 +1096,7 @@ material MushroomMat1
 			// Normalisation cube map
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 1
 				tex_address_mode clamp
 			}
@@ -1180,7 +1180,7 @@ material MushroomMat1
 			// Normalisation cube map, with dot product on bump map
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 1
 				tex_address_mode clamp
 				colour_op_ex dotproduct src_texture src_current
@@ -1322,14 +1322,14 @@ material BaseMat1
 			// Normalisation cube map
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 1
 				tex_address_mode clamp
 			}
 			// Normalisation cube map #2
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 2
 				tex_address_mode clamp
 			}
@@ -1410,7 +1410,7 @@ material BaseMat1
 			// Normalisation cube map, with dot product on bump map
 			texture_unit
 			{
-				cubic_texture nm.png combinedUVW
+				texture nm.png cubic 
 				tex_coord_set 1
 				tex_address_mode clamp
 				colour_op_ex dotproduct src_texture src_current

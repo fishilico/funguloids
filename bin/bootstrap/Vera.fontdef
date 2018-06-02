@@ -1,4 +1,4 @@
-VeraBold
+font VeraBold
 {
 	type 		truetype
 	source      VeraBd.ttf
@@ -6,7 +6,7 @@ VeraBold
 	resolution 	55
 }
 
-Vera
+font Vera
 {
 	type 		truetype
 	source      Vera.ttf
@@ -14,7 +14,7 @@ Vera
 	resolution 	55
 }
 
-VeraItalic
+font VeraItalic
 {
 	type 		truetype
 	source      VeraIt.ttf
@@ -22,7 +22,7 @@ VeraItalic
 	resolution 	55
 }
 
-VeraBoldItalic
+font VeraBoldItalic
 {
 	type 		truetype
 	source      VeraBI.ttf

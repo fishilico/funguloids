@@ -4,7 +4,7 @@ overlay DisplayOverlay
 	zorder 500
 
 	// Score and mushrooms Panel
-	container BorderPanel(ScorePanel)
+	overlay_element ScorePanel BorderPanel
 	{
 		metrics_mode relative
 		left 0.405
@@ -23,47 +23,47 @@ overlay DisplayOverlay
         	border_bottom_uv      0.1172 0.8828 0.8828 1.0000
 	    	border_bottomright_uv 0.8828 0.8828 1.0000 1.0000
 
-		element TextArea(Score)
+		overlay_element Score TextArea
 		{
 			metrics_mode relative
 			left 0.01
 			top 0.01
 			font_name VeraBold
 			char_height 0.062
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.7
 		}
 
-		element TextArea(Mushrooms1)
+		overlay_element Mushrooms1 TextArea
 		{
 			left 0.1225
 			top 0.057
 			font_name Vera
 			char_height 0.048
-			caption 00
+			caption "00"
 			colour_top 1 0.7 0.6 0.7
 			colour_bottom 1 0.7 0.6 0.0
 			//colour_bottom 0.5 0.4 0.3 0.5
 		}
-		element TextArea(Mushrooms2)
+		overlay_element Mushrooms2 TextArea
 		{
 			left 0.0665
 			top 0.057
 			font_name Vera
 			char_height 0.048
-			caption 00
+			caption "00"
 			colour_top 0.7 1 0.6 0.7
 			colour_bottom 0.7 1 0.6 0.0
 			//colour_bottom 0.4 0.5 0.3 0.5
 		}
-		element TextArea(Mushrooms3)
+		overlay_element Mushrooms3 TextArea
 		{
 			left 0.01
 			top 0.057
 			font_name Vera
 			char_height 0.048
-			caption 00
+			caption "00"
 			colour_top 0.6 0.7 1 0.7
 			colour_bottom 0.6 0.7 1 0.0
 			//colour_bottom 0.3 0.4 0.5 0.5
@@ -71,7 +71,7 @@ overlay DisplayOverlay
 	}
 
 	// Level number and play time
-	container BorderPanel(LevelTimePanel)
+	overlay_element LevelTimePanel BorderPanel
 	{
 		metrics_mode relative
 		left 0.37875
@@ -90,35 +90,35 @@ overlay DisplayOverlay
         	border_bottom_uv      0.1172 0.8828 0.8828 1.0000
 	    	border_bottomright_uv 0.8828 0.8828 1.0000 1.0000
 
-		element TextArea(LevelText)
+		overlay_element LevelText TextArea
 		{
 			left 0.01
 			top 0.01
 			font_name VeraBoldItalic
 			char_height 0.048
-			caption Level
+			caption "Level"
 			colour_top 0.8 0.8 0.8
 			colour_bottom 0.2 0.2 0.2 0.0
 		}
 
-		element TextArea(LevelNumber)
+		overlay_element LevelNumber TextArea
 		{
 			left 0.1
 			top 0.01
 			font_name VeraBoldItalic
 			char_height 0.048
-			caption 00
+			caption "00"
 			colour_top 1 0.4 0.3
 			colour_bottom 1 0 0 0.0
 		}
 
-		element TextArea(PlayTime)
+		overlay_element PlayTime TextArea
 		{
 			left 0.145
 			top 0.0135
 			font_name VeraItalic
 			char_height 0.04
-			caption 00:00
+			caption "00:00"
 			colour_top 0.7 0.5 0.5
 			colour_bottom 0.7 0.3 0.3 0.0
 		}

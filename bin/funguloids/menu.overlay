@@ -2,7 +2,7 @@
 overlay ConfirmQuit
 {
 	zorder 510
-	container Panel(ConfirmPanel)
+	overlay_element ConfirmPanel Panel
 	{
 		left 0
 		top 0
@@ -10,7 +10,7 @@ overlay ConfirmQuit
 		height 1
 		material ConfirmQuitBlack
 
-		element TextArea(ConfirmText)
+		overlay_element ConfirmText TextArea
 		{
 			metrics_mode relative
 			left 0.5
@@ -18,10 +18,10 @@ overlay ConfirmQuit
 			alignment center
 			font_name MenuFont
 			char_height 0.070
-			caption Are you sure you want to exit the game?
+			caption "Are you sure you want to exit the game?"
 			colour 1 1 1 1
 		}
-		element TextArea(ConfirmText2)
+		overlay_element ConfirmText2 TextArea
 		{
 			metrics_mode relative
 			left 0.5
@@ -29,7 +29,7 @@ overlay ConfirmQuit
 			alignment center
 			font_name MenuFont
 			char_height 0.050
-			caption Press ESC to exit, or press RETURN to resume game.
+			caption "Press ESC to exit, or press RETURN to resume game."
 			colour 1 1 1 0.75
 		}
 	}
@@ -42,7 +42,7 @@ overlay Logo
 	zorder 520
 
 	// Logo
-	container Panel(LogoPanel)
+	overlay_element LogoPanel Panel
 	{
 		left 0.05
 		top 0.0
@@ -59,7 +59,7 @@ overlay Version
 	zorder 510
 
 	// Logo
-	container Panel(VersionPanel)
+	overlay_element VersionPanel Panel
 	{
 		left 0
 		top 0
@@ -67,7 +67,7 @@ overlay Version
 		height 1
 		transparent true
 
-		element TextArea(VersionText)
+		overlay_element VersionText TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -76,7 +76,7 @@ overlay Version
 			font_name VeraBold
 			char_height 0.03
 			colour 1 1 1 0.25
-			caption v1.05
+			caption "v1.05"
 		}
 	}
 }
@@ -87,7 +87,7 @@ overlay MenuScroller
 {
 	zorder 530
 
-	container Panel(ScrollerPanel)
+	overlay_element ScrollerPanel Panel
 	{
 		left 0
 		top 0.935
@@ -95,7 +95,7 @@ overlay MenuScroller
 		height 0.1
 		transparent true
 
-		element TextArea(ScrollerText)
+		overlay_element ScrollerText TextArea
 		{
 			metrics_mode relative
 			left 1.2
@@ -116,7 +116,7 @@ overlay MainMenu
 	zorder 510
 
 	// Main panel
-	container BorderPanel(MainPanel)
+	overlay_element MainPanel BorderPanel
 	{
 		metrics_mode relative
 		left 0.2
@@ -135,50 +135,50 @@ overlay MainMenu
 			border_bottom_uv      0.1172 0.8828 0.8828 1.0000
 			border_bottomright_uv 0.8828 0.8828 1.0000 1.0000
 
-		element TextArea(MainMenu1)
+		overlay_element MainMenu1 TextArea
 		{
 			metrics_mode relative
 			left 0.1
 			top 0.1
 			font_name MenuFont
 			char_height 0.1
-			caption Start Game
+			caption "Start Game"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
 
-		element TextArea(MainMenu2)
+		overlay_element MainMenu2 TextArea
 		{
 			metrics_mode relative
 			left 0.1
 			top 0.2
 			font_name MenuFont
 			char_height 0.1
-			caption Game Options
+			caption "Game Options"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
 
-		element TextArea(MainMenu3)
+		overlay_element MainMenu3 TextArea
 		{
 			metrics_mode relative
 			left 0.1
 			top 0.3
 			font_name MenuFont
 			char_height 0.1
-			caption High Scores
+			caption "High Scores"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.7
 		}
 
-		element TextArea(MainMenu4)
+		overlay_element MainMenu4 TextArea
 		{
 			metrics_mode relative
 			left 0.1
 			top 0.4
 			font_name MenuFont
 			char_height 0.1
-			caption Exit
+			caption "Exit"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
@@ -193,7 +193,7 @@ overlay GameOptions
 	zorder 510
 
 	// Main panel
-	container BorderPanel(MainPanelOptions)
+	overlay_element MainPanelOptions BorderPanel
 	{
 		metrics_mode relative
 		left 0.15
@@ -212,120 +212,120 @@ overlay GameOptions
         	border_bottom_uv      0.1172 0.8828 0.8828 1.0000
 	    	border_bottomright_uv 0.8828 0.8828 1.0000 1.0000
 
-		element TextArea(GameOptionsGraphics)
+		overlay_element GameOptionsGraphics TextArea
 		{
 			metrics_mode relative
 			left 0.025
 			top 0.01
 			font_name MenuFont
 			char_height 0.09
-			caption Visuals:.
+			caption "Visuals:."
 			colour  0.7 0.3 0.3
 		}
 
-		element TextArea(GameOptions1)
+		overlay_element GameOptions1 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.1
 			font_name MenuFont
 			char_height 0.07
-			caption Bloom Effect: ON
+			caption "Bloom Effect: ON"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
 
-		element TextArea(GameOptions2)
+		overlay_element GameOptions2 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.17
 			font_name MenuFont
 			char_height 0.07
-			caption Shadows: ON
+			caption "Shadows: ON"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
 
-		element TextArea(GameOptions3)
+		overlay_element GameOptions3 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.24
 			font_name MenuFont
 			char_height 0.07
-			caption Dynamic Lights: ON
+			caption "Dynamic Lights: ON"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.7
 		}
 
-		element TextArea(GameOptions4)
+		overlay_element GameOptions4 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.31
 			font_name MenuFont
 			char_height 0.07
-			caption Dynamic Light Shadows: ON
+			caption "Dynamic Light Shadows: ON"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
 
-		element TextArea(GameOptionsAudio)
+		overlay_element GameOptionsAudio TextArea
 		{
 			metrics_mode relative
 			left 0.025
 			top 0.4
 			font_name MenuFont
 			char_height 0.09
-			caption Audio:.
+			caption "Audio:."
 			colour  0.7 0.3 0.3
 		}
 
-		element TextArea(GameOptions5)
+		overlay_element GameOptions5 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.49
 			font_name MenuFont
 			char_height 0.07
-			caption Sound Volume: 100%
+			caption "Sound Volume: 100%"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
 
-		element TextArea(GameOptions6)
+		overlay_element GameOptions6 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.56
 			font_name MenuFont
 			char_height 0.07
-			caption Music Volume: 100%
+			caption "Music Volume: 100%"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
 
-		element TextArea(GameOptions7)
+		overlay_element GameOptions7 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.69
 			font_name MenuFont
 			char_height 0.08
-			caption Accept changes
+			caption "Accept changes"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
 
-		element TextArea(GameOptions8)
+		overlay_element GameOptions8 TextArea
 		{
 			metrics_mode relative
 			left 0.5
 			top 0.69
 			font_name MenuFont
 			char_height 0.08
-			caption Cancel
+			caption "Cancel"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
@@ -339,7 +339,7 @@ overlay HighScores
 	zorder 510
 
 	// Main panel
-	container BorderPanel(MainPanelHiscores)
+	overlay_element MainPanelHiscores BorderPanel
 	{
 		metrics_mode relative
 		left 0.2
@@ -358,39 +358,39 @@ overlay HighScores
         	border_bottom_uv      0.1172 0.8828 0.8828 1.0000
 	    	border_bottomright_uv 0.8828 0.8828 1.0000 1.0000
 
-		element TextArea(HiscoresTitle)
+		overlay_element HiscoresTitle TextArea
 		{
 			metrics_mode relative
 			left 0.025
 			top 0.06
 			font_name MenuFont
 			char_height 0.09
-			caption High Scores:.
+			caption "High Scores:."
 			colour  0.7 0.3 0.3
 		}
 
-		element TextArea(Number1)
+		overlay_element Number1 TextArea
 		{
 			metrics_mode relative
 			left 0.0175
 			top 0.165
 			font_name Vera
 			char_height 0.03
-			caption 01.
+			caption "01."
 			colour 0.5 0.5 0.5 0.5
 		}
-		element TextArea(Name1)
+		overlay_element Name1 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.15
 			font_name MenuFont
 			char_height 0.05
-			caption ---
+			caption "---"
 			colour_bottom 1 0.8 0.7
 			colour_top 0.8 0.4 0.3
 		}
-		element TextArea(Score1)
+		overlay_element Score1 TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -398,33 +398,33 @@ overlay HighScores
 			top 0.15
 			font_name MenuFont
 			char_height 0.05
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.8 0.6 0.4
 		}
 
-		element TextArea(Number2)
+		overlay_element Number2 TextArea
 		{
 			metrics_mode relative
 			left 0.0175
 			top 0.215
 			font_name Vera
 			char_height 0.03
-			caption 02.
+			caption "02."
 			colour 0.5 0.5 0.5 0.5
 		}
-		element TextArea(Name2)
+		overlay_element Name2 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.20
 			font_name MenuFont
 			char_height 0.05
-			caption ---
+			caption "---"
 			colour_bottom 1 0.8 0.7
 			colour_top 0.8 0.4 0.3
 		}
-		element TextArea(Score2)
+		overlay_element Score2 TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -432,33 +432,33 @@ overlay HighScores
 			top 0.20
 			font_name MenuFont
 			char_height 0.05
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.8 0.6 0.4
 		}
 
-		element TextArea(Number3)
+		overlay_element Number3 TextArea
 		{
 			metrics_mode relative
 			left 0.0175
 			top 0.265
 			font_name Vera
 			char_height 0.03
-			caption 03.
+			caption "03."
 			colour 0.5 0.5 0.5 0.5
 		}
-		element TextArea(Name3)
+		overlay_element Name3 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.25
 			font_name MenuFont
 			char_height 0.05
-			caption ---
+			caption "---"
 			colour_bottom 1 0.8 0.7
 			colour_top 0.8 0.4 0.3
 		}
-		element TextArea(Score3)
+		overlay_element Score3 TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -466,33 +466,33 @@ overlay HighScores
 			top 0.25
 			font_name MenuFont
 			char_height 0.05
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.8 0.6 0.4
 		}
 
-		element TextArea(Number4)
+		overlay_element Number4 TextArea
 		{
 			metrics_mode relative
 			left 0.0175
 			top 0.315
 			font_name Vera
 			char_height 0.03
-			caption 04.
+			caption "04."
 			colour 0.5 0.5 0.5 0.5
 		}
-		element TextArea(Name4)
+		overlay_element Name4 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.30
 			font_name MenuFont
 			char_height 0.05
-			caption ---
+			caption "---"
 			colour_bottom 1 0.8 0.7
 			colour_top 0.8 0.4 0.3
 		}
-		element TextArea(Score4)
+		overlay_element Score4 TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -500,33 +500,33 @@ overlay HighScores
 			top 0.30
 			font_name MenuFont
 			char_height 0.05
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.8 0.6 0.4
 		}
 
-		element TextArea(Number5)
+		overlay_element Number5 TextArea
 		{
 			metrics_mode relative
 			left 0.0175
 			top 0.365
 			font_name Vera
 			char_height 0.03
-			caption 05.
+			caption "05."
 			colour 0.5 0.5 0.5 0.5
 		}
-		element TextArea(Name5)
+		overlay_element Name5 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.35
 			font_name MenuFont
 			char_height 0.05
-			caption ---
+			caption "---"
 			colour_bottom 1 0.8 0.7
 			colour_top 0.8 0.4 0.3
 		}
-		element TextArea(Score5)
+		overlay_element Score5 TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -534,33 +534,33 @@ overlay HighScores
 			top 0.35
 			font_name MenuFont
 			char_height 0.05
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.8 0.6 0.4
 		}
 
-		element TextArea(Number6)
+		overlay_element Number6 TextArea
 		{
 			metrics_mode relative
 			left 0.0175
 			top 0.415
 			font_name Vera
 			char_height 0.03
-			caption 06.
+			caption "06."
 			colour 0.5 0.5 0.5 0.5
 		}
-		element TextArea(Name6)
+		overlay_element Name6 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.40
 			font_name MenuFont
 			char_height 0.05
-			caption ---
+			caption "---"
 			colour_bottom 1 0.8 0.7
 			colour_top 0.8 0.4 0.3
 		}
-		element TextArea(Score6)
+		overlay_element Score6 TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -568,33 +568,33 @@ overlay HighScores
 			top 0.40
 			font_name MenuFont
 			char_height 0.05
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.8 0.6 0.4
 		}
 
-		element TextArea(Number7)
+		overlay_element Number7 TextArea
 		{
 			metrics_mode relative
 			left 0.0175
 			top 0.465
 			font_name Vera
 			char_height 0.03
-			caption 07.
+			caption "07."
 			colour 0.5 0.5 0.5 0.5
 		}
-		element TextArea(Name7)
+		overlay_element Name7 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.45
 			font_name MenuFont
 			char_height 0.05
-			caption ---
+			caption "---"
 			colour_bottom 1 0.8 0.7
 			colour_top 0.8 0.4 0.3
 		}
-		element TextArea(Score7)
+		overlay_element Score7 TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -602,33 +602,33 @@ overlay HighScores
 			top 0.45
 			font_name MenuFont
 			char_height 0.05
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.8 0.6 0.4
 		}
 
-		element TextArea(Number8)
+		overlay_element Number8 TextArea
 		{
 			metrics_mode relative
 			left 0.0175
 			top 0.515
 			font_name Vera
 			char_height 0.03
-			caption 08.
+			caption "08."
 			colour 0.5 0.5 0.5 0.5
 		}
-		element TextArea(Name8)
+		overlay_element Name8 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.50
 			font_name MenuFont
 			char_height 0.05
-			caption ---
+			caption "---"
 			colour_bottom 1 0.8 0.7
 			colour_top 0.8 0.4 0.3
 		}
-		element TextArea(Score8)
+		overlay_element Score8 TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -636,33 +636,33 @@ overlay HighScores
 			top 0.50
 			font_name MenuFont
 			char_height 0.05
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.8 0.6 0.4
 		}
 
-		element TextArea(Number9)
+		overlay_element Number9 TextArea
 		{
 			metrics_mode relative
 			left 0.0175
 			top 0.565
 			font_name Vera
 			char_height 0.03
-			caption 09.
+			caption "09."
 			colour 0.5 0.5 0.5 0.5
 		}
-		element TextArea(Name9)
+		overlay_element Name9 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.55
 			font_name MenuFont
 			char_height 0.05
-			caption ---
+			caption "---"
 			colour_bottom 1 0.8 0.7
 			colour_top 0.8 0.4 0.3
 		}
-		element TextArea(Score9)
+		overlay_element Score9 TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -670,33 +670,33 @@ overlay HighScores
 			top 0.55
 			font_name MenuFont
 			char_height 0.05
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.8 0.6 0.4
 		}
 
-		element TextArea(Number10)
+		overlay_element Number10 TextArea
 		{
 			metrics_mode relative
 			left 0.0175
 			top 0.615
 			font_name Vera
 			char_height 0.03
-			caption 10.
+			caption "10."
 			colour 0.5 0.5 0.5 0.5
 		}
-		element TextArea(Name10)
+		overlay_element Name10 TextArea
 		{
 			metrics_mode relative
 			left 0.05
 			top 0.60
 			font_name MenuFont
 			char_height 0.05
-			caption ---
+			caption "---"
 			colour_bottom 1 0.8 0.7
 			colour_top 0.8 0.4 0.3
 		}
-		element TextArea(Score10)
+		overlay_element Score10 TextArea
 		{
 			metrics_mode relative
 			alignment right
@@ -704,13 +704,13 @@ overlay HighScores
 			top 0.60
 			font_name MenuFont
 			char_height 0.05
-			caption 000000
+			caption "000000"
 			colour_bottom 1 1 1
 			colour_top 0.8 0.6 0.4
 		}
 
 
-		element TextArea(HighScores1)
+		overlay_element HighScores1 TextArea
 		{
 			metrics_mode relative
 			alignment center
@@ -718,7 +718,7 @@ overlay HighScores
 			top 0.65
 			font_name MenuFont
 			char_height 0.08
-			caption Back to main
+			caption "Back to main"
 			colour_bottom 1 1 1
 			colour_top 0.5 0.6 0.8
 		}
@@ -730,7 +730,7 @@ overlay HighScores
 overlay TitleScreen
 {
 	zorder 525
-	container Panel(TitlePanel)
+	overlay_element TitlePanel Panel
 	{
 		left 0
 		top 0
