@@ -30,6 +30,7 @@
 #include <OgreStringConverter.h>
 #include <OgreException.h>
 #include <OgreOverlay.h>
+#include <OgreWindowEventUtilities.h>
 
 #include "input.h"
 
