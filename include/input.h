@@ -29,12 +29,12 @@
 //Use this define to signify OIS will be used as a DLL
 //(so that dll import/export macros are in effect)
 #define OIS_DYNAMIC_LIB
-#include <OIS/OIS.h>
+#include <OIS.h>
 
-#include <OIS/OISEvents.h>
-#include <OIS/OISInputManager.h>
-#include <OIS/OISMouse.h>
-#include <OIS/OISKeyboard.h>
+#include <OISEvents.h>
+#include <OISInputManager.h>
+#include <OISMouse.h>
+#include <OISKeyboard.h>
 
 
 class OgreAppFrameListener;
