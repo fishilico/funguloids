@@ -30,6 +30,7 @@
 #include "soundsystem.h"
 #include "mpakogre.h"
 #include <OgreOverlaySystem.h>
+#include <OgreBitesConfigDialog.h>
 
 #if(OGRE_PLATFORM == OGRE_PLATFORM_WIN32)
 #define WIN32_LEAN_AND_MEAN
@@ -103,7 +104,7 @@ bool OgreApplication::setup() {
 
 	// Get the configuration
 	if(!mRoot->restoreConfig())
-		if(!mRoot->showConfigDialog(NULL))
+		if(!mRoot->showConfigDialog(OgreBites::getNativeConfigDialog()))
 			return false;
 
 	// Initialise the system
