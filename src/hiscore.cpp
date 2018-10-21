@@ -221,7 +221,7 @@ void HiscoreList::sort() {
 void HiscoreList::clear() {
 	for(int f=0; f<NUM_NAMES; f++) {
 		memset(mList[f].name, 0, sizeof(mList[f].name));
-		strncpy(mList[f].name, "- - - - - - - - - - - - - - - -", NAME_LEN);
+		strncpy(mList[f].name, "- - - - - - - - - - - - ", NAME_LEN);
 		mList[f].score = 0;
 	}
 }
